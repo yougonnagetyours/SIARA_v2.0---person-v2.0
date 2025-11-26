@@ -1,0 +1,30 @@
+=== POST LINKEDIN ===
+
+  A gdyby AI samo pisało raporty?
+
+  Nie, nie chodzi o generowanie tekstu na podstawie Twoich notatek.
+
+  Chodzi o system, który sam wie, że:
+   1. Jest pierwszy dzień miesiąca.
+   2. Trzeba pobrać dane z Google Ads, Analytics i Facebook Ads.
+   3. Należy je przeanalizować pod kątem KPI klienta X.
+   4. Na tej podstawie trzeba stworzyć podsumowanie i wnioski.
+   5. Gotowy raport w PDF ma wysłać do klienta.
+
+  Bez Twojego udziału.
+
+  To jest właśnie Agent AI. System, któremu dajesz cel ("co miesiąc raportuj wyniki klienta X"), a on sam dekomponuje go na zadania i je
+  wykonuje.
+
+  Agent nie potrzebuje ciągłego nadzoru. On zarządza procesem.
+
+  To fundamentalna różnica w stosunku do Asystenta, któremu musisz krok po kroku mówić, co ma robić.
+
+  Dla właściciela agencji, który chce się skalować, to oznacza przejście od "jak mogę robić rzeczy szybciej?" do "jak mogę sprawić, by
+  rzeczy robiły się same?".
+
+  To jest myśl, która nie daje mi ostatnio spokoju.
+
+  Jakie jedno, powtarzalne zadanie w Twojej firmie oddałbyś takiemu autonomicznemu Agentowi AI bez wahania?
+
+  ---
