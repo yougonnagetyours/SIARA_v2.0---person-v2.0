@@ -1,15 +1,29 @@
 ## Headline
 
-Inżynier Procesów | Automatyzacja dla Agencji Marketingowych | Bezpieczeństwo Danych i Leadów | Pomagam odzyskać czas i marżę
+Inżynier Procesów | Automatyzacja & AI dla Agencji | Wdrażam Agentów "Human-in-the-Loop": One piszą drafty, Ty zatwierdzasz | Odzyskaj czas na strategię
 
 ## O mnie (About)
 
-Łączę precyzję inżynierii z dynamiką świata marketingu. Na co dzień optymalizuję złożone procesy w przemyśle (PLM/Teamcenter), a teraz **przenoszę to doświadczenie do branży agencyjnej, by chronić ją przed chaosem operacyjnym.**
+Jako inżynier procesów nienawidzę marnowania czasu. A nic nie marnuje go bardziej niż pisanie w kółko podobnych maili, statusów i wyjaśnień do klientów.
 
-**Problemy, które rozwiązuję:**
+Wiem, jak to wygląda w agencji. Chcesz delegować komunikację, ale boisz się, że junior "spali" relację z kluczowym klientem. Więc robisz to sam(a). Po godzinach. Kosztem strategii, rozwoju firmy i własnego spokoju.
 
-*   **Nieszczelne procesy (Lead Leakage):** Weryfikuję, czy Twoje integracje (Zapier/Make/Facebook) działają poprawnie i czy nie tracisz budżetu przez błędy techniczne.
-*   **Manualne raportowanie:** Projektuję automatyczne dashboardy, które zastępują ręczne "klepanie" danych w Excelu.
-*   **Chaos w onboardingu:** Pomagam zamienić bałagan przy starcie współpracy z klientem w stabilny, powtarzalny i skalowalny proces.
+**Zmieniam ten układ.**
 
-Buduję systemy, które działają nawet wtedy, gdy odpoczywasz. Pomagam właścicielom agencji wdrażać rozwiązania AI, które automatyzują procesy, zwiększają efektywność i pozwalają skupić się na tym, co naprawdę ważne – na rozwoju biznesu i życiu poza pracą.
+Buduję **Inteligentnych Asystentów (Drafting Agents)**, którzy działają w bezpiecznym trybie "Human-in-the-Loop".
+
+To nie jest chatbot, który bredzi do Twoich klientów. To precyzyjny system, który:
+1. 📥 **Analizuje** wiadomość od klienta.
+2. 🧠 **Sprawdza** kontekst projektu i historię ustaleń.
+3. 📝 **Przygotowuje brudnopis (draft)** odpowiedzi w Twoim stylu.
+4. 🛑 **Czeka** na Twoją decyzję.
+
+Masz tylko dwie opcje: klikasz **"Wyślij"** (gdy draft jest idealny) lub **"Edytuj"** (gdy chcesz dodać ludzki szlif).
+
+**Efekt?**
+Obrabiasz skrzynkę w 15 minut zamiast w 2 godziny. Zero ryzyka wizerunkowego. 100% kontroli nad tym, co wychodzi z firmy.
+
+Nie jestem typowym "AI guru". Jestem inżynierem (doświadczenie w systemach klasy enterprise PLM), który przenosi standardy przemysłowej niezawodności do świata marketingu. Buduję systemy, które mają działać, a nie tylko ładnie wyglądać na slajdach.
+
+**Chcesz sprawdzić, czy to zadziała u Ciebie?**
+Podeślij mi (anonimowo) jeden "trudny mail" od klienta. Odeślę Ci draft, jaki przygotowałby dla Ciebie mój Agent. Sprawdzimy, czy poznasz różnicę.
