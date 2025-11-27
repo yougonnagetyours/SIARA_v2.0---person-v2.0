@@ -1,51 +1,54 @@
-# 🧪 PLAN SMOKE TESTU: "Audyt Szczelności Leadów"
+# 🧪 PLAN SMOKE TESTU: "Agent Draftujący (Human-in-the-Loop)"
 
 ## 1. HIPOTEZA BIZNESOWA
-**Jeśli** pokażę właścicielowi agencji performance (Marta), że drobne błędy techniczne w integracjach (API Facebooka/Zapier) mogą po cichu "gubić" leady i budżet,
-**To** będzie on skłonny poświęcić 30 minut na darmowy audyt/rozmowę,
-**Co** doprowadzi do zidentyfikowania problemów i sprzedaży usługi wdrożeniowej/naprawczej (cel: 500-1500 zł).
+**Jeśli** pokażę właścicielce agencji (Marta), że Agent AI potrafi przygotować odpowiedź do klienta **w jej stylu** i wymaga tylko jednego kliknięcia ("Wyślij" lub "Edytuj"),
+**To** uzna to za bezpieczne rozwiązanie, które zdejmuje jej ciężar z pleców bez ryzyka wizerunkowego,
+**Co** doprowadzi do umówienia się na demo na jej danych i sprzedaży wdrożenia MVP (cel: 3000-5000 zł za setup).
 
 ## 2. WARTOŚĆ DLA KLIENTA (HOOK)
-Nie sprzedajemy "automatyzacji" (bo to brzmi jak koszt i skomplikowany projekt).
-Sprzedajemy **"Bezpieczeństwo Przychodu"** (konieczność).
+Nie sprzedajemy "chatbota" (który bredzi).
+Sprzedajemy **"Inteligentny Brudnopis"**.
 
-**Hasło:** *"Sprawdzę, czy Twój proces Lead Ads jest odporny na błędy, o których możesz nie wiedzieć."*
+**Hasło:** *"Twój nowy asystent przygotuje 90% odpowiedzi. Ty dajesz tylko finalne 'OK'. Zero ryzyka, pełna kontrola."*
 
-## 3. FORMA TESTU (Metoda "Social Selling" - Organic)
+## 3. FORMA TESTU (Metoda "Show, Don't Tell")
 
 *   **Kanał:** LinkedIn (konto osobiste).
-*   **Podejście:** Budowanie relacji -> Dzielenie się wiedzą (Ekspert-Inżynier, nie Handlowiec).
-*   **Asset (Przynęta):** Krótkie wideo (Loom, 2-3 min) - **"Symulacja Awarii Technicznej"**.
-    *   *Scenariusz:* Nie udajemy klienta. Pokazujesz na własnym środowisku testowym (Make + FB Lead Ads), jak zmiana jednego pola w formularzu FB psuje przesył danych, a agencja o tym nie wie.
-    *   *Dystrybucja:* Link do wideo wysyłany w wiadomości prywatnej (DM) *po* nawiązaniu relacji.
+*   **Podejście:** Inżynier, który rozwiązuje konkretny problem (Wąski już napisał profil).
+*   **Asset (Przynęta):** Krótkie wideo (Loom, max 60s) - **"Demo Agenta w Akcji"**.
+    *   *Scenariusz:*
+        1. Wpada trudny mail od klienta ("Gdzie są wyniki?!").
+        2. Agent (w tle) analizuje bazę wiedzy i historię.
+        3. Agent wystawia draft na Slacku/Mailu: empatyczny, konkretny, z danymi.
+        4. Użytkownik klika jeden guzik: "Wyślij". Koniec.
+    *   *Dystrybucja:* Direct Message do wyselekcjonowanej grupy.
 
 ## 4. HARMONOGRAM (2 Tygodnie)
 
-### Tydzień 1: Laboratorium i Przygotowanie
-1.  **Profil LinkedIn:** Delikatny lifting nagłówka i sekcji "O mnie".
-    *   *Słowa kluczowe:* Inżynier Procesów, Automatyzacja dla Agencji, Bezpieczeństwo Danych.
-2.  **Laboratorium (Make.com - Free Plan):**
-    *   Zbudowanie prostego scenariusza testowego (FB Leads -> Google Sheets).
-    *   Celowe "zepsucie" go na potrzeby nagrania (demonstracja braku odporności na zmiany).
+### Tydzień 1: Budowa Demo i Profil
+1.  **Profil LinkedIn:** Publikacja przygotowanego draftu (Inżynier Procesów).
+2.  **Laboratorium (Demo MVP):**
+    *   Zbudowanie prostego scenariusza w Make.com/n8n.
+    *   Symulacja: Gmail -> GPT-4 (z promptem Marty) -> Draft w Google Docs/Slack.
+    *   To nie musi być produkcyjne, ma **wyglądać** i działać na jednym przykładzie.
 3.  **Nagranie Wideo:**
-    *   Narzędzie: Loom (Free).
-    *   Treść: Wyjaśnienie problemu prostym językiem + pokazanie skutków ("leady wpadają w czarną dziurę").
+    *   Loom. Bez lania wody. "Patrz, wpada mail, tu masz gotową odpowiedź. Pasuje? Klikasz. Nie pasuje? Edytujesz. Oszczędzasz 15 min na jednym mailu."
 4.  **Lista Targetowa:**
-    *   Wyszukanie 30 właścicieli agencji Performance/Social Media w Polsce.
+    *   20-30 właścicieli agencji (wyglądających na zarobionych).
 
-### Tydzień 2: Egzekucja (Networking)
-1.  **Zaproszenia:** Wysyłanie 5-6 zaproszeń dziennie z notatką "networkingową" (bez sprzedaży).
-2.  **Follow-up (Wartość):** Do osób, które przyjęły zaproszenie:
-    *   *Wiadomość:* "Cześć, przygotowałem symulację błędu API, który często widzę w branży. Może Ci się przydać ta wiedza, żeby uniknąć wpadek. [LINK]"
-3.  **Rozmowy:** Reakcja na odpowiedzi -> propozycja darmowego sprawdzenia ich setupu (15 min).
+### Tydzień 2: Ofensywa (Outreach)
+1.  **Zaczepka (Smart):**
+    *   Nie: "Kup pan bota".
+    *   Tak: "Cześć, testuję narzędzie, które pisze drafty odpowiedzi do klientów w stylu właściciela. Szukam 3 osób, które chcą zerknąć, czy to faktycznie 'brzmi jak człowiek'. Podeślesz jeden trudny mail z przeszłości, a ja Ci odeślę, jak by odpisał mój Agent?"
+2.  **Demo na ich danych:**
+    *   To jest klucz. Jak zobaczą, że AI "mówi ich głosem", są kupieni.
 
 ## 5. NARZĘDZIA I BUDŻET
-*   **Budżet:** 0 zł.
-*   **LinkedIn:** Konto darmowe (Premium niepotrzebne na start, budujemy autentyczność).
-*   **Wideo:** Loom (wersja darmowa zlicza wyświetlenia).
-*   **Tech:** Make.com (Plan Free - 1000 ops/mc) - wystarczy do demo wizualnego.
+*   **Budżet:** Grosze (API OpenAI do testów).
+*   **Tech:** Make.com / n8n (do spięcia logiki).
+*   **AI:** GPT-4o (do generowania jakościowych tekstów).
 
 ## 6. KRYTERIA SUKCESU (KPI)
-1.  **Sieć:** Min. 10 nowych osób z grupy docelowej w znajomych na LI.
-2.  **Odbiór:** Min. 5 osób obejrzy wideo (Loom zlicza wyświetlenia).
-3.  **Konwersja:** Min. 1 rozmowa/audyt z właścicielem agencji.
+1.  **Zainteresowanie:** 5 osób wyśle swojego "starego maila" do przetestowania.
+2.  **Efekt WOW:** 3 osoby powiedzą "To brzmi jak ja" lub "To jest wystarczająco dobre".
+3.  **Sprzedaż:** 1 klient na płatne wdrożenie MVP.

@@ -1,13 +1,19 @@
-**Nazwa Robocza Usługi:** *Audyt i Wdrożenia Automatyzacji dla Agencji Kreatywnych*
+**Nazwa Robocza Usługi:** *Inteligentny Asystent Komunikacji (Draft Mode) dla Agencji*
 
 - **Jaki problem rozwiązuję?**
-Właściciele agencji marketingowych i kreatywnych są ekspertami w marketingu, a nie w operacjach. Ich zespoły tracą dziesiątki godzin miesięcznie na ręcznym, powtarzalnym i niekreatywnym "klepaniu" zadań – tworzeniu raportów, przeklejaniu danych, onboardingu klientów. Ten chaos operacyjny blokuje rozwój firmy, obniża marżowość i powoduje wypalenie pracowników.
+Właściciele agencji (jak Marta) toną w bieżącej komunikacji z klientami. Boją się delegować odpisywanie na maile juniorom, bo ryzyko "spalenia" klienta niekompetentną odpowiedzią jest zbyt duże. W efekcie sami stają się wąskim gardłem – tracą godziny na pisanie powtarzalnych wiadomości, zamiast zajmować się strategią, albo odpisują z opóźnieniem, co frustruje klientów. Systemy ticketowe są bezosobowe i znienawidzone przez klientów premium.
+
 - **Jakie oferuję rozwiązanie?**
-Oferuję zaprojektowanie i wdrożenie "inteligentnego systemu operacyjnego" dla agencji. Analizuję ich obecne procesy, identyfikuję "wąskie gardła" i buduję system automatyzacji, który przejmuje na siebie powtarzalne zadania. Uwalniam czas i potencjał zespołu, aby mogli skupić się na tym, co robią najlepiej: na kreatywnej pracy dla swoich klientów.
+Wdrażam Agenta AI, który działa w trybie "Human in the Loop". System analizuje przychodzące wiadomości od klientów, sprawdza historię i kontekst projektu, a następnie **przygotowuje brudnopis (draft) idealnej odpowiedzi**.
+Marta (lub PM) otrzymuje powiadomienie z gotową propozycją. Ma tylko dwie opcje:
+1. "Wyślij" (jeśli draft jest idealny).
+2. "Edytuj" (jeśli trzeba dodać ludzki szlif).
+To daje 90% oszczędności czasu przy 100% zachowaniu kontroli i jakości. Zero ryzyka "halucynacji" wysłanej do klienta.
+
 - **Jak to ma działać?**
-Proces jest prosty i składa się z trzech kroków:
-    1. **Audyt (2-3h):** Przeprowadzam warsztat z właścicielem, aby zmapować kluczowe procesy i zidentyfikować 3 najbardziej czasochłonne zadania.
-    2. **Wdrożenie (1-2 tyg.):** Projektuję i buduję dedykowane automatyzacje, używając narzędzi no-code (np. Make.com) i AI.
-    3. **Szkolenie (1h):** Przekazuję gotowy system zespołowi i pokazuję w formie krótkiego wideo-tutorialu, jak z niego korzystać.
+    1. **Demo na żywo (30 min):** Pokazuję na jej własnych, starych mailach, jak Agent przygotowałby odpowiedzi. Efekt "WOW" bez ryzyka.
+    2. **Wdrożenie MVP (3-5 dni):** Podpinamy Agenta pod jeden kanał (np. e-mail lub slack) w trybie "tylko drafty".
+    3. **Optymalizacja (Ongoing):** Agent uczy się stylu Marty z każdą korektą, którą ona wprowadza. Z czasem skuteczność draftów sięga 95-99%.
+
 - **Dla kogo to jest przeznaczone?**
-Dla właścicieli małych i średnich agencji marketingowych, kreatywnych i software house'ów (do 15-20 osób), którzy czują, że utknęli w chaosie operacyjnym, a ich ręczne procesy blokują dalszy wzrost. To usługa dla liderów, którzy chcą skalować swój biznes w sposób inteligentny, a nie poprzez zatrudnianie kolejnych osób do powtarzalnej pracy.
+Dla właścicieli agencji performance/kreatywnych (Marta), którzy budują relacje na zaufaniu i osobistym kontakcie, ale fizycznie nie wyrabiają z obsługą zapytań. Dla tych, którzy chcą automatyzacji, ale panicznie boją się utraty jakości obsługi.

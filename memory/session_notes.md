@@ -1,4 +1,26 @@
 ---
+## 2025-11-27, 10:00 - Sesja #2
+
+**Co robiliśmy:**
+- Naprawiono i skonfigurowano Agenta Wąski (Ghostwriter) do korzystania z właściwych danych klienta (knowledge/ideal_customer.md i knowledge/business_idea.md).
+- Usunięto odniesienia do starego pliku MojaIdealnaPersona.md.
+- Zapisano gotowy tekst profilu LinkedIn ("Systemy, które działają, gdy Ty odpoczywasz") w pliku agents/waski/drafts/linkedin_profile_draft.md.
+- Przeprowadzono pivot biznesowy: zmieniono koncepcję produktu z "Dashboardy/Raporty" na "Inteligentny Asystent Komunikacji (Draft Mode) dla Agencji".
+- Zdefiniowano Agent AI jako "Human in the Loop" (przygotowuje draft, klient zatwierdza).
+- Zaktualizowano `knowledge/business_idea.md` o nową koncepcję usługi.
+- Zaktualizowano `knowledge/smoke_test_plan.md` pod kątem Agenta Draftującego, włączając wideo Loom jako asset i nowe KPI.
+
+**Ustalenia:**
+- Wąski ocenił zgodność draftu profilu LinkedIn z personą Marty na 9/10.
+- Nowy plan smoke testu obejmuje nagranie wideo Loom z demo Agenta w akcji i outreach do 20-30 właścicieli agencji.
+- Kluczowe KPI to 5 osób chętnych do testu na swoich danych i 1 sprzedaż wdrożenia MVP.
+
+**Następny krok:**
+- Zatwierdzenie finalnej wersji profilu LinkedIn.
+- Wgranie profilu na LinkedIn.
+- Rozpoczęcie "Tygodnia 1" z planu (nagranie wideo/Loom z demo Agenta).
+---
+---
 ## 2025-11-26, 19:08 - Sesja #1 (Aktualizacja - Profil LinkedIn)
  
 **Co robiliśmy:**
