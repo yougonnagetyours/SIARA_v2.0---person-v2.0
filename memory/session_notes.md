@@ -1,4 +1,19 @@
 ---
+## 2025-11-27, 10:35 - Sesja #4 (Decyzja: Scenariusz Demo)
+
+**Co robiliśmy:**
+- Usunięto `memory/todo_list.md` zgodnie z filozofią Johna Galla (uproszczenie systemu, usunięcie martwej biurokracji).
+- Wybrano konkretny scenariusz do budowy Demo MVP: **"Scope Creep"** (klient proszący o darmowe dodatki).
+
+**Ustalenia:**
+- Zostawiamy tylko dwa pliki pamięci: `session_notes.md` (dziennik) i `progress_tracker.md` (mapa).
+- **Cel Demo:** Pokazać, jak Agent oszczędza pieniądze i nerwy, generując asertywną odpowiedź na próbę "scope creepu".
+- **Strategia komunikacji:** "Wychowywanie klienta" – Agent odpisuje natychmiast na maile (nagroda), telefon milczy (brak nagrody), co przesuwa komunikację na kanał pisemny (asynchroniczny).
+
+**Następny krok:**
+- Budowa Promptu Systemowego realizującego scenariusz "Scope Creep" (asertywna dyplomacja).
+---
+---
 ## 2025-11-27, 10:15 - Sesja #3 (Konfiguracja i Plan)
 
 **Co robiliśmy:**
