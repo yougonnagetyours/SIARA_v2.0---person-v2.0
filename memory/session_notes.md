@@ -1,4 +1,22 @@
 ---
+## 2025-11-27, 10:15 - Sesja #3 (Konfiguracja i Plan)
+
+**Co robiliśmy:**
+- Zaktualizowano plik konfiguracyjny `GEMINI.md`:
+    - Ujednolicono identyfikatory agentów na `#SIARA` i `#WASKI`.
+    - Dodano wymóg stosowania prefixów `#siara:` / `#waski:` w odpowiedziach systemu.
+- Zaktualizowano `memory/todo_list.md`: usunięto nieaktualne zadania, wprowadzono nowy plan "Agent Draftujący".
+- Przygotowano "Zestaw Startowy Piekła Agencji" (3 scenariusze maili: Scope Creep, Panika, Vibe) do testowania Agenta.
+
+**Ustalenia:**
+- **Priorytet:** Najpierw budowa Demo (Tech) i weryfikacja działania Agenta, dopiero potem aktualizacja LinkedIn i outreach. Nie sprzedajemy "powietrza".
+- Użytkownik zakończył sesję przed wyborem konkretnego scenariusza testowego.
+
+**Następny krok:**
+- Wybór scenariusza maila testowego.
+- Stworzenie i przetestowanie Promptu Systemowego dla Agenta Draftującego.
+---
+---
 ## 2025-11-27, 10:00 - Sesja #2
 
 **Co robiliśmy:**

@@ -1,42 +1,35 @@
-# Lista Zadań - Smoke Test "Audyt Szczelności"
+# Lista Zadań - Smoke Test "Agent Draftujący"
 
 ## 🟢 DO ZROBIENIA (Tydzień 1)
 
-### 1. Przygotowanie Profilu LinkedIn
-- [ ] **Nagłówek:** Zmienić na sugerujący pomoc w procesach/automatyzacji (np. "Automatyzacja Procesów & AI | Pomagam Agencjom Odzyskać Czas").
-- [ ] **Sekcja O mnie:** Dodać 1-2 zdania o "inżynieryjnym podejściu do marketingu" i eliminowaniu błędów.
+### 1. Finalizacja Profilu LinkedIn
+- [ ] Zatwierdzić draft profilu (`agents/waski/drafts/linkedin_profile_draft.md`).
+- [ ] Zaktualizować nagłówek i sekcję "O mnie" na LinkedIn (Ctrl+C / Ctrl+V).
 
-### 2. Laboratorium (Make.com)
-- [ ] Założyć darmowe konto na Make.com.
-- [ ] Stworzyć prosty scenariusz: `Facebook Lead Ads (Webhook) -> Google Sheets`.
-- [ ] Przetestować scenariusz (wysłać testowy lead).
-- [ ] **Symulacja Awarii:** Zmienić nazwę kolumny w Google Sheets lub pola w "fejkowym" formularzu, aby pokazać, że proces się wywala lub gubi dane.
+### 2. Budowa Demo (MVP Agenta)
+- [ ] Stworzyć prosty prototyp (n8n/Make + OpenAI) generujący draft odpowiedzi na maila.
+- [ ] Przygotować scenariusz techniczny: Input (treść maila) -> AI (analiza + draft) -> Output (np. Google Docs lub Draft w Gmailu).
+- [ ] Przetestować działanie na 3 przykładowych "trudnych mailach" (symulacja).
 
 ### 3. Materiał Wideo (Asset)
-- [ ] Zainstalować Loom (lub przygotować OBS).
-- [ ] Napisać krótki scenariusz/punkty do omówienia (max 3 minuty).
-- [ ] **Nagrać wideo:**
-    - Wstęp: Kim jestem (inżynier).
-    - Problem: "Co się dzieje, gdy zmieniasz formularz".
-    - Demo: Pokazanie błędu na ekranie.
-    - Rozwiązanie: "Trzeba budować systemy odporne na błędy".
-    - CTA: "Sprawdź u siebie".
+- [ ] Opracować scenariusz wideo (max 3 minuty):
+    - Problem: "Ile czasu tracisz na pisanie maili?"
+    - Rozwiązanie: "Agent Draftujący (Human-in-the-Loop)".
+    - Demo: Pokazanie na ekranie, jak AI tworzy draft, a Ty tylko zatwierdzasz.
+- [ ] Nagrać wideo (Loom/OBS) pokazujące Agenta w akcji.
 
 ### 4. Budowa Bazy (Prospecting)
-- [ ] Wyszukać na LinkedIn frazy: "Właściciel Agencji", "CEO Marketing", "Performance Marketing Agency".
-- [ ] Wybrać 30 osób (najlepiej Polska, agencje 5-20 osób).
-- [ ] Zapisać listę (np. w Excelu/Notion) do śledzenia statusu kontaktu.
+- [ ] Wyszukać 20-30 właścicieli agencji (Marketing / Software House).
+- [ ] Zapisać listę kontaktów do śledzenia (Excel/Notion).
 
----
+## 🟡 DO ZROBIENIA (Tydzień 2 - Outreach)
 
-## 🟡 DO ZROBIENIA (Tydzień 2 - po przygotowaniu powyższych)
+### 1. Kampania Bezpośrednia
+- [ ] Wysyłka zaproszeń na LinkedIn.
+- [ ] Follow-up z linkiem do wideo dla osób, które przyjęły zaproszenie.
+- [ ] Propozycja: "Podeślij anonimowo jeden trudny mail, odeślę Ci draft od Agenta".
 
-### 1. Outreach (Działanie)
-- [ ] Dzień 1: Wysłać 5 zaproszeń (bez notatki sprzedażowej).
-- [ ] Dzień 2: Wysłać 5 zaproszeń + Follow-up do tych, co przyjęli wczoraj (wysyłka wideo).
-- [ ] Dzień 3-5: Powtórzyć proces.
-
-### 2. Obsługa Leadów
-- [ ] Monitorować powiadomienia z Loom (kto obejrzał).
-- [ ] Odpisywać na wiadomości na LI.
-- [ ] Umawiać ewentualne rozmowy (Google Meet).
+### 2. Weryfikacja i Sprzedaż
+- [ ] Monitorowanie wyświetleń Loom.
+- [ ] Cel: Pozyskać 5 beta-testerów (test na ich danych).
+- [ ] Cel Finansowy: 1 sprzedaż wdrożenia.

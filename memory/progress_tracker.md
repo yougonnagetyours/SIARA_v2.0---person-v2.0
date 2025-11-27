@@ -1,7 +1,18 @@
 ## 🎯 AKTUALNY ETAP
 
-**1. Tydzień 1: Budowa Demo i Profil**
+**1. Tydzień 1: Budowa Demo (Agent Draftujący) i Profil**
 
-Cel: Przygotowanie profilu LinkedIn, budowa laboratorium (demo MVP) i nagranie wideo Loom oraz stworzenie listy targetowej.
+Cel: Weryfikacja nowej hipotezy "Agenta Draftującego" poprzez demo (Loom) i outreach.
 
-Status: Profil LinkedIn (nagłówek i sekcja "O mnie") został dopracowany i zapisany w `agents/waski/drafts/linkedin_profile_draft.md`. Wąski ocenił zgodność draftu na 9/10. Obecnie skupiamy się na finalizacji profilu i rozpoczęciu prac nad demo MVP oraz wideo Loom.
+Status:
+- 🔄 **PIVOT (2025-11-27):** Porzucono koncepcję "Dashboardów" na rzecz "Agenta Draftującego (Human-in-the-Loop)".
+- 🔧 **TECH:** Skonfigurowano system operacyjny (Router GEMINI + Agenci #Siara i #Waski).
+- 📝 **CONTENT:** Profil LinkedIn gotowy do wdrożenia (Draft 9/10).
+- 🧪 **LAB:** Zdefiniowano scenariusze testowe ("Piekło Agencji") do budowy MVP.
+
+## 🕒 HISTORIA
+
+### 0. PRZYGOTOWANIE (2025-11-26)
+- ✓ Zdefiniowanie Persony (Michał - Inżynier Procesów).
+- ✓ Określenie grupy docelowej (Agencje Marketingowe).
+- ✓ Restrukturyzacja projektu (Folder structure cleanup).
