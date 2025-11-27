@@ -4,12 +4,12 @@ Inżynier Procesów | Automatyzacja dla Agencji Marketingowych | Bezpieczeństwo
 
 ## O mnie (About)
 
-Łączę precyzję inżynierii z dynamiką świata marketingu. Na co dzień optymalizuję złożone procesy w przemyśle (PLM/Teamcenter), a teraz **przenoszę to doświadczenie do agencji, by chronić je przed chaosem operacyjnym.**
+Łączę precyzję inżynierii z dynamiką świata marketingu. Na co dzień optymalizuję złożone procesy w przemyśle (PLM/Teamcenter), a teraz **przenoszę to doświadczenie do branży agencyjnej, by chronić ją przed chaosem operacyjnym.**
 
 **Problemy, które rozwiązuję:**
 
 *   **Nieszczelne procesy (Lead Leakage):** Weryfikuję, czy Twoje integracje (Zapier/Make/Facebook) działają poprawnie i czy nie tracisz budżetu przez błędy techniczne.
-*   **Czasochłonne raportowanie:** Projektuję automatyczne dashboardy, które zastępują ręczne "klepanie" danych w Excelu.
-*   **Chaos przy wdrażaniu klientów:** Pomagam zamienić "gaszenie pożarów" w nudny, powtarzalny i skalowalny proces onboardingu.
+*   **Manualne raportowanie:** Projektuję automatyczne dashboardy, które zastępują ręczne "klepanie" danych w Excelu.
+*   **Chaos w onboardingu:** Pomagam zamienić bałagan przy starcie współpracy z klientem w stabilny, powtarzalny i skalowalny proces.
 
-Wierzę, że agencje marketingowe zasługują na taką samą niezawodność procesów, jak fabryki automotive. Moim celem jest budowa **systemów operacyjnych**, które uwalniają właścicieli od mikrozarządzania.
+Buduję systemy, które działają nawet wtedy, gdy odpoczywasz. Pomagam właścicielom agencji wdrażać rozwiązania AI, które automatyzują procesy, zwiększają efektywność i pozwalają skupić się na tym, co naprawdę ważne – na rozwoju biznesu i życiu poza pracą.
