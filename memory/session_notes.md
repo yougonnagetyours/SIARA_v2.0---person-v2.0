@@ -1,4 +1,25 @@
 ---
+## 2025-11-28, 11:20 - Sesja #5 (Budowa MVP Agenta)
+
+**Co robiliśmy:**
+- Zrestrukturyzowano projekt, wydzielając katalog `product_mvp/` dla zasobów produktowych (uniezależnienie od Wąskiego).
+- Stworzono strukturę: `product_mvp/system_prompts`, `training_examples`, `test_cases`.
+- Spisano "Biblię Stylu" dla Wąskiego w pliku `agents/waski/baza_wiedzy/StylKomunikacjiKlient.md`.
+- Dopracowano Prompt Systemowy (`v1_agent_draftujacy_glowny.md`), dodając zasadę "Merytoryczna Precyzja" (zakaz zgadywania platform).
+- Zaktualizowano przykłady treningowe (`styl_komunikacji.md`), usuwając anglicyzmy ("realny czas" -> "godziny pracy") i profesjonalizując scenariusz paniki.
+- Przeprowadzono udane symulacje dla Scenariusza 1 (Scope Creep) i Scenariusza 2 (Panika).
+- Wykonano commit zmian: "feat: Implement Agent Drafting MVP structure and initial prompts".
+
+**Ustalenia:**
+- Pliki w `product_mvp/` są jedynym źródłem wiedzy dla Agenta Draftującego (samodzielność produktu).
+- Styl komunikacji Agenta: "Spokojny Inżynier" (Marta/Michał) - konkret, bez korpo-slangu, edukacja klienta.
+- Agent nie może zgadywać faktów (np. "sprawdzam FB/Google") - musi używać bezpiecznych, ogólnych sformułowań ("audyt trackingu").
+
+**Następny krok:**
+- Ponowna weryfikacja Scenariusza 2 (dla 100% pewności).
+- Opracowanie i przetestowanie Scenariusza 3 ("Vibe Check").
+---
+---
 ## 2025-11-27, 10:35 - Sesja #4 (Decyzja: Scenariusz Demo)
 
 **Co robiliśmy:**

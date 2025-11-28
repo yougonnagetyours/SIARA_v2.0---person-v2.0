@@ -5,10 +5,11 @@
 Cel: Weryfikacja nowej hipotezy "Agenta Draftującego" poprzez demo (Loom) i outreach.
 
 Status:
+- ✓ **SETUP PRODUKTU:** Stworzono strukturę `product_mvp` (System Prompts, Examples, Test Cases).
+- ✓ **TESTY MVP (90%):** Scenariusze "Scope Creep" i "Panika" zweryfikowane i działają.
 - 🔄 **PIVOT (2025-11-27):** Porzucono koncepcję "Dashboardów" na rzecz "Agenta Draftującego (Human-in-the-Loop)".
 - 🔧 **TECH:** Skonfigurowano system operacyjny (Router GEMINI + Agenci #Siara i #Waski).
 - 📝 **CONTENT:** Profil LinkedIn gotowy do wdrożenia (Draft 9/10).
-- 🧪 **LAB:** Zdefiniowano scenariusze testowe ("Piekło Agencji") do budowy MVP.
 
 ## 🕒 HISTORIA
 
