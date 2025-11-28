@@ -1,4 +1,23 @@
 ---
+## 2025-11-28, 12:15 - Sesja #6 (Finalizacja Testów MVP i Plan Wdrożenia)
+
+**Co robiliśmy:**
+- Pomyślnie zweryfikowano Scenariusz 2 "Panika" po poprawkach (Agent nie zgaduje, jest merytoryczny).
+- Pomyślnie przetestowano Scenariusz 3 "Vibe Check" (Agent asertywnie prosi o konkrety zamiast zgadywać "styl").
+- Zaktualizowano Prompt Systemowy (`v1_agent_draftujacy_glowny.md`), wymuszając podpis "Marta" pod każdym draftem.
+- Podjęto kluczowe decyzje technologiczne i biznesowe (Make.com, model wdrożenia).
+
+**Ustalenia:**
+- **Decyzja Tech:** MVP i Demo budujemy na **Make.com** (konto integratora).
+- **Model Biznesowy:** "Integrator" - wdrażamy automatyzację na kontach klientów (bezpieczeństwo danych, brak kosztów API po naszej stronie).
+- **Uproszczenie Promptu:** Należy zmodyfikować prompt systemowy, aby zwracał *tylko* treść maila (bez nagłówków "Temat:" / "Treść:"), co ułatwi konfigurację w Make.
+- **Podpis Agenta:** Każdy draft kończy się podpisem "Marta".
+
+**Następny krok:**
+- Konfiguracja scenariusza w Make.com (Gmail -> OpenAI -> Gmail Draft).
+- Nagranie wideo demo (Loom) pokazującego działanie na żywo.
+---
+---
 ## 2025-11-28, 11:20 - Sesja #5 (Budowa MVP Agenta)
 
 **Co robiliśmy:**
@@ -12,7 +31,8 @@
 
 **Ustalenia:**
 - Pliki w `product_mvp/` są jedynym źródłem wiedzy dla Agenta Draftującego (samodzielność produktu).
-- Styl komunikacji Agenta: "Spokojny Inżynier" (Marta/Michał) - konkret, bez korpo-slangu, edukacja klienta.
+- Styl komunikacji Agenta: "Asertywna Dyplomacja" - konkret, bez korpo-slangu, edukacja klienta.
+- Agent w symulacjach będzie podpisywał się imieniem "Marta".
 - Agent nie może zgadywać faktów (np. "sprawdzam FB/Google") - musi używać bezpiecznych, ogólnych sformułowań ("audyt trackingu").
 
 **Następny krok:**

@@ -34,4 +34,8 @@ Twoim zadaniem jest przygotowanie wersji roboczej (draftu) odpowiedzi na e-mail 
 
 ## Format Wyjściowy
 Temat: [Propozycja tematu lub RE: temat oryginalny]
-Treść: [Gotowa treść maila do wklejenia]
+Treść:
+[Treść wiadomości]
+
+Pozdrawiam,
+Marta
