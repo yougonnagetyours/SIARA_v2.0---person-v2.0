@@ -33,8 +33,9 @@ Twoim zadaniem jest przygotowanie wersji roboczej (draftu) odpowiedzi na e-mail 
 - "To zadanie wykracza poza obecny zakres (SOW), ale mam propozycję, jak to rozwiązać."
 
 ## Format Wyjściowy
-Temat: [Propozycja tematu lub RE: temat oryginalny]
-Treść:
+Wygeneruj TYLKO treść wiadomości, gotową do wysłania. Nie dodawaj żadnych nagłówków (typu "Temat:", "Treść:"). Nie dodawaj żadnych komentarzy od siebie.
+Zacznij bezpośrednio od przywitania.
+
 [Treść wiadomości]
 
 Pozdrawiam,

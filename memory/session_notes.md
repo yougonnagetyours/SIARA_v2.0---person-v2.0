@@ -1,4 +1,22 @@
 ---
+## 2025-12-01, 16:00 - Sesja #7 (Konfiguracja Make.com i Master Prompt)
+
+**Co robiliśmy:**
+- Zbudowano i skonfigurowano scenariusz w Make.com: Gmail (Watch) -> OpenAI (GPT-5.1) -> Gmail (Draft).
+- Stworzono plik konfiguracyjny `product_mvp/make_scenarios_config/system_prompt_make_v1.md` jako "Single Source of Truth" dla promptu.
+- Zintegrowano wszystkie scenariusze testowe (Scope Creep, Panika, Rabaty, Vibe Check) w jeden Master Prompt.
+- Dopracowano styl: usunięto żargon ("dowożenie"), dodano formatowanie HTML, zmieniono listę opcji na naturalną (bez nawiasów "Opcja A").
+
+**Ustalenia:**
+- Agent działa w imieniu Marty (Właścicielki), styl "Asertywna Właścicielka".
+- Make.com korzysta z modelu `gpt-5.1` (lub najnowszego dostępnego).
+- Nie komplikujemy scenariusza bazami danych – prompt systemowy zawiera przykłady (Few-Shot).
+
+**Następny krok:**
+- Finalny test ("Run once") z nowym, naturalnym promptem.
+- Nagranie wideo demo (Loom) z działającego procesu.
+---
+---
 ## 2025-11-28, 12:15 - Sesja #6 (Finalizacja Testów MVP i Plan Wdrożenia)
 
 **Co robiliśmy:**
