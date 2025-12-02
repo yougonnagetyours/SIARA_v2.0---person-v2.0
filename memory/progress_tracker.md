@@ -5,9 +5,9 @@
 Cel: Weryfikacja nowej hipotezy "Agenta Draftującego" poprzez demo (Loom) i outreach.
 
 Status:
-- ✓ **TECH (MAKE.COM):** Scenariusz gotowy i przetestowany. Prompt "Master" wdrożony.
-- ⏳ **TESTY KOŃCOWE:** Wymagane jedno finalne "Run once" na nowym prompcie.
-- 🔜 **DEMO:** Nagranie wideo (Loom).
+- ✓ **TECH (MAKE.COM):** Scenariusz Gmail -> OpenAI -> Draft zweryfikowany i działający.
+- ⚠️ **UX (MAKE):** Opóźnienie (polling) obniża jakość demo. Rozważana migracja na n8n + Slack.
+- ⏳ **DECYZJA:** Wybór między Make (szybkie demo z "cięciem") a n8n (lepsze demo z real-time chatem).
 - 📝 **CONTENT:** Profil LinkedIn gotowy do wdrożenia (Draft 9/10).
 
 ## 🕒 HISTORIA

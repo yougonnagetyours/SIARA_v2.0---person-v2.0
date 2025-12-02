@@ -137,3 +137,18 @@
 >Chciałem tylko krótko potwierdzić, że moje zainteresowanie dołączeniem do Państwa zespołu pozostaje niezmienne. Bardzo doceniam Państwa szczerość z naszej ostatniej rozmowy.
 >Nie oczekuję natychmiastowej odpowiedzi, jeśli nadal obserwujecie Państwo sytuację. Chciałem po prostu dać znać, że nadal jestem dostępny.
 >Pozdrawiam serdecznie
+
+## 16 listopada
+
+**Krzysztof Paluch** - 11:07
+>Dzień dobry, dziękuję, po kontuzji nie ma już śladu, oprócz wspomnień, że trzeba uważać na basenie 😃
+>Od strony zespołu TC nic się nie zmieniło i nadal nie podjęliśmy decyzji i zatrudnieniu kolejnej osoby. Dziękuję za deklarację i będę ją brał pod uwagę w momencie jak sytuacja się zmieni. Czasem prowadzę rozmowy z różnymi osobami, ale nie jest to bardzo aktywna rekrutacja. 
+>Pozdrawiam.
+
+## 17 listopada
+
+**Michał Potoczny** - 10:24
+>Bardzo dziękuję za szybką i jak zawsze szczerą odpowiedź. Cieszę się, że ze zdrowiem już wszystko w porządku!
+>W pełni rozumiem sytuację biznesową. Cieszę się, że mogłem po prostu potwierdzić swoje zainteresowanie.
+>Będę wdzięczny za sygnał z Państwa strony, gdyby sytuacja miała się zmienić.
+>Pozdrawiam serdecznie i życzę miłego dnia!

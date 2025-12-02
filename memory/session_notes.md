@@ -1,4 +1,22 @@
 ---
+## 2025-12-02, 11:00 - Sesja #8 (Weryfikacja Tech Stacku: Make vs n8n)
+
+**Co robiliśmy:**
+- Zweryfikowano technicznie scenariusz w Make.com (Gmail -> OpenAI -> Gmail Draft).
+- Zidentyfikowano ograniczenie UX w Make: opóźnienie w przetwarzaniu (polling co 15 min) vs oczekiwanie użytkownika na "Instant".
+- Przeanalizowano alternatywne podejście "Instant": Google Apps Script (odrzucone jako overengineering) vs Forward na Slacka.
+- Przeanalizowano potencjał n8n w oparciu o dostarczony plik JSON ("5 Agentów AI").
+- Zaproponowano nowy workflow oparty na n8n + Slack: Forward maila na kanał Slack -> n8n generuje draft -> Przyciski akcji na Slacku.
+
+**Ustalenia:**
+- Make.com działa poprawnie technicznie, ale UX "przeciągania maili" ma wady (opóźnienie).
+- Rozwiązanie n8n + Slack oferuje lepszy "Time to Value" (Instant) i efekt WOW (sterowanie z poziomu czatu).
+- Wymagana decyzja dotycząca wdrożenia n8n (potrzeba tunelowania dla lokalnej instancji vs VPS).
+
+**Następny krok:**
+- Decyzja: Czy nagrywamy Demo na Make (symulując szybkość) czy migrujemy na n8n (dla lepszego UX w demo).
+---
+---
 ## 2025-12-02, 10:00 - Sesja #8 (Fixing Hallucinations & Master Prompt)
 
 **Co robiliśmy:**
