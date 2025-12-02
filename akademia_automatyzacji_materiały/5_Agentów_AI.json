@@ -1,0 +1,3372 @@
+{
+  "name": "5 Agentów AI",
+  "nodes": [
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.id }}"
+      },
+      "id": "5e73b311-7d3e-4040-ba71-d033a592682e",
+      "name": "Pamięć podręczna",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1,
+      "position": [
+        940,
+        400
+      ],
+      "notesInFlow": false,
+      "credentials": {
+        "postgres": {
+          "id": "XgD1qfqvy76dduC8",
+          "name": "Postgres - VPS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "text": "={{ $json.output }}",
+        "otherOptions": {
+          "thread_ts": {
+            "replyValues": {
+              "thread_ts": "={{ $('Slack Trigger6').item.json.ts }}"
+            }
+          },
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2060,
+        40
+      ],
+      "id": "4bb71ef6-8b16-412d-b519-c24436d53a50",
+      "name": "Wiadomość - Odpowiedź AI Agenta",
+      "webhookId": "c9c38c98-1146-4a47-a02f-021e11d44e00",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Pobiera wiadomości z wskazanego okresu.\nParametry:\n- date_after (date) – obowiązkowe, format: YYYY-MM-DDThh:mm, określa początek okresu pobierania wiadomości\n- date_before (date) – nieobowiązkowe, format: YYYY-MM-DDThh:mm, określa koniec okresu pobierania wiadomości\n- query (string) – nieobowiązkowe, pozwala wyszukiwać konkretne wiadomości po tytule, adresie email itp.",
+        "operation": "getAll",
+        "filters": {
+          "q": "={{ $fromAI(\"query\") }}",
+          "receivedAfter": "={{ $fromAI(\"date_after\") }}",
+          "receivedBefore": "={{ $fromAI(\"date_before\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1000,
+        580
+      ],
+      "id": "6042150f-1b7f-4fd2-bfe4-fad5c2fb1b00",
+      "name": "pobierzWiadomosci",
+      "webhookId": "79cf8843-666b-4145-b4e1-1bdf16d21e14",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "EWS8TEet0tFfCONA",
+          "name": "Gmail - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Pobiera szczegóły pojedynczej wiadomości.\nParametry:\n- email_id (string) – obowiązkowe, unikalny numer ID wiadomości email",
+        "operation": "get",
+        "messageId": "={{ $fromAI(\"email_id\") }}",
+        "simple": false,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1200,
+        620
+      ],
+      "id": "ddebbd2f-ac26-420f-95ed-e6540dfce72b",
+      "name": "pobierzPojedynczaWiadomosc",
+      "webhookId": "b884d0f1-6fb7-44f1-9e4a-8383b2677706",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "EWS8TEet0tFfCONA",
+          "name": "Gmail - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Dodaje etykietę do wiadomości.\nParametry:\nemail_id (string) - obowiązkowe, unikalny numer ID wiadomości email\nlabel (array) - obowiązkowe, lista etykiet do dodania do wiadomości\n\nDostępne etykiety i zasady ich stosowania:\nLabel_7519745569393273505 - dla faktur: używaj dla wszystkich wiadomości zawierających faktury, rachunki lub dokumenty finansowe\nLabel_466407256772235691 - dla klienta: używaj dla korespondencji związanej z klientami, ofert, zapytań lub komunikacji od/do klientów\nLabel_6704420327198514074 - dla księgowej: używaj dla wiadomości przeznaczonych dla księgowości, zawierających rozliczenia, dokumentację finansową lub wymagających uwagi księgowej\nLabel_4898654605542370916 - dla newsletterów: używaj dla biuletynów, subskrypcji i cyklicznych wiadomości informacyjnych\n",
+        "operation": "addLabels",
+        "messageId": "={{ $fromAI(\"email_id\") }}",
+        "labelIds": "={{ $fromAI(\"label\",\"ID etykiety\") }}"
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1380,
+        620
+      ],
+      "id": "a3a4dc42-1538-4bf1-b04c-fe15ff8c7a64",
+      "name": "dodajEtykiete",
+      "webhookId": "5472da96-1aef-4aab-922e-35685e8a0c57",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "EWS8TEet0tFfCONA",
+          "name": "Gmail - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Wysyła nową wiadomość email.\nParametry:\n- to_mail_addresses (string) - obowiązkowe, adres lub adresy email odbiorców\n- mail_msg (string) - obowiązkowe, treść wiadomości\n- subject (string) - obowiązkowe, tytuł wiadomości",
+        "sendTo": "={{ $fromAI(\"to_mail_addresses\") }}",
+        "subject": "={{ $fromAI(\"subject\") }}",
+        "message": "={{ $fromAI(\"mail_msg\") }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1540,
+        620
+      ],
+      "id": "af9a0445-9c67-41cf-b8a2-8f7c78496e22",
+      "name": "wyslijWiadomosc",
+      "webhookId": "52628092-d75c-42f7-9c52-503521b1979a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "EWS8TEet0tFfCONA",
+          "name": "Gmail - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Odpowiada na otrzymaną wiadomość email, zachowując wątek korespondencji.\nParametry:\n- email_id (string) - obowiązkowe, unikalny numer ID wiadomości, na którą odpowiadamy\n- mail_msg (string) - obowiązkowe, treść odpowiedzi",
+        "operation": "reply",
+        "messageId": "={{ $fromAI(\"email_id\") }}",
+        "message": "={{ $fromAI(\"mail_msg\") }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1700,
+        620
+      ],
+      "id": "189d975e-56aa-4eda-9f24-a8cc2f6a48ea",
+      "name": "odpowiedzNaWiadomosc",
+      "webhookId": "d2c74e4d-22cd-4c57-9017-8c285012b3dd",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "EWS8TEet0tFfCONA",
+          "name": "Gmail - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Transkrypcja6').item.json.text }}",
+        "options": {
+          "systemMessage": "=<Cel>\n    <Glowny>Efektywne zarządzanie skrzynką pocztową i komunikacją email</Glowny>\n</Cel>\n<Zmienne>\n<Aktualna Data i Godzina> Aktualna data i godzina to: {{ $now.format('DDDD HH:mm') }} </Aktualna Data i Godzina> \n`</Zmienne>\n\n\n<Instrukcje>\n    <Instrukcja>\n        <Nazwa>PobierzWiadomosci</Nazwa>\n        <Cel>Pobieranie wiadomości z wskazanego okresu.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik prosi o wyświetlenie wiadomości z określonego okresu.\n            - Gdy potrzebujesz znaleźć wiadomości do dalszej analizy lub działania.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`date_after`**: Format YYYY-MM-DDThh:mm, określa początek okresu pobierania wiadomości.\n        </WymaganePola>\n        <OpcjonalnePola>\n            - **`date_before`**: Format YYYY-MM-DDThh:mm, określa koniec okresu pobierania wiadomości.\n            - **`query`**: Pozwala wyszukiwać konkretne wiadomości po tytule, adresie email itp.\n        </OpcjonalnePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>PobierzPojedynczaWiadomosc</Nazwa>\n        <Cel>Pobieranie szczegółów pojedynczej wiadomości.</Cel>\n        <Zastosowanie>\n            - Gdy potrzebujesz zobaczyć pełną treść wybranej wiadomości.\n            - Po znalezieniu wiadomości za pomocą PobierzWiadomosci, aby uzyskać szczegóły.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n        </WymaganePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>DodajEtykiete</Nazwa>\n        <Cel>Dodawanie etykiety do wiadomości w celu kategoryzacji.</Cel>\n        <Zastosowanie>\n            - Gdy wiadomość wymaga odpowiedniego oznaczenia według kategorii.\n            - Po analizie treści wiadomości i ustaleniu właściwej etykiety.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n            - **`label`**: Lista etykiet do dodania do wiadomości.\n        </WymaganePola>\n        <DostepneEtykiety>\n            - **Label_7519745569393273505**: Dla faktur - używaj dla wszystkich wiadomości zawierających faktury, rachunki lub dokumenty finansowe.\n            - **Label_466407256772235691**: Dla klienta - używaj dla korespondencji związanej z klientami, ofert, zapytań lub komunikacji od/do klientów.\n            - **Label_6704420327198514074**: Dla księgowej - używaj dla wiadomości przeznaczonych dla księgowości, zawierających rozliczenia, dokumentację finansową lub wymagających uwagi księgowej.\n            - **Label_4898654605542370916**: Dla newsletterów - używaj dla biuletynów, subskrypcji i cyklicznych wiadomości informacyjnych.\n        </DostepneEtykiety>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>WyslijWiadomosc</Nazwa>\n        <Cel>Wysyłanie nowej wiadomości email.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik chce wysłać nową wiadomość email.\n            - Przygotowanie wiadomości z odpowiednim formatowaniem HTML.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`to_mail_addresses`**: Adres lub adresy email odbiorców.\n            - **`mail_msg`**: Treść wiadomości w formacie HTML.\n            - **`subject`**: Tytuł wiadomości.\n        </WymaganePola>\n        <SzablonHTML>\n            <![CDATA[\n            <!DOCTYPE html>\n            <html>\n            <head>\n                <meta charset=\"UTF-8\">\n                <style>\n                    body {\n                        font-family: Arial, sans-serif;\n                        line-height: 1.6;\n                        color: #333333;\n                        margin: 0;\n                        padding: 0;\n                    }\n                    .container {\n                        padding: 15px 0;\n                    }\n                    .content {\n                        margin-bottom: 25px;\n                    }\n                    .footer {\n                        border-top: 1px solid #dddddd;\n                        padding-top: 15px;\n                        font-size: 12px;\n                        color: #666666;\n                    }\n                    p {\n                        margin: 0 0 15px 0;\n                    }\n                </style>\n            </head>\n            <body>\n                <div class=\"container\">\n                    <div class=\"content\">\n                        <!-- TREŚĆ WIADOMOŚCI -->\n                    </div>\n                    \n                    <div class=\"footer\">\n                        <p>Z poważaniem,</p>\n                        <p>Kacper Trzepieciński</p>\n                        <p>Co-Founder | Aibiz &amp; Akademia Automatyzacji</p>\n                    </div>\n                </div>\n            </body>\n            </html>\n            ]]>\n        </SzablonHTML>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>OdpowiedzNaWiadomosc</Nazwa>\n        <Cel>Odpowiadanie na otrzymaną wiadomość email.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik chce odpowiedzieć na konkretną wiadomość.\n            - Po wyszukaniu odpowiedniej wiadomości za pomocą PobierzWiadomosci.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości, na którą odpowiadamy.\n            - **`mail_msg`**: Treść odpowiedzi w formacie HTML.\n        </WymaganePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>KalendarzAgent</Nazwa>\n        <Cel>Zarządzanie kalendarzem i wydarzeniami.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik prosi o sprawdzenie terminów w kalendarzu.\n            - Gdy użytkownik chce dodać, przesunąć lub usunąć spotkanie w kalendarzu.\n            - Dla wszystkich zadań związanych z kalendarzem.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`client_msg`**: Sparafrazowane polecenie użytkownika w formie jasnej i czytelnej instrukcji.\n        </WymaganePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>BazaWiedzyAgent</Nazwa>\n        <Cel>Uzyskiwanie informacji z firmowej bazy wiedzy.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik pyta o dokumenty, raporty, procedury firmowe.\n            - Gdy potrzebne są informacje przechowywane w bazie wiedzy.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`client_msg`**: Sparafrazowane pytanie użytkownika w formie jasnej i czytelnej instrukcji.\n        </WymaganePola>\n    </Instrukcja>\n</Instrukcje>\n\n<PrzeplywInterakcjiZNarzedziami>\n    <Etap>Narzędzie **PobierzWiadomosci** służy do znajdowania wiadomości z określonego okresu.</Etap>\n    <Etap>Narzędzie **PobierzPojedynczaWiadomosc** używane jest do uzyskania pełnej treści konkretnej wiadomości.</Etap>\n    <Etap>Narzędzie **DodajEtykiete** służy do kategoryzowania wiadomości według odpowiednich etykiet.</Etap>\n    <Etap>Narzędzie **WyslijWiadomosc** używane jest do wysyłania nowych wiadomości email z pełnym formatowaniem HTML.</Etap>\n    <Etap>Narzędzie **OdpowiedzNaWiadomosc** służy do odpowiadania na istniejące wiadomości, zachowując wątek korespondencji.</Etap>\n    <Etap>Narzędzie **KalendarzAgent** używane jest do wszelkich operacji związanych z kalendarzem.</Etap>\n    <Etap>Narzędzie **BazaWiedzyAgent** służy do wyszukiwania informacji w firmowej bazie wiedzy.</Etap>\n</PrzeplywInterakcjiZNarzedziami>\n\n<ZasadyWyszukiwaniaAdresowEmail>\n    <Etap>Gdy użytkownik prosi o znalezienie adresu email, użyj narzędzia **PobierzWiadomosci** z parametrem query zawierającym nazwę firmy lub nazwisko.</Etap>\n    <Etap>Domyślnie ustaw date_after na okres ostatnich 3 miesięcy jako początkowy zakres wyszukiwania.</Etap>\n    <Etap>Jeśli nie znajdziesz pasujących wiadomości, poproś użytkownika o przedział dat korespondencji z daną osobą/firmą.</Etap>\n    <Etap>Po otrzymaniu dat wykonaj ponowne wyszukiwanie z określonymi parametrami date_after i date_before.</Etap>\n    <Etap>Po znalezieniu wiadomości wyświetl nadawcę/odbiorcę i jego adres email.</Etap>\n    <Etap>Jeśli znajdziesz wiele potencjalnych adresów, przedstaw wszystkie opcje użytkownikowi.</Etap>\n</ZasadyWyszukiwaniaAdresowEmail>\n\n<FormatowanieOdpowiedzi>\n    <Format>\n        <Nazwa>Pogrubienie</Nazwa>\n        <Oznaczenie>*tekst*</Oznaczenie>\n        <Opis>Otocz tekst gwiazdkami (po jednej z każdej strony), aby go pogrubić</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Kursywa</Nazwa>\n        <Oznaczenie>_tekst_</Oznaczenie>\n        <Opis>Otocz tekst znakami podkreślenia, aby zastosować kursywę</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Przekreślenie</Nazwa>\n        <Oznaczenie>~tekst~</Oznaczenie>\n        <Opis>Otocz tekst znakami tyldy, aby go przekreślić</Opis>\n    </Format>\n    <Format>\n        <Nazwa>KodInline</Nazwa>\n        <Oznaczenie>`tekst`</Oznaczenie>\n        <Opis>Otocz tekst znakami grawisu, aby oznaczyć go jako kod</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Cytat</Nazwa>\n        <Oznaczenie>>tekst</Oznaczenie>\n        <Opis>Dodaj znak większości przed tekstem, aby oznaczyć go jako cytat</Opis>\n    </Format>\n    <Format>\n        <Nazwa>BlokKodu</Nazwa>\n        <Oznaczenie>```tekst```</Oznaczenie>\n        <Opis>Otocz tekst trzema znakami grawisu, aby utworzyć blok kodu</Opis>\n    </Format>\n    <Format>\n        <Nazwa>ListaNumerowana</Nazwa>\n        <Oznaczenie>1. tekst</Oznaczenie>\n        <Opis>Dodaj liczbę, kropkę i spację przed tekstem, aby utworzyć listę numerowaną</Opis>\n    </Format>\n    <Format>\n        <Nazwa>ListaPunktowana</Nazwa>\n        <Oznaczenie>* tekst</Oznaczenie>\n        <Opis>Dodaj gwiazdkę i spację przed tekstem, aby utworzyć listę punktowaną</Opis>\n    </Format>\n</FormatowanieOdpowiedzi>\n\n<UwagiKoncowe>\n    - **Zawsze najpierw generuj treść wiadomości w formie zwykłego tekstu do potwierdzenia przez użytkownika.**\n    - **Prezentuj pobrane informacje w czytelnej, uporządkowanej formie zgodnej z formatowaniem Slack.**\n    - **Przed wysłaniem wiadomości sprawdzaj poprawność adresów email i zgłaszaj użytkownikowi wszelkie błędy.**\n    - **Zawsze używaj męskich form gramatycznych, ponieważ nadawcą jest Kacper Trzepieciński (mężczyzna).**\n    - **Przy tworzeniu wiadomości HTML zastępuj komentarz <!-- TREŚĆ WIADOMOŚCI --> odpowiednią treścią.**\n    - **Etykietuj wiadomości tylko wtedy, gdy spełniają kryteria dla co najmniej jednej z dostępnych kategorii.**\n    - **Informuj użytkownika o liczbie pobranych wiadomości po wykonaniu wyszukiwania.**\n</UwagiKoncowe>",
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "d665a482-65fd-4249-97e9-2f1d81bad701",
+      "name": "Asystent AI - Skrzynka pocztowa",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1080,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-3-7-sonnet-20250219",
+          "cachedResultName": "Claude 3.7 Sonnet"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        780,
+        380
+      ],
+      "id": "e5908d89-2e4c-4d8e-8c14-c2b09cdda67a",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "p0iciRaJdcEsS0zg",
+          "name": "Anthropic Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Agnet AI",
+        "height": 820,
+        "width": 1120,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        720,
+        -40
+      ],
+      "typeVersion": 1,
+      "id": "16dd6709-bfb6-49ca-ab7f-63162c78a660",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa odpowiedź",
+        "height": 260,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1960,
+        -40
+      ],
+      "typeVersion": 1,
+      "id": "49c14a33-0773-4ac1-97fd-0b4b3c1abc44",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Agent AI - Skrzynka pocztowa",
+        "height": 80,
+        "width": 3100,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -820,
+        -160
+      ],
+      "typeVersion": 1,
+      "id": "b201a05b-382e-4435-a4ac-eecffa68d74f",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "name": "ytPodsumowanie",
+        "description": "Użyj tego narzędzia do wykonania streszczenia wideo z YouTube.\nParametry:\n- yt_id (strng) - id wideo Youtube. Jeżeli wskazany link to `https://www.youtube.com/watch?v=r3tAJ8Oj4J4`, to id równa `r3tAJ8Oj4J4`",
+        "workflowId": {
+          "__rl": true,
+          "value": "n8OhWMxkDRg6W46T",
+          "mode": "list",
+          "cachedResultName": "Transkrypcja YouTube [Szablon]"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $fromAI(\"yt_id\")}}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [
+        1140,
+        2020
+      ],
+      "id": "00a29493-9ab6-4cfb-80a1-c73ad4fe55c9",
+      "name": "ytPodsumowanie"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Użyj tego narzędzia do pobrania informacji z wskazanej strony lub stron.\n   Parametry:\n   - urls - link lub linki do stron\n     Format dla jednego URL: \"https://przyklad.pl\"\n     Format dla wielu URL: \"https://przyklad1.pl\",\"https://przyklad2.pl\"",
+        "method": "POST",
+        "url": "https://api.tavily.com/extract",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Content-Type",
+              "valueProvider": "fieldValue",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"urls\": [{urls}],\n  \"include_images\": false,\n  \"extract_depth\": \"basic\"\n}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "urls",
+              "description": "=urls - link lub linki do stron\n     Format dla jednego URL: \"https://przyklad.pl\"\n     Format dla wielu URL: \"https://przyklad1.pl\",\"https://przyklad2.pl\"",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        1300,
+        2020
+      ],
+      "id": "7388eed6-3bcd-4eee-ba6b-ee9d4913d879",
+      "name": "scrapujStrone",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "FhaWDWYY96UzIzm3",
+          "name": "Tavily - Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": " Użyj tego narzędzia do wyszukiwania informacji w Internecie.\n   Parametry:\n   - query (string) - pytanie użytkownika do wyszukiwania\n   - topic (string) - określa rodzaj wyszukiwania:\n     - general - do ogólnych pytań i tematów\n     - news - tylko gdy pytanie dotyczy bieżących informacji i aktualności",
+        "method": "POST",
+        "url": "https://api.tavily.com/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Content-Type",
+              "valueProvider": "fieldValue",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": \"{query}\",\n  \"topic\": \"{topic}\",\n  \"search_depth\": \"basic\",\n  \"max_results\": 10\n}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "query",
+              "description": "=pytanie użytkownika do wyszukiwania",
+              "type": "string"
+            },
+            {
+              "name": "topic",
+              "description": "=Określa rodzaj wyszukiwania:\n- general - do ogólnych pytań i tematów\n- news - tylko gdy pytanie dotyczy bieżących informacji i aktualności",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        1480,
+        2020
+      ],
+      "id": "4b9f4da1-5bc9-4714-b4c3-42bad8ae170e",
+      "name": "wyszukajInformacji",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "FhaWDWYY96UzIzm3",
+          "name": "Tavily - Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.msg || $('Transkrypcja5').item.json.text}}",
+        "options": {
+          "systemMessage": "=<Cel>\n    <Glowny>Efektywne pozyskiwanie i przetwarzanie informacji z różnych źródeł</Glowny>\n</Cel>\n<Zmienne>\n    <AktualnaDatagGodzina>Aktualna data i godzina to: {{ $now.format('DDDD HH:mm') }}</AktualnaDatagGodzina>\n</Zmienne>\n\n<Instrukcje>\n    <Instrukcja>\n        <Nazwa>ytPodsumowanie</Nazwa>\n        <Cel>Wykonanie streszczenia wideo z YouTube.</Cel>\n        <Zastosowanie>\n            - Używaj tylko dla linków do YouTube lub gdy użytkownik prosi o analizę filmu.\n            - Z pełnego linku wyodrębnij sam identyfikator (yt_id).\n            - Jeśli film wymaga uzupełnienia dodatkowych informacji, skorzystaj z sekwencji wyszukajInformacji → scrapujStrone.\n        </Zastosowanie>\n        <WymaganePola>\n            - yt_id: Identyfikator wideo YouTube.\n              Przykład: Jeżeli link to https://www.youtube.com/watch?v=r3tAJ8Oj4J4, to yt_id = r3tAJ8Oj4J4\n        </WymaganePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>scrapujStrone</Nazwa>\n        <Cel>Pobieranie informacji z wskazanej strony internetowej.</Cel>\n        <Zastosowanie>\n            - Używaj tego narzędzia w dwóch przypadkach:\n              a) OBOWIĄZKOWO po każdym użyciu wyszukajInformacji\n              b) Gdy użytkownik bezpośrednio podaje linki do analizy\n            - Zawsze podawaj pełne URL-e z protokołem (https://)\n            - Grupuj strony po 2-3 URL-e w jednym wywołaniu narzędzia scrapujStrone, używając POPRAWNEGO formatu dla wielu linków.\n            - W odpowiedzi zawsze podawaj źródła, z których korzystałeś.\n        </Zastosowanie>\n        <WymaganePola>\n            - urls: Link lub linki do stron.\n              Format dla jednego URL: \"https://przyklad.pl\"\n              Format dla wielu URL: \"https://przyklad1.pl\",\"https://przyklad2.pl\"\n        </WymaganePola>\n        <FormatParametruUrls>\n            <PoprawnyFormat>\"https://url1.com\",\"https://url2.net\",\"https://url3.org\"</PoprawnyFormat>\n            <NiepoprawnyFormat1>\"https://url1.com,https://url2.net,https://url3.org\"</NiepoprawnyFormat1>\n            <NiepoprawnyFormat2>[\"https://url1.com\",\"https://url2.net\",\"https://url3.org\"]</NiepoprawnyFormat2>\n            <Wyjaśnienie>\n                - POPRAWNY FORMAT WARTOŚCI dla urls (przykład dla 3 linków): \n                  \"https://url1.com\",\"https://url2.net\",\"https://url3.org\"\n                  (Interpretacja: Przekazujesz trzy oddzielne elementy tekstowe)\n                - NIEPOPRAWNY FORMAT: \n                  \"https://url1.com,https://url2.net,https://url3.org\"\n                  (To jest jeden długi string - BŁĄD!)\n                - NIEPOPRAWNY FORMAT: \n                  [\"https://url1.com\",\"https://url2.net\",\"https://url3.org\"]\n                  (To jest lista/tablica - BŁĄD! Wymagany jest format jak w POPRAWNYM przykładzie)\n            </Wyjaśnienie>\n        </FormatParametruUrls>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>wyszukajInformacji</Nazwa>\n        <Cel>Wyszukiwanie informacji w Internecie.</Cel>\n        <Zastosowanie>\n            - ZAWSZE po użyciu narzędzia wyszukajInformacji musisz wykonać następujące kroki:\n              1. Wyodrębnij wszystkie URL-e z pola \"results\"\n              2. Wybierz 2-3 najlepsze źródła z najwyższym \"score\"\n              3. OBOWIĄZKOWO użyj narzędzia scrapujStrone dla tych URL-i\n              4. Dopiero po uzyskaniu pełnych treści ze scrapujStrone udziel odpowiedzi\n            - Używaj topic=news tylko dla aktualnych wydarzeń, kiedy pytasz o wydarzenie które działo się niedawno, a topic=general dla pozostałych zapytań ogólnej wiedzy\n            - Nigdy nie odpowiadaj na podstawie samych fragmentów z wyszukajInformacji - to niepełne dane\n        </Zastosowanie>\n        <WymaganePola>\n            - query: Pytanie użytkownika do wyszukiwania.\n            - topic: Określa rodzaj wyszukiwania:\n              - general - do ogólnych pytań i tematów\n              - news - tylko gdy pytanie dotyczy bieżących informacji i aktualności\n        </WymaganePola>\n        <PrzykladowaKolejnośćDziałań>\n            1. wyszukajInformacji(query=\"temat\", topic=\"general\")\n            2. Analiza wyników: URL1, URL2, URL3 mają najwyższe score\n            3. Następnie użyj narzędzia scrapujStrone z paramaetrem urls=\"URL1\",\"URL2\",\"URL3\"\n            4. Analiza pełnych treści i sformułowanie odpowiedzi\n        </PrzykladowaKolejnośćDziałań>\n    </Instrukcja>\n</Instrukcje>\n\n<PrzeplywInterakcjiZNarzedziami>\n    <Etap>Narzędzie wyszukajInformacji służy do pobierania informacji z Internetu, ale zawsze wymaga dopełnienia przez scrapujStrone.</Etap>\n    <Etap>Narzędzie scrapujStrone używane jest do pobrania pełnej treści ze stron internetowych, może być używane samodzielnie lub po wyszukajInformacji.</Etap>\n    <Etap>Narzędzie ytPodsumowanie służy do analizy i streszczania filmów z YouTube.</Etap>\n    <Etap>Przy pytaniach o aktualne wydarzenia najpierw używaj wyszukajInformacji z parametrem topic=\"news\", a następnie scrapujStrone.</Etap>\n    <Etap>Przy pytaniach o ogólną wiedzę używaj wyszukajInformacji z parametrem topic=\"general\", a następnie scrapujStrone.</Etap>\n</PrzeplywInterakcjiZNarzedziami>\n\n<FormatowanieOdpowiedzi>\n    <Format>\n        <Nazwa>Pogrubienie</Nazwa>\n        <Oznaczenie>*tekst*</Oznaczenie>\n        <Opis>Otocz tekst gwiazdkami (po jednej z każdej strony), aby go pogrubić</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Kursywa</Nazwa>\n        <Oznaczenie>_tekst_</Oznaczenie>\n        <Opis>Otocz tekst znakami podkreślenia, aby zastosować kursywę</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Przekreślenie</Nazwa>\n        <Oznaczenie>~tekst~</Oznaczenie>\n        <Opis>Otocz tekst znakami tyldy, aby go przekreślić</Opis>\n    </Format>\n    <Format>\n        <Nazwa>KodInline</Nazwa>\n        <Oznaczenie>`tekst`</Oznaczenie>\n        <Opis>Otocz tekst znakami grawisu, aby oznaczyć go jako kod</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Cytat</Nazwa>\n        <Oznaczenie>>tekst</Oznaczenie>\n        <Opis>Dodaj znak większości przed tekstem, aby oznaczyć go jako cytat</Opis>\n    </Format>\n    <Format>\n        <Nazwa>BlokKodu</Nazwa>\n        <Oznaczenie>```tekst```</Oznaczenie>\n        <Opis>Otocz tekst trzema znakami grawisu, aby utworzyć blok kodu</Opis>\n    </Format>\n    <Format>\n        <Nazwa>ListaNumerowana</Nazwa>\n        <Oznaczenie>1. tekst</Oznaczenie>\n        <Opis>Dodaj liczbę, kropkę i spację przed tekstem, aby utworzyć listę numerowaną</Opis>\n    </Format>\n    <Format>\n        <Nazwa>ListaPunktowana</Nazwa>\n        <Oznaczenie>* tekst</Oznaczenie>\n        <Opis>Dodaj gwiazdkę i spację przed tekstem, aby utworzyć listę punktowaną</Opis>\n    </Format>\n</FormatowanieOdpowiedzi>\n\n<UwagiKoncowe>\n    - ZAWSZE po użyciu wyszukajInformacji używaj scrapujStrone dla najlepszych wyników.\n    - Nigdy nie odpowiadaj na podstawie samych fragmentów z wyszukajInformacji - to niepełne dane.\n    - Zawsze podawaj źródła informacji w swoich odpowiedziach.\n    - Przy używaniu scrapujStrone dla wielu URL-ów, stosuj TYLKO poprawny format parametru urls.\n    - Zawsze wyodrębniaj prawidłowy identyfikator yt_id z pełnych linków YouTube.\n    - Grupuj strony po 2-3 URL-e w jednym wywołaniu narzędzia scrapujStrone.\n</UwagiKoncowe>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        920,
+        1780
+      ],
+      "id": "5adf22b5-5cde-4c24-8f55-d17011658339",
+      "name": "Asystent AI - Researcher"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-3-7-sonnet-20250219",
+          "cachedResultName": "Claude 3.7 Sonnet"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        840,
+        2020
+      ],
+      "id": "7c1b1460-cac4-40f0-95e6-590b1407ccb4",
+      "name": "Anthropic Chat Model1",
+      "credentials": {
+        "anthropicApi": {
+          "id": "p0iciRaJdcEsS0zg",
+          "name": "Anthropic Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Agent AI - Researcher",
+        "height": 80,
+        "width": 2740,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -740,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "edce299a-aacc-4633-a244-337078bdec38",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "text": "={{ $json.output }}",
+        "otherOptions": {
+          "thread_ts": {
+            "replyValues": {
+              "thread_ts": "={{ $('Slack Trigger5').item.json.ts }}"
+            }
+          },
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1760,
+        1780
+      ],
+      "id": "812f52e5-068b-49e8-961f-9e4394e1d22f",
+      "name": "Wiadomość - Odpowiedź AI Agenta1",
+      "webhookId": "c9c38c98-1146-4a47-a02f-021e11d44e00",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa odpowiedź",
+        "height": 260,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1660,
+        1700
+      ],
+      "typeVersion": 1,
+      "id": "8dd8c49b-8970-42c4-8780-2a516b7c7ed1",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Agnet AI",
+        "height": 500,
+        "width": 820,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        780,
+        1700
+      ],
+      "typeVersion": 1,
+      "id": "02bdd70a-35fa-4477-ad19-14b9db1cd62e",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "# Agent AI - Genrowanie grafik",
+        "height": 80,
+        "width": 2740,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -720,
+        2860
+      ],
+      "typeVersion": 1,
+      "id": "466c63b4-50c9-47e3-8a6e-2c11f9bd110c",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "trigger": [
+          "message"
+        ],
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        3400
+      ],
+      "id": "a7d14483-933e-4554-8284-81c26b7d79b0",
+      "name": "Slack Trigger2",
+      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a00b4232-e6f0-4769-ab9d-143316fd8f83",
+              "leftValue": "={{ $json.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        300,
+        3380
+      ],
+      "id": "a8b710f8-747f-48e3-84d8-d44c678089e9",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "6cbdba35-9be0-4668-b3ee-47ba24cae379"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "12067f8e-c660-4843-a563-a6ab82fbead5",
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "audio/mp4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -100,
+        3380
+      ],
+      "id": "aa844dc4-e6ea-4786-9030-b1853d727d66",
+      "name": "Tekst czy Audio2"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        300,
+        3160
+      ],
+      "id": "688e7ca5-b2e2-49dd-bbc6-092fdef1aeb2",
+      "name": "Transkrypcja2",
+      "credentials": {
+        "openAiApi": {
+          "id": "hzgLIW9kKGGi3hxn",
+          "name": "OpenAi Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
+              "leftValue": "={{ $json.subtype }}",
+              "rightValue": "message_deleted",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -380,
+        3400
+      ],
+      "id": "c972bf1d-422d-40dc-ba7a-a14fb5d001a6",
+      "name": "Nieporządany event2"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.files[0].url_private_download }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "slackApi",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        80,
+        3160
+      ],
+      "id": "bf6c1a35-7fef-4e8a-bcc8-6b2797622adc",
+      "name": "Pobierz notatke głosową2",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "153970be-9674-4f01-ac41-9782f5408f56",
+              "name": "id",
+              "value": "={{ $('Slack Trigger2').item.json.thread_ts || $('Slack Trigger2').item.json.ts }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8b90f9f8-3b83-4fa2-9854-ccbeb8bdd956",
+      "name": "Event ID2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        560,
+        3360
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa wiadomość",
+        "height": 500,
+        "width": 1420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -720,
+        3080
+      ],
+      "typeVersion": 1,
+      "id": "132878bf-0506-47f9-9cc6-e338e0830cbf",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Wyślij grafikę",
+        "height": 260,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1660,
+        3100
+      ],
+      "typeVersion": 1,
+      "id": "b32b71ec-955f-4681-bbda-ec01b6654362",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "## Agnet AI",
+        "height": 500,
+        "width": 820,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        780,
+        3100
+      ],
+      "typeVersion": 1,
+      "id": "cc31b903-92e6-4735-9ebc-b272893d8996",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1040,
+        3380
+      ],
+      "id": "643a199d-4678-47c3-b3e7-8c8aa2755cc1",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "XgD1qfqvy76dduC8",
+          "name": "Postgres - VPS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data[0].b64_json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1440,
+        3160
+      ],
+      "id": "73d0eb23-9ffc-4268-9296-0605c0a888a2",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-3-7-sonnet-20250219",
+          "cachedResultName": "Claude 3.7 Sonnet"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        880,
+        3380
+      ],
+      "id": "983f7913-778f-4659-a1fc-d1d6177fc7ea",
+      "name": "Anthropic Chat Model2",
+      "credentials": {
+        "anthropicApi": {
+          "id": "p0iciRaJdcEsS0zg",
+          "name": "Anthropic Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('If2').item.json.blocks[0].elements[0].elements[0].text}}",
+        "options": {
+          "systemMessage": "=<InstrukcjeAgenta>\n    <Rola>\n        <Nazwa>Agent Generowania Promptów do Grafiki</Nazwa>\n        <Opis>Tworzysz wysokiej jakości prompty do generowania grafiki na podstawie zapytań użytkownika.</Opis>\n\n    </Rola>\n\n    <Cel>\n        <Glowny>Precyzyjne formułowanie promptów do generowania grafiki odpowiadających potrzebom użytkownika</Glowny>\n    </Cel>\n\n    <StrukturyPromptow>\n        <PromptProsty>\n            <Format>\n                [Główny obiekt/scena], [opis tła], [pora dnia/oświetlenie], [nastrój/atmosfera], [styl artystyczny], [szczegóły techniczne]\n            </Format>\n            <Przyklad>\n                \"Rozległa, piaszczysta plaża z turkusowym morzem, zachodzące słońce tworzące złoto-pomarańczową poświatę na horyzoncie, spokojne fale odbijające promienie słońca, kilka palm na brzegu, styl fotorealistyczny, wysokiej jakości rendering, ostre detale, ciepła kolorystyka\"\n            </Przyklad>\n        </PromptProsty>\n        <PromptZlozony>\n            <Format>\n                [Główny element wizualny reprezentujący kluczową ideę], [elementy symbolizujące kluczowe punkty treści], [nastrój odpowiadający tonowi tekstu], [kontekst biznesowy/branżowy], [styl pasujący do grupy docelowej], [szczegóły techniczne]\n            </Format>\n            <Przyklad>\n                \"Nowoczesne biuro z profesjonalistami pracującymi przy stanowiskach z zaawansowaną technologią, widoczne wykresy wzrostu na ekranach, atmosfera produktywności i innowacji, subtelne elementy technologiczne symbolizujące automatyzację procesów, styl korporacyjny z eleganckimi akcentami, jasne oświetlenie, stonowana kolorystyka z akcentami niebieskiego symbolizującego technologię i zaufanie, wysoka jakość, fotorealistyczne\"\n            </Przyklad>\n        </PromptZlozony>\n    </StrukturyPromptow>\n\n    <ElementyDobregoPrackuPrompta>\n        <Element>\n            <Nazwa>Szczegółowość</Nazwa>\n            <Opis>Im więcej szczegółów, tym lepszy wynik. Zawsze opisuj dokładnie, co ma się znaleźć na obrazie.</Opis>\n        </Element>\n        <Element>\n            <Nazwa>Spójność</Nazwa>\n            <Opis>Wszystkie elementy prompta powinny tworzyć spójną całość i pasować do siebie nawzajem.</Opis>\n        </Element>\n        <Element>\n            <Nazwa>Styl</Nazwa>\n            <Opis>Zawsze określaj preferowany styl artystyczny (np. fotorealistyczny, kreskówkowy, minimalistyczny, akwarela).</Opis>\n        </Element>\n        <Element>\n            <Nazwa>Nastrój</Nazwa>\n            <Opis>Definiuj atmosferę i emocje, jakie ma wywoływać obraz (np. spokojny, dynamiczny, inspirujący).</Opis>\n        </Element>\n        <Element>\n            <Nazwa>Kolorystyka</Nazwa>\n            <Opis>Określaj dominującą paletę kolorów lub konkretne kolory istotne dla przekazu.</Opis>\n        </Element>\n        <Element>\n            <Nazwa>Kompozycja</Nazwa>\n            <Opis>Opisuj układ elementów, perspektywę, kadrowanie (np. zbliżenie, szeroki kadr, widok z góry).</Opis>\n        </Element>\n        <Element>\n            <Nazwa>Aspekty techniczne</Nazwa>\n            <Opis>Dodawaj informacje o jakości, ostrości, kontraście, oświetleniu, itp.</Opis>\n        </Element>\n    </ElementyDobregoPrackuPrompta>\n\n    <ProcessGenerowaniaPrompta>\n        <Krok>Przeanalizuj zapytanie użytkownika, określając czy jest to prosta prośba o grafikę czy wymaga analizy istniejącego tekstu.</Krok>\n        <Krok>W przypadku analizy treści (np. posta na LinkedIn), zidentyfikuj:\n            - Główny temat lub przekaz tekstu\n            - Kluczowe słowa i frazy\n            - Ton emocjonalny\n            - Branżę lub kontekst biznesowy\n            - Grupę docelową\n        </Krok>\n        <Krok>Stwórz dokładny, rozbudowany opis grafiki zgodnie ze strukturą odpowiedniego typu prompta.</Krok>\n        <Krok>Zwróć tylko sam prompt do generowania grafiki, bez dodatkowych komentarzy czy wyjaśnień.</Krok>\n    </ProcessGenerowaniaPrompta>\n\n    <UwagiKoncowe>\n        - Agent odpowiada WYŁĄCZNIE stworzonym promptem do generowania grafiki, bez żadnych dodatkowych wyjaśnień czy komentarzy.\n        - Prompt musi być szczegółowy, spójny i precyzyjny.\n        - Agent nie używa żadnych dodatkowych narzędzi - jego zadaniem jest wyłącznie stworzenie wysokiej jakości prompta do generowania grafiki.\n        - W przypadku niejasnego zapytania, agent może jednorazowo poprosić o doprecyzowanie, a następnie zwraca już tylko prompt.\n    </UwagiKoncowe>\n</InstrukcjeAgenta>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        940,
+        3160
+      ],
+      "id": "f4f8faea-e30f-4d53-b939-d2192338887a",
+      "name": "Asystent AI - Grafik"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "gpt-image-1"
+            },
+            {
+              "name": "prompt",
+              "value": "={{ $json.output }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        3160
+      ],
+      "id": "64b48750-d22a-4716-9532-4fce92e596e5",
+      "name": "HTTP Request",
+      "credentials": {
+        "openAiApi": {
+          "id": "FL5njDdlly7vvpyh",
+          "name": "OpenAi - Image-1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "options": {
+          "channelId": "C08S7S2P0MS",
+          "threadTs": "={{ $('Slack Trigger2').item.json.ts }}",
+          "title": "Wygenerowana grafika"
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1740,
+        3180
+      ],
+      "id": "41b5a644-f53b-4c66-9981-543d67fa5f42",
+      "name": "Slack",
+      "webhookId": "5d734f78-dcfc-49c7-a503-a9fb9dfd4c74",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "gSiouXH0urXRlpmN",
+          "name": "Slack Aibiz 0Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Użyj tego narzędzia do pobierania informacji z kalendarza Google. Możesz używać poniższych zmiennych do filtrowania wyszukiwanych informacji:\n\nstartTime - data początkowa, od której są wyszukiwane wydarzenia w kalendarzu\nendTime - data końcowa, do której są wyszukiwane wydarzenia w kalendarzu",
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "aibiz.kontakt@gmail.com",
+          "mode": "list",
+          "cachedResultName": "aibiz.kontakt@gmail.com"
+        },
+        "returnAll": true,
+        "timeMin": "={{ $fromAI(\"startTime\") }}",
+        "timeMax": "={{ $fromAI(\"endTime\") }}",
+        "options": {
+          "orderBy": "startTime"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        960,
+        4800
+      ],
+      "id": "aef4d225-f5fa-408e-ac3e-05d4936f297a",
+      "name": "kalendarzSprawdzDostepnosc",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "xkA5pHaC4exUnvMZ",
+          "name": "Google Calendar - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Użyj tego narzędzia do utworzenia nowego wydarzenia w kalendarzu z wideokonferencją Google Meet. Możesz używać poniższych zmiennych:\n- attendees - mail lub maile uczestników oddzielonych przecinkami\n type: string\n Obowiązkowe\n- eventTitle - nazwa wydarzenia, którą należy samodzielnie określić na podstawie kontekstu wiadomości użytkownika\n type: string\n Obowiązkowe\n- eventDesc - opis wydarzenia wynikający z kontekstu wiadomości użytkownika\n type: string\n Nieobowiązkowe\n- startTime - data i godzina rozpoczęcia wydarzenia\n type: date\n Obowiązkowe\n- endTime - data i godzina zakończenia wydarzenia\n type: date\n Obowiązkowe\n Wartość domyślna: startTime + 60 minut",
+        "calendar": {
+          "__rl": true,
+          "value": "aibiz.kontakt@gmail.com",
+          "mode": "list",
+          "cachedResultName": "aibiz.kontakt@gmail.com"
+        },
+        "start": "={{ $fromAI(\"startTime\") }}",
+        "end": "={{ $fromAI(\"endTime\") }}",
+        "additionalFields": {
+          "attendees": [
+            "={{ $fromAI(\"attendees\") }}"
+          ],
+          "conferenceDataUi": {
+            "conferenceDataValues": {
+              "conferenceSolution": "hangoutsMeet"
+            }
+          },
+          "description": "={{ $fromAI(\"eventDesc\") }}",
+          "summary": "={{ $fromAI(\"eventTitle\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1140,
+        4800
+      ],
+      "id": "a782a607-37f4-4404-b560-a15e613b509a",
+      "name": "kalendarzUtworzWydarzenieOnline",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "xkA5pHaC4exUnvMZ",
+          "name": "Google Calendar - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "=<InstrukcjeAgenta>\n\t<Rola>\n\t\t<Nazwa>Asystent Firmy Aibiz</Nazwa>\n\t\t<Opis>Wykonujesz polecone zadania z najwyższą starannością przy wykorzystaniu dostępnych narzędzi, które wspierają Cię w pozyskiwaniu informacji, jak i wykonywaniu akcji.</Opis>\n\t\t<DataAktualna>{{$now}}</DataAktualna>\n\t</Rola>\n\t<DostepneNarzedzia>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzSprawdzDostepnosc</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do pobierania informacji z kalendarza Google.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data początkowa, od której są wyszukiwane wydarzenia w kalendarzu</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data końcowa, do której są wyszukiwane wydarzenia w kalendarzu</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzUtworzWydarzenieOnline</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do utworzenia nowego wydarzenia w kalendarzu z wideokonferencją Google Meet.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>attendees</Nazwa>\n\t\t\t\t\t<Opis>Mail lub maile uczestników oddzielonych przecinkami</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventTitle</Nazwa>\n\t\t\t\t\t<Opis>Nazwa wydarzenia, którą należy samodzielnie określić na podstawie kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventDesc</Nazwa>\n\t\t\t\t\t<Opis>Opis wydarzenia wynikający z kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina rozpoczęcia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina zakończenia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>startTime + 60 minut</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzUtworzWydarzenieStacjonarne</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do stworzenia nowego wydarzenia stacjonarnego w kalendarzu.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>attendees</Nazwa>\n\t\t\t\t\t<Opis>Mail lub maile uczestników oddzielonych przecinkami</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>allDay</Nazwa>\n\t\t\t\t\t<Opis>Czy wydarzenie jest całodzienne czy nie</Opis>\n\t\t\t\t\t<Typ>boolean</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>false</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventLocation</Nazwa>\n\t\t\t\t\t<Opis>Informacje o miejscu spotkania</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>ul. Konkretna 11, 99-123 Łódź</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventTitle</Nazwa>\n\t\t\t\t\t<Opis>Nazwa wydarzenia, którą należy samodzielnie określić na podstawie kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventDesc</Nazwa>\n\t\t\t\t\t<Opis>Opis wydarzenia wynikający z kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina rozpoczęcia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina zakończenia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>startTime + 60 minut</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzEdytujWydarzenie</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do edytowania wydarzenia w kalendarzu. Wszystkie zmienne poza eventId są nieobowiązkowe, ponieważ użytkownik sam wskazuje, które elementy chce edytować.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventId</Nazwa>\n\t\t\t\t\t<Opis>Unikalna wartość reprezentująca pojedyncze wydarzenie w kalendarzu</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>attendees</Nazwa>\n\t\t\t\t\t<Opis>Mail lub maile uczestników oddzielonych przecinkami</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>allDay</Nazwa>\n\t\t\t\t\t<Opis>Czy wydarzenie jest całodzienne czy nie, zwracać yes albo no</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventLocation</Nazwa>\n\t\t\t\t\t<Opis>Informacje o miejscu spotkania</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventTitle</Nazwa>\n\t\t\t\t\t<Opis>Nazwa wydarzenia, którą należy określić na podstawie kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventDesc</Nazwa>\n\t\t\t\t\t<Opis>Opis wydarzenia wynikający z kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina rozpoczęcia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina zakończenia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzUsunWydarzenie</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do wykasowania wydarzenia w kalendarzu.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventId</Nazwa>\n\t\t\t\t\t<Opis>Unikalna wartość reprezentująca pojedyncze wydarzenie w kalendarzu</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t</DostepneNarzedzia>\n\t<ZasadyKorzystaniaZNarzedzi>\n\t\t<Kategoria>\n\t\t\t<Nazwa>TworzenieSpotkań</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Przed utworzeniem nowego spotkania *zawsze* najpierw sprawdź dostępność w kalendarzu używając narzędzia kalendarzSprawdzDostepnosc</Zasada>\n\t\t\t\t<Zasada>Sprawdź, czy w wybranym terminie nie ma kolidujących wydarzeń</Zasada>\n\t\t\t\t<Zasada>Jeśli występują kolizje, poinformuj użytkownika i zaproponuj alternatywne terminy</Zasada>\n\t\t\t\t<Zasada>Wartości startTime i endTime muszą być zawsze w prawidłowym formacie daty i godziny</Zasada>\n\t\t\t\t<Zasada>Tytuł spotkania (eventTitle) musi być jasny i opisowy, stworzony na podstawie kontekstu wiadomości</Zasada>\n\t\t\t\t<Zasada>*Domyślnie zawsze twórz spotkania online* (użyj narzędzia kalendarzUtworzWydarzenieOnline), chyba że użytkownik wyraźnie wskaże inaczej lub poda adres fizycznego miejsca spotkania</Zasada>\n\t\t\t\t<Zasada>Jeśli użytkownik poda adres miejsca spotkania lub wyraźnie poprosi o spotkanie stacjonarne, użyj narzędzia kalendarzUtworzWydarzenieStacjonarne</Zasada>\n\t\t\t\t<Zasada>Jeśli użytkownik nie podał konkretnego adresu, ale prosi o spotkanie stacjonarne, użyj domyślnego adresu biura: ul. Konkretna 11, 99-123 Łódź</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>TworzenieWydarzeńOsobistych</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Gdy użytkownik prosi o dodanie osobistego wydarzenia (np. czas na pracę nad projektem, zadanie bez innych uczestników), użyj narzędzia kalendarzUtworzWydarzenieStacjonarne</Zasada>\n\t\t\t\t<Zasada>Dla wydarzeń osobistych NIE podawaj żadnego adresu email w polu attendees - pozostaw to pole puste</Zasada>\n\t\t\t\t<Zasada>Dla wydarzeń osobistych lokalizacja domyślna to: ul. Konkretna 11, 99-123 Łódź (biuro)</Zasada>\n\t\t\t\t<Zasada>Jeśli użytkownik nie określi czasu trwania wydarzenia osobistego, przyjmij domyślnie 60 minut</Zasada>\n\t\t\t\t<Zasada>Dla wydarzeń całodniowych (np. urlop, święto) ustaw parametr allDay na true</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>EdytowanieSpotkań</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Aby edytować wydarzenie, najpierw musisz zidentyfikować jego eventId</Zasada>\n\t\t\t\t<Zasada>Zawsze używaj narzędzia kalendarzSprawdzDostepnosc, aby pobrać wydarzenia od daty bieżącej do 2 tygodni do przodu</Zasada>\n\t\t\t\t<Zasada>Staraj się skojarzyć wydarzenie z tym, co opisał użytkownik (na podstawie nazwy, daty, uczestników)</Zasada>\n\t\t\t\t<Zasada>Jeśli nie jesteś pewny lub brakuje informacji, aby jednoznacznie zidentyfikować wydarzenie, wróć do użytkownika z pytaniem</Zasada>\n\t\t\t\t<Zasada>Po zidentyfikowaniu eventId, możesz użyć narzędzia kalendarzEdytujWydarzenie do wprowadzenia zmian</Zasada>\n\t\t\t\t<Zasada>Edytuj tylko te parametry, które użytkownik wyraźnie chce zmienić</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>UsuwanieSpotkań</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Aby usunąć wydarzenie, najpierw musisz zidentyfikować jego eventId</Zasada>\n\t\t\t\t<Zasada>Zawsze używaj narzędzia kalendarzSprawdzDostepnosc, aby pobrać wydarzenia od daty bieżącej do 2 tygodni do przodu</Zasada>\n\t\t\t\t<Zasada>Staraj się skojarzyć wydarzenie z tym, co opisał użytkownik (na podstawie nazwy, daty, uczestników)</Zasada>\n\t\t\t\t<Zasada>Jeśli nie jesteś pewny lub brakuje informacji, aby jednoznacznie zidentyfikować wydarzenie, wróć do użytkownika z pytaniem</Zasada>\n\t\t\t\t<Zasada>Po zidentyfikowaniu eventId, możesz użyć narzędzia kalendarzUsunWydarzenie do wykasowania wydarzenia</Zasada>\n\t\t\t\t<Zasada>Przed usunięciem zawsze poproś o potwierdzenie usunięcia, podając nazwę wydarzenia i datę</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t</ZasadyKorzystaniaZNarzedzi>\n\t<RozpoznawanieTypuWydarzenia>\n\t\t<Kategoria>\n\t\t\t<Nazwa>WydarzeniaOsobiste</Nazwa>\n\t\t\t<SłowaKluczowe>\n\t\t\t\t<SłowoKluczowe>czas na projekt</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>czas na pracę</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zarezerwuj czas</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zarezerwuj mi</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zabukuj mi</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zabookuj mi</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>czas na zadanie</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>moje zadanie</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>bez uczestników</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>praca własna</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>tylko dla mnie</SłowoKluczowe>\n\t\t\t</SłowaKluczowe>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>SpotkaniaZInnymi</Nazwa>\n\t\t\t<SłowaKluczowe>\n\t\t\t\t<SłowoKluczowe>spotkanie z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>call z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>rozmowa z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>meeting z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zaproś</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zaprosić</SłowoKluczowe>\n\t\t\t</SłowaKluczowe>\n\t\t</Kategoria>\n\t</RozpoznawanieTypuWydarzenia>\n\t<WarunkiUzycia>\n\t\t<Warunek>Dla wydarzeń wymagających uczestnictwa innych osób (rozpoznanych jako SpotkaniaZInnymi), zapytaj użytkownika o adresy email uczestników, jeśli ich nie podał.</Warunek>\n\t\t<Warunek>Dla wydarzeń osobistych (rozpoznanych jako WydarzeniaOsobiste), NIE wymagaj adresów email - pole attendees może pozostać puste.</Warunek>\n\t\t<Warunek>Zawsze wyświetlaj użytkownikowi wszystkie szczegóły tworzonego wydarzenia przed jego finalnym utworzeniem.</Warunek>\n\t</WarunkiUzycia>\n</InstrukcjeAgenta>",
+        "calendar": {
+          "__rl": true,
+          "value": "aibiz.kontakt@gmail.com",
+          "mode": "list",
+          "cachedResultName": "aibiz.kontakt@gmail.com"
+        },
+        "start": "={{ $fromAI(\"startTime\") }}",
+        "end": "={{ $fromAI(\"endTime\") }}",
+        "additionalFields": {
+          "allday": "={{ $fromAI(\"allDay\") }}",
+          "attendees": [
+            "={{ $fromAI(\"attendees\") }}"
+          ],
+          "description": "={{ $fromAI(\"eventDesc\") }}",
+          "location": "={{ $fromAI(\"eventLocation\") }}",
+          "summary": "={{ $fromAI(\"eventTitle\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1320,
+        4800
+      ],
+      "id": "4daf8a98-966b-47e4-bbd6-7f5b55395884",
+      "name": "kalendarzUtworzWydarzenieStacjonarne",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "xkA5pHaC4exUnvMZ",
+          "name": "Google Calendar - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Użyj tego narzędzia do edytowanie wydarzenia w kalendarzu. W zależności od kontekstu, możesz skorzystać z poniższych zmiennych:\n- eventId - unikalna wartość reprezentujący pojedyncze wydarzenie w kalendarzu\n  type: string\n  Obowiązkowe\n- attendees - mail lub maile uczestników oddzielonych przecinkami\n  type: string\n  Nieobowiązkowe\n- allDay - czy wydarzenie jest całodzienne czy nie, zwrqac yes albo no\n  type: string\n  Nieobowiązkowe\n  Wartość domyślna: no\n- eventLocation - informacje o miejscu spotkania\n  type: string\n  Nieobowiązkowe\n- eventTitle - nazwa wydarzenia, którą należy samodzielnie określić na podstawie kontekstu wiadomości użytkownika\n  type: string\n  Obowiązkowe\n- eventDesc - opis wydarzenia wynikający z kontekstu wiadomości użytkownika\n  type: string\n  Nieobowiązkowe\n- startTime - data i godzina rozpoczęcia wydarzenia\n  type: date\n  Obowiązkowe\n- endTime - data i godzina zakończenia wydarzenia\n  type: date\n  Nieobowiązkowe\n  Wartość domyślna: startTime + 60 minut",
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "aibiz.kontakt@gmail.com",
+          "mode": "list",
+          "cachedResultName": "aibiz.kontakt@gmail.com"
+        },
+        "eventId": "={{ $fromAI(\"eventId\") }}",
+        "updateFields": {
+          "allday": "={{ $fromAI(\"allDay\") }}",
+          "attendeesUi": {
+            "values": {
+              "mode": "replace",
+              "attendees": [
+                "={{ $fromAI(\"attendees\") }}"
+              ]
+            }
+          },
+          "description": "={{ $fromAI(\"eventDesc\") }}",
+          "end": "={{ $fromAI(\"endTime\") }}",
+          "location": "={{ $fromAI(\"eventLocation\") }}",
+          "start": "={{ $fromAI(\"startTime\") }}",
+          "summary": "={{ $fromAI(\"eventTitle\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1540,
+        4800
+      ],
+      "id": "76f57351-b981-4b1f-abae-c18a49303e43",
+      "name": "kalendarzEdytujWydarzenie",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "xkA5pHaC4exUnvMZ",
+          "name": "Google Calendar - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Użyj tego narzędzia do wykasowania wydarzenia w kalendarzu. Musisz skorzystać z poniższej zmiennej:\n- eventId - unikalna wartość reprezentujący pojedyncze wydarzenie w kalendarzu\n  type: string\n  Obowiązkowe\n",
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "aibiz.kontakt@gmail.com",
+          "mode": "list",
+          "cachedResultName": "aibiz.kontakt@gmail.com"
+        },
+        "eventId": "={{ $fromAI(\"eventId\") }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1720,
+        4800
+      ],
+      "id": "1b7c38ad-db7c-41a8-b3f4-39e9188c3551",
+      "name": "kalendarzUsunWydarzenie",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "xkA5pHaC4exUnvMZ",
+          "name": "Google Calendar - aibiz.kontakt@gmail.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.msg || $('Transkrypcja3').item.json.text}}",
+        "options": {
+          "systemMessage": "=<InstrukcjeAgenta>\n\t<Rola>\n\t\t<Nazwa>Asystent Firmy Aibiz</Nazwa>\n\t\t<Opis>Wykonujesz polecone zadania z najwyższą starannością przy wykorzystaniu dostępnych narzędzi, które wspierają Cię w pozyskiwaniu informacji, jak i wykonywaniu akcji.</Opis>\n\t\t<DataAktualna>{{$now}}</DataAktualna>\n\t</Rola>\n\t<DostepneNarzedzia>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzSprawdzDostepnosc</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do pobierania informacji z kalendarza Google.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data początkowa, od której są wyszukiwane wydarzenia w kalendarzu</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data końcowa, do której są wyszukiwane wydarzenia w kalendarzu</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzUtworzWydarzenieOnline</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do utworzenia nowego wydarzenia w kalendarzu z wideokonferencją Google Meet.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>attendees</Nazwa>\n\t\t\t\t\t<Opis>Mail lub maile uczestników oddzielonych przecinkami</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventTitle</Nazwa>\n\t\t\t\t\t<Opis>Nazwa wydarzenia, którą należy samodzielnie określić na podstawie kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventDesc</Nazwa>\n\t\t\t\t\t<Opis>Opis wydarzenia wynikający z kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina rozpoczęcia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina zakończenia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>startTime + 60 minut</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzUtworzWydarzenieStacjonarne</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do stworzenia nowego wydarzenia stacjonarnego w kalendarzu.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>attendees</Nazwa>\n\t\t\t\t\t<Opis>Mail lub maile uczestników oddzielonych przecinkami. Dla wydarzeń osobistych lub zadań bez uczestników zewnętrznych wstaw \"moje.wydarzenie@aibiz.pl\"</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>moje.wydarzenie@aibiz.pl</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>allDay</Nazwa>\n\t\t\t\t\t<Opis>Czy wydarzenie jest całodzienne czy nie</Opis>\n\t\t\t\t\t<Typ>boolean</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>false</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventLocation</Nazwa>\n\t\t\t\t\t<Opis>Informacje o miejscu spotkania</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>ul. Konkretna 11, 99-123 Łódź</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventTitle</Nazwa>\n\t\t\t\t\t<Opis>Nazwa wydarzenia, którą należy samodzielnie określić na podstawie kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventDesc</Nazwa>\n\t\t\t\t\t<Opis>Opis wydarzenia wynikający z kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina rozpoczęcia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina zakończenia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t\t<WartoscDomyslna>startTime + 60 minut</WartoscDomyslna>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzEdytujWydarzenie</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do edytowania wydarzenia w kalendarzu. Wszystkie zmienne poza eventId są nieobowiązkowe, ponieważ użytkownik sam wskazuje, które elementy chce edytować.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventId</Nazwa>\n\t\t\t\t\t<Opis>Unikalna wartość reprezentująca pojedyncze wydarzenie w kalendarzu</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>attendees</Nazwa>\n\t\t\t\t\t<Opis>Mail lub maile uczestników oddzielonych przecinkami</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>allDay</Nazwa>\n\t\t\t\t\t<Opis>Czy wydarzenie jest całodzienne czy nie, zwracać yes albo no</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventLocation</Nazwa>\n\t\t\t\t\t<Opis>Informacje o miejscu spotkania</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventTitle</Nazwa>\n\t\t\t\t\t<Opis>Nazwa wydarzenia, którą należy określić na podstawie kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventDesc</Nazwa>\n\t\t\t\t\t<Opis>Opis wydarzenia wynikający z kontekstu wiadomości użytkownika</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>startTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina rozpoczęcia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>endTime</Nazwa>\n\t\t\t\t\t<Opis>Data i godzina zakończenia wydarzenia</Opis>\n\t\t\t\t\t<Typ>date</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Nieobowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t\t<Narzedzie>\n\t\t\t<Nazwa>kalendarzUsunWydarzenie</Nazwa>\n\t\t\t<Opis>Użyj tego narzędzia do wykasowania wydarzenia w kalendarzu.</Opis>\n\t\t\t<Zmienne>\n\t\t\t\t<Zmienna>\n\t\t\t\t\t<Nazwa>eventId</Nazwa>\n\t\t\t\t\t<Opis>Unikalna wartość reprezentująca pojedyncze wydarzenie w kalendarzu</Opis>\n\t\t\t\t\t<Typ>string</Typ>\n\t\t\t\t\t<CzyObowiazkowe>Obowiązkowe</CzyObowiazkowe>\n\t\t\t\t</Zmienna>\n\t\t\t</Zmienne>\n\t\t</Narzedzie>\n\t</DostepneNarzedzia>\n\t<ZasadyKorzystaniaZNarzedzi>\n\t\t<Kategoria>\n\t\t\t<Nazwa>TworzenieSpotkań</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Przed utworzeniem nowego spotkania *zawsze* najpierw sprawdź dostępność w kalendarzu używając narzędzia kalendarzSprawdzDostepnosc</Zasada>\n\t\t\t\t<Zasada>Sprawdź, czy w wybranym terminie nie ma kolidujących wydarzeń</Zasada>\n\t\t\t\t<Zasada>Jeśli występują kolizje, poinformuj użytkownika i zaproponuj alternatywne terminy</Zasada>\n\t\t\t\t<Zasada>Wartości startTime i endTime muszą być zawsze w prawidłowym formacie daty i godziny</Zasada>\n\t\t\t\t<Zasada>Tytuł spotkania (eventTitle) musi być jasny i opisowy, stworzony na podstawie kontekstu wiadomości</Zasada>\n\t\t\t\t<Zasada>*Domyślnie zawsze twórz spotkania online* (użyj narzędzia kalendarzUtworzWydarzenieOnline), chyba że użytkownik wyraźnie wskaże inaczej lub poda adres fizycznego miejsca spotkania</Zasada>\n\t\t\t\t<Zasada>Jeśli użytkownik poda adres miejsca spotkania lub wyraźnie poprosi o spotkanie stacjonarne, użyj narzędzia kalendarzUtworzWydarzenieStacjonarne</Zasada>\n\t\t\t\t<Zasada>Jeśli użytkownik nie podał konkretnego adresu, ale prosi o spotkanie stacjonarne, użyj domyślnego adresu biura: ul. Konkretna 11, 99-123 Łódź</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>TworzenieWydarzeńOsobistych</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Gdy użytkownik prosi o dodanie osobistego wydarzenia (np. czas na pracę nad projektem, zadanie bez innych uczestników), użyj narzędzia kalendarzUtworzWydarzenieStacjonarne</Zasada>\n\t\t\t\t<Zasada>Dla wydarzeń osobistych nie podawaj żadnego adresu email w polu attendees - pozostaw to pole puste</Zasada>\n\t\t\t\t<Zasada>Dla wydarzeń osobistych lokalizacja domyślna to: ul. Konkretna 11, 99-123 Łódź (biuro)</Zasada>\n\t\t\t\t<Zasada>Jeśli użytkownik nie określi czasu trwania wydarzenia osobistego, przyjmij domyślnie 60 minut</Zasada>\n\t\t\t\t<Zasada>Dla wydarzeń całodniowych (np. urlop, święto) ustaw parametr allDay na true</Zasada>\n\t\t\t\t<Zasada>Jeśli użytkownik podał konkretną datę od-do oraz tytuł wydarzenia, dodaj je bezpośrednio bez pytania o potwierdzenie</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>EdytowanieSpotkań</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Aby edytować wydarzenie, najpierw musisz zidentyfikować jego eventId</Zasada>\n\t\t\t\t<Zasada>Zawsze używaj narzędzia kalendarzSprawdzDostepnosc, aby pobrać wydarzenia od daty bieżącej do 2 tygodni do przodu</Zasada>\n\t\t\t\t<Zasada>Staraj się skojarzyć wydarzenie z tym, co opisał użytkownik (na podstawie nazwy, daty, uczestników)</Zasada>\n\t\t\t\t<Zasada>Jeśli nie jesteś pewny lub brakuje informacji, aby jednoznacznie zidentyfikować wydarzenie, wróć do użytkownika z pytaniem</Zasada>\n\t\t\t\t<Zasada>Po zidentyfikowaniu eventId, możesz użyć narzędzia kalendarzEdytujWydarzenie do wprowadzenia zmian</Zasada>\n\t\t\t\t<Zasada>Edytuj tylko te parametry, które użytkownik wyraźnie chce zmienić</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>UsuwanieSpotkań</Nazwa>\n\t\t\t<Zasady>\n\t\t\t\t<Zasada>Aby usunąć wydarzenie, najpierw musisz zidentyfikować jego eventId</Zasada>\n\t\t\t\t<Zasada>Zawsze używaj narzędzia kalendarzSprawdzDostepnosc, aby pobrać wydarzenia od daty bieżącej do 2 tygodni do przodu</Zasada>\n\t\t\t\t<Zasada>Staraj się skojarzyć wydarzenie z tym, co opisał użytkownik (na podstawie nazwy, daty, uczestników)</Zasada>\n\t\t\t\t<Zasada>Jeśli nie jesteś pewny lub brakuje informacji, aby jednoznacznie zidentyfikować wydarzenie, wróć do użytkownika z pytaniem</Zasada>\n\t\t\t\t<Zasada>Po zidentyfikowaniu eventId, możesz użyć narzędzia kalendarzUsunWydarzenie do wykasowania wydarzenia</Zasada>\n\t\t\t\t<Zasada>Przed usunięciem zawsze poproś o potwierdzenie usunięcia, podając nazwę wydarzenia i datę</Zasada>\n\t\t\t</Zasady>\n\t\t</Kategoria>\n\t</ZasadyKorzystaniaZNarzedzi>\n\t<RozpoznawanieKompletnychDanych>\n\t\t<Kryteria>\n\t\t\t<Kryterium>Wiadomość zawiera konkretną datę i godzinę rozpoczęcia (np. \"jutro o 14:00\", \"w środę od 10:00\", \"15 maja 9:30\")</Kryterium>\n\t\t\t<Kryterium>Wiadomość zawiera czas trwania lub godzinę zakończenia (np. \"na 2 godziny\", \"do 16:00\")</Kryterium>\n\t\t\t<Kryterium>Wiadomość zawiera jasny tytuł lub cel wydarzenia (np. \"praca nad projektem X\", \"czas na raport\", \"przygotowanie prezentacji\")</Kryterium>\n\t\t</Kryteria>\n\t</RozpoznawanieKompletnychDanych>\n\t<RozpoznawanieTypuWydarzenia>\n\t\t<Kategoria>\n\t\t\t<Nazwa>WydarzeniaOsobiste</Nazwa>\n\t\t\t<SłowaKluczowe>\n\t\t\t\t<SłowoKluczowe>czas na projekt</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>czas na pracę</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zarezerwuj czas</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zarezerwuj mi</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zabukuj mi</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zabookuj mi</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>czas na zadanie</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>moje zadanie</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>bez uczestników</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>praca własna</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>tylko dla mnie</SłowoKluczowe>\n\t\t\t</SłowaKluczowe>\n\t\t</Kategoria>\n\t\t<Kategoria>\n\t\t\t<Nazwa>SpotkaniaZInnymi</Nazwa>\n\t\t\t<SłowaKluczowe>\n\t\t\t\t<SłowoKluczowe>spotkanie z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>call z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>rozmowa z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>meeting z</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zaproś</SłowoKluczowe>\n\t\t\t\t<SłowoKluczowe>zaprosić</SłowoKluczowe>\n\t\t\t</SłowaKluczowe>\n\t\t</Kategoria>\n\t</RozpoznawanieTypuWydarzenia>\n\n<FormatowanieOdpowiedzi>\n    <Format>\n        <Nazwa>Pogrubienie</Nazwa>\n        <Oznaczenie>*tekst*</Oznaczenie>\n        <Opis>Otocz tekst gwiazdkami (po jednej z każdej strony), aby go pogrubić</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Kursywa</Nazwa>\n        <Oznaczenie>_tekst_</Oznaczenie>\n        <Opis>Otocz tekst znakami podkreślenia, aby zastosować kursywę</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Przekreślenie</Nazwa>\n        <Oznaczenie>~tekst~</Oznaczenie>\n        <Opis>Otocz tekst znakami tyldy, aby go przekreślić</Opis>\n    </Format>\n    <Format>\n        <Nazwa>KodInline</Nazwa>\n        <Oznaczenie>`tekst`</Oznaczenie>\n        <Opis>Otocz tekst znakami grawisu, aby oznaczyć go jako kod</Opis>\n    </Format>\n    <Format>\n        <Nazwa>Cytat</Nazwa>\n        <Oznaczenie>>tekst</Oznaczenie>\n        <Opis>Dodaj znak większości przed tekstem, aby oznaczyć go jako cytat</Opis>\n    </Format>\n    <Format>\n        <Nazwa>BlokKodu</Nazwa>\n        <Oznaczenie>```tekst```</Oznaczenie>\n        <Opis>Otocz tekst trzema znakami grawisu, aby utworzyć blok kodu</Opis>\n    </Format>\n    <Format>\n        <Nazwa>ListaNumerowana</Nazwa>\n        <Oznaczenie>1. tekst</Oznaczenie>\n        <Opis>Dodaj liczbę, kropkę i spację przed tekstem, aby utworzyć listę numerowaną</Opis>\n    </Format>\n    <Format>\n        <Nazwa>ListaPunktowana</Nazwa>\n        <Oznaczenie>* tekst</Oznaczenie>\n        <Opis>Dodaj gwiazdkę i spację przed tekstem, aby utworzyć listę punktowaną</Opis>\n    </Format>\n</FormatowanieOdpowiedzi>\n\t<WarunkiUzycia>\n\t\t<Warunek>Dla wydarzeń wymagających uczestnictwa innych osób (rozpoznanych jako SpotkaniaZInnymi), zapytaj użytkownika o adresy email uczestników, jeśli ich nie podał.</Warunek>\n\t\t<Warunek>Dla wydarzeń osobistych (rozpoznanych jako WydarzeniaOsobiste), NIE używaj adresu email - pozostaw pole attendees puste.</Warunek>\n\t\t<Warunek>Jeśli użytkownik podał wszystkie niezbędne informacje (data, godzina, tytuł) dla wydarzenia osobistego, utwórz je od razu bez potwierdzania z użytkownikiem.</Warunek>\n\t\t<Warunek>Gdy dodajesz wydarzenie bez potwierdzenia, po dodaniu poinformuj użytkownika o szczegółach utworzonego wydarzenia.</Warunek>\n\t\t<Warunek>Jeśli brakuje istotnych informacji, poproś użytkownika o uzupełnienie tylko brakujących danych.</Warunek>\n\t\t<Warunek>Dla spotkań z innymi osobami zawsze wymagaj potwierdzenia przed utworzeniem, wyświetlając wszystkie szczegóły.</Warunek>\n\t</WarunkiUzycia>\n</InstrukcjeAgenta>",
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "13e2de17-30fe-4c25-b323-cfe9c029a476",
+      "name": "Asystent AI - Kalendarz",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1240,
+        4400
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-3-7-sonnet-20250219",
+          "cachedResultName": "Claude 3.7 Sonnet"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        900,
+        4580
+      ],
+      "id": "72b869e2-8de2-4a52-b44a-3e03bd59c1a6",
+      "name": "Anthropic Chat Model3",
+      "credentials": {
+        "anthropicApi": {
+          "id": "p0iciRaJdcEsS0zg",
+          "name": "Anthropic Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Agent AI - Kalendarz",
+        "height": 80,
+        "width": 3060,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -720,
+        4120
+      ],
+      "typeVersion": 1,
+      "id": "4c9b0ccc-413f-4da2-8d60-548068a3316b",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "trigger": [
+          "message"
+        ],
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        4600
+      ],
+      "id": "680c9ae7-5dff-44bf-9d5c-ef2dbacb2d26",
+      "name": "Slack Trigger3",
+      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a00b4232-e6f0-4769-ab9d-143316fd8f83",
+              "leftValue": "={{ $json.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        4580
+      ],
+      "id": "3aeeaaa9-7dad-419e-9f14-b7ac59970e94",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "6cbdba35-9be0-4668-b3ee-47ba24cae379"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "12067f8e-c660-4843-a563-a6ab82fbead5",
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "audio/mp4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -120,
+        4620
+      ],
+      "id": "4ba7b3a2-6d34-413f-9a89-8dbc3d151cda",
+      "name": "Tekst czy Audio3"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        240,
+        4360
+      ],
+      "id": "a4df4556-5f79-4113-be40-e74e46d78483",
+      "name": "Transkrypcja3",
+      "credentials": {
+        "openAiApi": {
+          "id": "FL5njDdlly7vvpyh",
+          "name": "OpenAi - Image-1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
+              "leftValue": "={{ $json.subtype }}",
+              "rightValue": "message_deleted",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -440,
+        4600
+      ],
+      "id": "589da348-8818-4111-b1df-b31d5d95e8eb",
+      "name": "Nieporządany event3"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.files[0].url_private_download }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "slackApi",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        20,
+        4360
+      ],
+      "id": "287e637c-420d-47ab-ae62-95a3c76597cf",
+      "name": "Pobierz notatke głosową3",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "153970be-9674-4f01-ac41-9782f5408f56",
+              "name": "id",
+              "value": "={{ $('Slack Trigger3').item.json.thread_ts || $('Slack Trigger3').item.json.ts }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0c866a43-2803-43a2-8327-54f1601b9262",
+      "name": "Event ID3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        4560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa wiadomość",
+        "height": 500,
+        "width": 1420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -700,
+        4340
+      ],
+      "typeVersion": 1,
+      "id": "8f7bee21-c9c5-4d16-baef-1d67e2e23c53",
+      "name": "Sticky Note13"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "text": "={{ $json.output }}",
+        "otherOptions": {
+          "thread_ts": {
+            "replyValues": {
+              "thread_ts": "={{ $('Slack Trigger3').item.json.ts }}"
+            }
+          },
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2040,
+        4420
+      ],
+      "id": "24b2a483-32f2-42db-be79-0c6fc18f7268",
+      "name": "Wiadomość - Odpowiedź AI Agenta2",
+      "webhookId": "c9c38c98-1146-4a47-a02f-021e11d44e00",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Agnet AI",
+        "height": 660,
+        "width": 1060,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        800,
+        4340
+      ],
+      "typeVersion": 1,
+      "id": "17bdb526-9470-4882-b747-642315dbeccb",
+      "name": "Sticky Note14"
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa odpowiedź",
+        "height": 260,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1940,
+        4340
+      ],
+      "typeVersion": 1,
+      "id": "3323d594-836c-4211-818e-1a5c9256400b",
+      "name": "Sticky Note15"
+    },
+    {
+      "parameters": {
+        "content": "# Agent AI - Notatki głosowe",
+        "height": 80,
+        "width": 3060,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -680,
+        5420
+      ],
+      "typeVersion": 1,
+      "id": "5d775376-baa3-4757-b5a3-23fb2b6eeb8c",
+      "name": "Sticky Note16"
+    },
+    {
+      "parameters": {
+        "trigger": [
+          "message"
+        ],
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        5900
+      ],
+      "id": "5c8e52a8-4dd7-4101-968a-43277c7339a6",
+      "name": "Slack Trigger4",
+      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a00b4232-e6f0-4769-ab9d-143316fd8f83",
+              "leftValue": "={{ $json.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        280,
+        5880
+      ],
+      "id": "f01e76f6-410b-442e-8d53-cd295f0b6d60",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "6cbdba35-9be0-4668-b3ee-47ba24cae379"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "12067f8e-c660-4843-a563-a6ab82fbead5",
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "audio/mp4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -80,
+        5920
+      ],
+      "id": "0cde8757-9172-4fb3-8a4b-cf39ae76ac4b",
+      "name": "Tekst czy Audio4"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        280,
+        5660
+      ],
+      "id": "50016dfb-50eb-4f03-8145-eba13a9b0418",
+      "name": "Transkrypcja4",
+      "credentials": {
+        "openAiApi": {
+          "id": "FL5njDdlly7vvpyh",
+          "name": "OpenAi - Image-1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
+              "leftValue": "={{ $json.subtype }}",
+              "rightValue": "message_deleted",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -400,
+        5900
+      ],
+      "id": "78352d8b-8759-48e2-86fd-7d8d02a3dea2",
+      "name": "Nieporządany event4"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.files[0].url_private_download }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "slackApi",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        60,
+        5660
+      ],
+      "id": "e68b74c8-8c4e-4e68-bd0f-542e6a3438d5",
+      "name": "Pobierz notatke głosową4",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "153970be-9674-4f01-ac41-9782f5408f56",
+              "name": "id",
+              "value": "={{ $('Slack Trigger4').item.json.thread_ts || $('Slack Trigger4').item.json.ts }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "57ee821d-544e-4bb6-b78b-efc9e8696e3e",
+      "name": "Event ID4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        5860
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa wiadomość",
+        "height": 460,
+        "width": 1420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -660,
+        5640
+      ],
+      "typeVersion": 1,
+      "id": "c1ee1f96-c696-48a9-ba94-b97c589d9a1b",
+      "name": "Sticky Note17"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "text": "=Notatka dodana!",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1740,
+        5720
+      ],
+      "id": "ca1300c1-aa07-4fb0-b0ff-8c117fd4eab2",
+      "name": "Wiadomość - Odpowiedź AI Agenta3",
+      "webhookId": "c9c38c98-1146-4a47-a02f-021e11d44e00",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Agnet AI",
+        "height": 460,
+        "width": 700,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        840,
+        5640
+      ],
+      "typeVersion": 1,
+      "id": "8c7112e1-746e-4820-8783-c876dbb8a481",
+      "name": "Sticky Note18"
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa odpowiedź",
+        "height": 260,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1640,
+        5640
+      ],
+      "typeVersion": 1,
+      "id": "3268fadd-ae66-465c-9703-42641867c2f5",
+      "name": "Sticky Note19"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        980,
+        5920
+      ],
+      "id": "7647442f-583f-4b4c-8591-108d4300b80a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "FL5njDdlly7vvpyh",
+          "name": "OpenAi - Image-1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.msg || $('Transkrypcja4').item.json.text }}",
+        "options": {
+          "systemMessage": "=<InstrukcjeAgenta>\n    <Rola>\n        <Nazwa>Asystent Transkrypcji i Kategoryzacji</Nazwa>\n        <Opis>Pomagasz w poprawianiu transkrypcji audio notatek oraz przypisywaniu ich do odpowiednich kategorii.</Opis>\n    </Rola>\n\n    <Cel>\n        <Glowny>Efektywne poprawianie transkrypcji i kategoryzowanie notatek głosowych</Glowny>\n    </Cel>\n\n    <Instrukcje>\n        <Instrukcja>\n            <Nazwa>DodajNotatke</Nazwa>\n            <Cel>Poprawienie transkrypcji notatki głosowej i przypisanie jej do odpowiedniej kategorii.</Cel>\n            <Zastosowanie>\n                - Używaj tego narzędzia zawsze, gdy otrzymasz transkrypcję z audio notatki.\n                - Popraw błędy gramatyczne, literówki i interpunkcję.\n                - Usuń powtórzenia, zająknięcia i słowa-wypełniacze (np. \"emmm\", \"yyy\").\n                - Zachowaj oryginalny sens i znaczenie notatki.\n                - Popraw szyk zdań, aby brzmiały naturalnie i płynnie.\n                - Przypisz notatkę do jednej z trzech kategorii: \"Zadania do zrobienia\", \"Pomysły\" lub \"Prywatne\".\n            </Zastosowanie>\n            <WymaganePola>\n                - **`notatka`**: Poprawiona, czytelna i gramatycznie poprawna wersja transkrypcji.\n                - **`kategoria`**: Jedna z trzech wartości: \"Zadania do zrobienia\", \"Pomysły\" lub \"Prywatne\".\n            </WymaganePola>\n            <WytyczneKategoryzacji>\n                <Kategoria>\n                    <Nazwa>Zadania do zrobienia</Nazwa>\n                    <Opis>Notatki zawierające konkretne działania, obowiązki, rzeczy do wykonania, deadline'y, przypomnienia o spotkaniach, listę zakupów itp.</Opis>\n                    <SłowaKluczowe>muszę, powinienem, zrobić, wykonać, przypomnienie, nie zapomnij, zadanie, deadline, termin, spotkanie, zakupy</SłowaKluczowe>\n                </Kategoria>\n                <Kategoria>\n                    <Nazwa>Pomysły</Nazwa>\n                    <Opis>Notatki zawierające przemyślenia, koncepcje, innowacje, plany biznesowe, rozwiązania problemów, propozycje, sugestie itp.</Opis>\n                    <SłowaKluczowe>pomysł, koncept, projekt, plan, strategia, możliwość, rozwiązanie, warto rozważyć, propozycja, innowacja</SłowaKluczowe>\n                </Kategoria>\n                <Kategoria>\n                    <Nazwa>Prywatne</Nazwa>\n                    <Opis>Notatki osobiste, myśli, refleksje, wspomnienia, plany na weekend, sprawy rodzinne, zdrowotne itp.</Opis>\n                    <SłowaKluczowe>osobiste, prywatne, urlop, weekend, rodzina, zdrowie, hobby, wypoczynek, odpoczynek, myśli, odczucia</SłowaKluczowe>\n                </Kategoria>\n            </WytyczneKategoryzacji>\n        </Instrukcja>\n    </Instrukcje>\n\n    <PrzeplywInterakcjiZNarzedziami>\n        <Etap>Po otrzymaniu transkrypcji z audio notatki, przeanalizuj jej treść i kontekst.</Etap>\n        <Etap>Popraw błędy gramatyczne, literówki, interpunkcję i strukturę zdań, zachowując oryginalny sens.</Etap>\n        <Etap>Na podstawie treści notatki, określ jej kategorię spośród trzech dostępnych opcji.</Etap>\n        <Etap>Użyj narzędzia DodajNotatke, przekazując poprawioną transkrypcję jako zmienną \"notatka\" oraz przypisaną kategorię jako zmienną \"kategoria\".</Etap>\n    </PrzeplywInterakcjiZNarzedziami>\n\n    <UwagiKoncowe>\n        - **Zawsze zachowuj oryginalny przekaz i intencje autora notatki.**\n        - **Jeśli notatka zawiera elementy pasujące do więcej niż jednej kategorii, wybierz tę, która dominuje lub jest najbardziej istotna.**\n        - **W przypadku wątpliwości dotyczących kategorii, kieruj się głównym celem notatki.**\n        - **Unikaj dodawania nowych informacji, których nie było w oryginalnej transkrypcji.**\n        - **Transkrypcja powinna brzmieć naturalnie, tak jakby była wypowiedziana przez osobę, ale z poprawioną gramatyką i strukturą.**\n    </UwagiKoncowe>\n</InstrukcjeAgenta>",
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "8eaa9f6e-95e9-47fd-bae9-e2a1bfd1f505",
+      "name": "Asystent AI - Notatki",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1020,
+        5700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appHEArsrImn1EJzC",
+          "mode": "list",
+          "cachedResultName": "Notatki głosowe",
+          "cachedResultUrl": "https://airtable.com/appHEArsrImn1EJzC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblJLlV9zq9eZz9WS",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "https://airtable.com/appHEArsrImn1EJzC/tblJLlV9zq9eZz9WS"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Notatka": "={{ $fromAI(\"notatka\") }}",
+            "Kategoria": "={{ $fromAI(\"kategoria\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Lp.",
+              "displayName": "Lp.",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Data utworzenia",
+              "displayName": "Data utworzenia",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Notatka",
+              "displayName": "Notatka",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Kategoria",
+              "displayName": "Kategoria",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Zadania do zrobienia",
+                  "value": "Zadania do zrobienia"
+                },
+                {
+                  "name": "Pomysły",
+                  "value": "Pomysły"
+                },
+                {
+                  "name": "Prywatne",
+                  "value": "Prywatne"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        1180,
+        5920
+      ],
+      "id": "f9da6843-429a-4d87-8ad5-adefa4a0fe2a",
+      "name": "dodajNotake",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "oRRg1IwMpHd0xqrA",
+          "name": "Airtable - Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "trigger": [
+          "message"
+        ],
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        -620,
+        2020
+      ],
+      "id": "3561b5a7-c9b9-42a1-9d27-f1864d4dee80",
+      "name": "Slack Trigger5",
+      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a00b4232-e6f0-4769-ab9d-143316fd8f83",
+              "leftValue": "={{ $json.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        280,
+        2000
+      ],
+      "id": "7778bb09-7f99-411c-b563-6abaf1996971",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "6cbdba35-9be0-4668-b3ee-47ba24cae379"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "12067f8e-c660-4843-a563-a6ab82fbead5",
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "audio/mp4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -120,
+        2000
+      ],
+      "id": "750f8c53-4ecb-466a-b41e-f14d1286b1a6",
+      "name": "Tekst czy Audio5"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        280,
+        1780
+      ],
+      "id": "53cc5ed9-26f8-49b2-b1b8-f27fc00ea646",
+      "name": "Transkrypcja5",
+      "credentials": {
+        "openAiApi": {
+          "id": "FL5njDdlly7vvpyh",
+          "name": "OpenAi - Image-1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
+              "leftValue": "={{ $json.subtype }}",
+              "rightValue": "message_deleted",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -400,
+        2020
+      ],
+      "id": "3252c958-5459-4672-9767-67b028ec3796",
+      "name": "Nieporządany event5"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.files[0].url_private_download }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "slackApi",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        60,
+        1780
+      ],
+      "id": "43887023-0da6-4a25-869e-8f7957fc12b6",
+      "name": "Pobierz notatke głosową5",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "153970be-9674-4f01-ac41-9782f5408f56",
+              "name": "id",
+              "value": "={{ $('Slack Trigger5').item.json.thread_ts || $('Slack Trigger5').item.json.ts }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ed944e9d-b064-448a-af1c-ad8af42bbec4",
+      "name": "Event ID5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        540,
+        1980
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa wiadomość",
+        "height": 500,
+        "width": 1420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -740,
+        1700
+      ],
+      "typeVersion": 1,
+      "id": "4d759d12-986c-4826-971a-8ed89178bef7",
+      "name": "Sticky Note20"
+    },
+    {
+      "parameters": {
+        "trigger": [
+          "message"
+        ],
+        "channelId": {
+          "__rl": true,
+          "value": "C08S7S2P0MS",
+          "mode": "list",
+          "cachedResultName": "5-agentow-ai"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        -700,
+        300
+      ],
+      "id": "3591c57d-bad2-4bec-8fdb-ed3b0038a32c",
+      "name": "Slack Trigger6",
+      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a00b4232-e6f0-4769-ab9d-143316fd8f83",
+              "leftValue": "={{ $json.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        200,
+        280
+      ],
+      "id": "c0aed1f8-8b2a-40ac-9f0d-adf28d70f07b",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "6cbdba35-9be0-4668-b3ee-47ba24cae379"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "12067f8e-c660-4843-a563-a6ab82fbead5",
+                    "leftValue": "={{ $json.files[0].mimetype }}",
+                    "rightValue": "audio/mp4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -200,
+        280
+      ],
+      "id": "29cb8d20-d857-4520-a580-f452f5bc7073",
+      "name": "Tekst czy Audio6"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        200,
+        60
+      ],
+      "id": "aaba87ea-48c9-4971-bf5b-59d37471d916",
+      "name": "Transkrypcja6",
+      "credentials": {
+        "openAiApi": {
+          "id": "FL5njDdlly7vvpyh",
+          "name": "OpenAi - Image-1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
+              "leftValue": "={{ $json.subtype }}",
+              "rightValue": "message_deleted",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -480,
+        300
+      ],
+      "id": "e4605ea2-9319-42da-90f7-6fcb65b1a3a8",
+      "name": "Nieporządany event6"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.files[0].url_private_download }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "slackApi",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -20,
+        60
+      ],
+      "id": "2f333d09-028b-49d4-bed2-5b74c4f56894",
+      "name": "Pobierz notatke głosową6",
+      "credentials": {
+        "slackApi": {
+          "id": "VOy9CMXDf8ltE3b0",
+          "name": "Slack Aibiz"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "153970be-9674-4f01-ac41-9782f5408f56",
+              "name": "id",
+              "value": "={{ $('Slack Trigger6').item.json.thread_ts || $('Slack Trigger6').item.json.ts }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8ebbb2fe-31a4-48c5-a351-3235cfb3f2d9",
+      "name": "Event ID6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Slack - Nowa wiadomość",
+        "height": 500,
+        "width": 1420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -820,
+        -20
+      ],
+      "typeVersion": 1,
+      "id": "56dfee54-afab-4b1a-9fb9-11618caae344",
+      "name": "Sticky Note21"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        1020,
+        2000
+      ],
+      "id": "baf83974-d654-494f-962c-169170119685",
+      "name": "Postgres Chat Memory1",
+      "credentials": {
+        "postgres": {
+          "id": "XgD1qfqvy76dduC8",
+          "name": "Postgres - VPS"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        860,
+        4780
+      ],
+      "id": "7985fb35-a552-4577-828c-0dd327a961d2",
+      "name": "Postgres Chat Memory2",
+      "credentials": {
+        "postgres": {
+          "id": "XgD1qfqvy76dduC8",
+          "name": "Postgres - VPS"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Slack Trigger2": [
+      {
+        "json": {
+          "user": "U07U1RKHJ1X",
+          "type": "message",
+          "ts": "1747131427.641429",
+          "client_msg_id": "26a93a1e-16c8-4611-9691-5465d2db7eb6",
+          "text": "Stwórz grafikę, która przedstawia mapę Europy z wyraźnym zaznaczeniem granic Polski i napisem \"Polskie Innowacje\".",
+          "team": "T07TP5J2V6W",
+          "blocks": [
+            {
+              "type": "rich_text",
+              "block_id": "yEZAY",
+              "elements": [
+                {
+                  "type": "rich_text_section",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Stwórz grafikę, która przedstawia mapę Europy z wyraźnym zaznaczeniem granic Polski i napisem \"Polskie Innowacje\"."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "channel": "C08S7S2P0MS",
+          "event_ts": "1747131427.641429",
+          "channel_type": "channel"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Pamięć podręczna": {
+      "ai_memory": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pobierzWiadomosci": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pobierzPojedynczaWiadomosc": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dodajEtykiete": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wyslijWiadomosc": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "odpowiedzNaWiadomosc": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asystent AI - Skrzynka pocztowa": {
+      "main": [
+        [
+          {
+            "node": "Wiadomość - Odpowiedź AI Agenta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ytPodsumowanie": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Researcher",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "scrapujStrone": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Researcher",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wyszukajInformacji": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Researcher",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Asystent AI - Researcher",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asystent AI - Researcher": {
+      "main": [
+        [
+          {
+            "node": "Wiadomość - Odpowiedź AI Agenta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Trigger2": {
+      "main": [
+        [
+          {
+            "node": "Nieporządany event2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Event ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tekst czy Audio2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pobierz notatke głosową2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transkrypcja2": {
+      "main": [
+        [
+          {
+            "node": "Event ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nieporządany event2": {
+      "main": [
+        [
+          {
+            "node": "Tekst czy Audio2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pobierz notatke głosową2": {
+      "main": [
+        [
+          {
+            "node": "Transkrypcja2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Event ID2": {
+      "main": [
+        [
+          {
+            "node": "Asystent AI - Grafik",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Asystent AI - Grafik",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Asystent AI - Grafik",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asystent AI - Grafik": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack": {
+      "main": [
+        []
+      ]
+    },
+    "kalendarzSprawdzDostepnosc": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "kalendarzUtworzWydarzenieOnline": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "kalendarzUtworzWydarzenieStacjonarne": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "kalendarzEdytujWydarzenie": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "kalendarzUsunWydarzenie": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Trigger3": {
+      "main": [
+        [
+          {
+            "node": "Nieporządany event3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Event ID3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tekst czy Audio3": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pobierz notatke głosową3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transkrypcja3": {
+      "main": [
+        [
+          {
+            "node": "Event ID3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nieporządany event3": {
+      "main": [
+        [
+          {
+            "node": "Tekst czy Audio3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pobierz notatke głosową3": {
+      "main": [
+        [
+          {
+            "node": "Transkrypcja3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Event ID3": {
+      "main": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asystent AI - Kalendarz": {
+      "main": [
+        [
+          {
+            "node": "Wiadomość - Odpowiedź AI Agenta2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Trigger4": {
+      "main": [
+        [
+          {
+            "node": "Nieporządany event4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Event ID4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tekst czy Audio4": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pobierz notatke głosową4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transkrypcja4": {
+      "main": [
+        [
+          {
+            "node": "Event ID4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nieporządany event4": {
+      "main": [
+        [
+          {
+            "node": "Tekst czy Audio4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pobierz notatke głosową4": {
+      "main": [
+        [
+          {
+            "node": "Transkrypcja4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Event ID4": {
+      "main": [
+        [
+          {
+            "node": "Asystent AI - Notatki",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Asystent AI - Notatki",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asystent AI - Notatki": {
+      "main": [
+        [
+          {
+            "node": "Wiadomość - Odpowiedź AI Agenta3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dodajNotake": {
+      "ai_tool": [
+        [
+          {
+            "node": "Asystent AI - Notatki",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Trigger5": {
+      "main": [
+        [
+          {
+            "node": "Nieporządany event5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Event ID5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tekst czy Audio5": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pobierz notatke głosową5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transkrypcja5": {
+      "main": [
+        [
+          {
+            "node": "Event ID5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nieporządany event5": {
+      "main": [
+        [
+          {
+            "node": "Tekst czy Audio5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pobierz notatke głosową5": {
+      "main": [
+        [
+          {
+            "node": "Transkrypcja5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Event ID5": {
+      "main": [
+        [
+          {
+            "node": "Asystent AI - Researcher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Trigger6": {
+      "main": [
+        [
+          {
+            "node": "Nieporządany event6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Event ID6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tekst czy Audio6": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pobierz notatke głosową6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transkrypcja6": {
+      "main": [
+        [
+          {
+            "node": "Event ID6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nieporządany event6": {
+      "main": [
+        [
+          {
+            "node": "Tekst czy Audio6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pobierz notatke głosową6": {
+      "main": [
+        [
+          {
+            "node": "Transkrypcja6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Event ID6": {
+      "main": [
+        [
+          {
+            "node": "Asystent AI - Skrzynka pocztowa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Asystent AI - Researcher",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "Asystent AI - Kalendarz",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "57c57c58-4ab7-4c44-930d-c0eb51d05412",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "id": "WQpLUgysWXjv8Vpc",
+  "tags": []
+}
