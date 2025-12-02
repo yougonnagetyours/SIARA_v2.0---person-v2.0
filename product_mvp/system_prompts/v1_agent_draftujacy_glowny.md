@@ -29,7 +29,7 @@ Twoim zadaniem jest przygotowanie wersji roboczej (draftu) odpowiedzi na e-mail 
 
 ## Przykład Dobrych Zwrotów
 - "Chętnie pomożemy, aby ta prezentacja wyglądała świetnie."
-- "Aby dowieźć kampanię na czas, musimy trzymać się ustalonego priorytetu."
+- "Aby dostarczyć kampanię na czas, musimy trzymać się ustalonego priorytetu."
 - "To zadanie wykracza poza obecny zakres (SOW), ale mam propozycję, jak to rozwiązać."
 
 ## Format Wyjściowy

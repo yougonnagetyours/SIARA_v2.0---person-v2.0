@@ -1,4 +1,22 @@
 ---
+## 2025-12-02, 10:00 - Sesja #8 (Fixing Hallucinations & Master Prompt)
+
+**Co robiliśmy:**
+- Zdiagnozowano problem z Agentem Draftującym: halucynacje (TikTok zamiast WWW) i używanie zakazanego słowa "dowieźć".
+- Wykryto niespójność instrukcji w starych plikach promptów.
+- Skupiono się na naprawie Master Promptu dla Make.com (`product_mvp/make_scenarios_config/system_prompt_make_v1.md`).
+- Wprowadzono **absolutny zakaz** słowa "dowieźć" i dodano alternatywy ("działa", "pracuje").
+- Dodano sekcję **CRITICAL: Wierność Kontekstowi**, aby wyeliminować wymyślanie kanałów (TikTok) i formatów przez model.
+
+**Ustalenia:**
+- Master Prompt (`system_prompt_make_v1.md`) jest jedynym źródłem prawdy dla Make.com.
+- Model ma twardy zakaz zgadywania kanałów komunikacji, jeśli nie wynikają one wprost z treści maila klienta.
+- Zaktualizowany prompt jest gotowy do wdrożenia w module OpenAI w Make.com.
+
+**Następny krok:**
+- Ponowny test scenariusza w Make.com z nowym promptem.
+---
+---
 ## 2025-12-01, 16:00 - Sesja #7 (Konfiguracja Make.com i Master Prompt)
 
 **Co robiliśmy:**
