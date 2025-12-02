@@ -152,3 +152,4 @@
 >W pełni rozumiem sytuację biznesową. Cieszę się, że mogłem po prostu potwierdzić swoje zainteresowanie.
 >Będę wdzięczny za sygnał z Państwa strony, gdyby sytuacja miała się zmienić.
 >Pozdrawiam serdecznie i życzę miłego dnia!
+
