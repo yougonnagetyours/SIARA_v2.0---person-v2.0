@@ -1,14 +1,18 @@
 ## 🎯 AKTUALNY ETAP
 
-**1. Tydzień 1: Budowa Demo (Agent Draftujący) i Profil**
+**1. Tydzień 1: Budowa Demo (Pivot na n8n + Slack)**
 
-Cel: Weryfikacja nowej hipotezy "Agenta Draftującego" poprzez demo (Loom) i outreach.
+Cel: Uruchomienie Agenta w środowisku n8n ze sterowaniem przez Slacka (efekt WOW "Instant").
 
 Status:
-- ✓ **TECH (MAKE.COM):** Scenariusz Gmail -> OpenAI -> Draft zweryfikowany i działający.
-- ⚠️ **UX (MAKE):** Opóźnienie (polling) obniża jakość demo. Rozważana migracja na n8n + Slack.
-- ⏳ **DECYZJA:** Wybór między Make (szybkie demo z "cięciem") a n8n (lepsze demo z real-time chatem).
-- 📝 **CONTENT:** Profil LinkedIn gotowy do wdrożenia (Draft 9/10).
+- ✓ **INSTALACJA:** n8n postawiony lokalnie (npm) + Tunel Cloudflare.
+- 🔄 **INTEGRACJA:** Trwa spinanie Slack App z n8n (Tokeny, Scopes).
+- ⏳ **MIGRACJA:** Logika z Make.com (Gmail -> GPT) musi zostać przeniesiona do n8n.
+- 📝 **CONTENT:** Profil LinkedIn gotowy (czeka na publikację po weryfikacji demo).
+
+## 🚧 BLOKERY
+
+- **Konfiguracja Slack App:** Wymaga precyzyjnego ustawienia uprawnień (Scopes) i Webhooków, aby n8n mógł odbierać i wysyłać wiadomości. (od 2025-12-03)
 
 ## 🕒 HISTORIA
 

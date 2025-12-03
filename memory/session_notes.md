@@ -1,4 +1,31 @@
 ---
+## 2025-12-03, 12:00 - Sesja #9 (Instalacja n8n i Setup Slacka)
+
+**Co robiliśmy:**
+- Zmiana strategii technologicznej: Rezygnacja z Make.com (problemy z UX/pollingiem) na rzecz własnej instancji n8n (lokalnie + tunel).
+- Zainstalowano n8n na Windows (przez npm) i uruchomiono z flagą `--tunnel` (dostęp z zewnątrz).
+- Rozpoczęto konfigurację integracji Slack <-> n8n.
+- Wyjaśniono architekturę: Slack App (Bot) do pisania, Tunel do odbierania komend.
+- Ustalono, że budujemy rozwiązanie oparte na "Bot User" (`xoxb`), a nie "User OAuth" (symulacja użytkownika).
+
+**INSTRUKCJA KONFIGURACJI BOTA (Do wykonania):**
+1.  **Tworzenie:** [api.slack.com/apps](https://api.slack.com/apps) -> Create New App -> From scratch -> Nazwa "Agent Draftujący".
+2.  **Uprawnienia (Scopes):** Menu "OAuth & Permissions" -> Sekcja "Bot Token Scopes" -> Dodaj: `chat:write`, `channels:history`, `groups:history`, `im:history`.
+3.  **Instalacja:** Na górze strony "OAuth & Permissions" -> "Install to Workspace" -> Allow.
+4.  **Token:** Skopiuj "Bot User OAuth Token" (zaczyna się od `xoxb-...`).
+5.  **Integracja:** W n8n -> Credentials -> Add "Slack API" -> Wklej Token.
+
+**Ustalenia:**
+- N8N stoi lokalnie na `localhost:5678` i jest tunelowany do Internetu.
+- Slack App "Agent Draftujący" jest w trakcie tworzenia.
+- Celem jest sterowanie Agentem z poziomu Slacka (telefonu/komputera) w czasie rzeczywistym.
+
+**Następny krok:**
+- Dokończenie konfiguracji Slack App (pobranie tokenu `xoxb` wg instrukcji powyżej).
+- Wpięcie tokenu do n8n (Credentials).
+- Uruchomienie pierwszego workflow "Echo" (Slack -> n8n -> Slack).
+---
+---
 ## 2025-12-02, 11:00 - Sesja #8 (Weryfikacja Tech Stacku: Make vs n8n)
 
 **Co robiliśmy:**
