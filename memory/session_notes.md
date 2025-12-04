@@ -3,6 +3,34 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-04, 21:45 - Sesja #11 (Integracja Slack <-> n8n VPS)
+
+**Co robiliśmy:**
+- **Rozwiązano problem z brakiem komunikacji:** Zdiagnozowano, że Slack wysyłał dane, ale n8n (w trybie edycji) ich nie wyświetlał bez trybu manualnego "Execute", a w trybie Active (Production) działał "po cichu".
+- **Skonfigurowano poprawnie Slack API:**
+    - Dodano brakujące uprawnienia (`channels:read`, `message.channels`, `message.im`).
+    - Wykonano "Reinstall to Workspace" po zmianie uprawnień.
+    - Skonfigurowano **Request URL** w dwóch miejscach: "Event Subscriptions" i "Interactivity & Shortcuts".
+- **Zrealizowano "Handshake" (Uścisk dłoni):**
+    - Zweryfikowano Test URL (w trybie manualnym).
+    - Zweryfikowano Production URL (w trybie Active).
+    - Uzyskano status **Verified** w panelu Slacka.
+- **Zrealizowano Workflow "Echo" (Full Loop):**
+    - Stworzono workflow: Slack Trigger -> Slack Send Message.
+    - Skonfigurowano dynamiczne ID kanału (`{{ $json.channel }}`), dzięki czemu bot odpisuje dokładnie tam, skąd przyszła wiadomość.
+    - Przetestowano na żywo: Bot poprawnie odsyła treść wiadomości użytkownika ("Echo test 123" -> "Odebrałem: Echo test 123").
+
+**Ustalenia:**
+- Infrastruktura jest gotowa i przetestowana ("rura drożna").
+- Bot słucha na kanałach publicznych (gdzie zostanie zaproszony) i w wiadomościach prywatnych (DM).
+- N8N na VPS działa stabilnie, obsługuje Webhooki produkcyjne.
+
+**Następny krok:**
+- **Migracja Logiki:** Wpięcie OpenAI (Agent Draftujący - Marta) pomiędzy Trigger a Send Message.
+- Implementacja Promptu Systemowego Marty w n8n.
+- Testy scenariuszy (Scope Creep, Panika) przez Slacka.
+---
+---
 ## 2025-12-04, 12:30 - Sesja #10 (Wdrożenie VPS i Docker)
 
 **Co robiliśmy:**

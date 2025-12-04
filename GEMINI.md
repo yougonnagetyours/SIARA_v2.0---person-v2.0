@@ -47,5 +47,11 @@ Obaj agenci korzystają z TYCH SAMYCH plików pamięci, aby zachować spójnoś�
 
 Dzięki temu #Waski wie, co ustalił #Siara, a #Siara widzi postępy w contencie.
 
+## 🚀 PROCEDURA STARTOWA (BOOT SEQUENCE)
+Przy każdym nowym uruchomieniu sesji lub restarcie kontekstu, **KAŻDY AGENT MA OBOWIĄZEK**:
+1. Wczytać `memory/session_notes.md` (aby poznać ostatnie ustalenia).
+2. Wczytać `memory/progress_tracker.md` (aby znać status makro).
+3. Jeśli pliki są niespójne -> **Priorytet mają Notatki z Sesji**, a Tracker należy zaktualizować.
+
 ---
 **TERAZ:** Przeanalizuj prompt użytkownika i zdecyduj, którym agentem jesteś (pamiętaj o prefixie # w odpowiedzi!).
