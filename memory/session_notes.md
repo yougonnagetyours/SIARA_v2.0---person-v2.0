@@ -1,4 +1,29 @@
 ---
+## 2025-12-04, 12:30 - Sesja #10 (Wdrożenie VPS i Docker)
+
+**Co robiliśmy:**
+- Zdiagnozowano problemy z tunelem n8n na localhost (zrywanie połączeń, błędy "Challenge" od Slacka).
+- Podjęto decyzję o migracji na stabilny VPS (Mikr.us).
+- Zakupiono i uruchomiono serwer VPS (srv49.mikr.us).
+- Skonfigurowano środowisko na VPS:
+    - Połączenie SSH.
+    - Aktualizacja systemu Linux.
+    - Instalacja Dockera.
+    - Instalacja n8n za pomocą skryptu `n8n_install`.
+- Uzyskano publiczny, stabilny adres SSL dla Agenta: `https://kacper140-20140.wykr.es`.
+- Założono konto właściciela na nowej instancji n8n.
+
+**Ustalenia:**
+- Od teraz pracujemy WYŁĄCZNIE na instancji VPS (`wykr.es`).
+- Localhost zostaje porzucony (służy tylko do wyeksportowania dotychczasowej pracy).
+- Adres Agenta dodany do zakładek.
+
+**Następny krok:**
+- Migracja workflowów (Agent Draftujący) z localhosta na VPS.
+- Konfiguracja Slack Triggera na nowym adresie (Webhook URL).
+- Finalne spięcie Slack <-> n8n <-> Slack (Full Loop).
+---
+---
 ## 2025-12-03, 12:00 - Sesja #9 (Instalacja n8n i Setup Slacka)
 
 **Co robiliśmy:**
