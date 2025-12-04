@@ -1,3 +1,7 @@
+# Notatki z Sesji
+
+Najnowsze wpisy na górze ↓
+
 ---
 ## 2025-12-04, 12:30 - Sesja #10 (Wdrożenie VPS i Docker)
 
@@ -232,9 +236,4 @@
 - Zatwierdzenie finalnej wersji profilu LinkedIn.
 - Wgranie profilu na LinkedIn.
 - Rozpoczęcie "Tygodnia 1" z planu (przygotowanie wideo/Loom).
----
-# Notatki z Sesji
-
-Najnowsze wpisy na górze ↓
-
 ---
