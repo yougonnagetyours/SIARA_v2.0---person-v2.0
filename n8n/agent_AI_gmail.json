@@ -2,21 +2,6 @@
   "nodes": [
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $json.id }}"
-      },
-      "id": "84d7bd44-2f7d-4172-9cfa-46eada950d3e",
-      "name": "Pamięć podręczna",
-      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
-      "typeVersion": 1,
-      "position": [
-        1600,
-        720
-      ],
-      "notesInFlow": false
-    },
-    {
-      "parameters": {
         "select": "channel",
         "channelId": {
           "__rl": true,
@@ -28,7 +13,7 @@
         "otherOptions": {
           "thread_ts": {
             "replyValues": {
-              "thread_ts": "={{ $('Slack Trigger6').item.json.ts }}"
+              "thread_ts": "={{ $('Slack Trigger').item.json.ts }}"
             }
           },
           "mrkdwn": true
@@ -37,12 +22,77 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.3,
       "position": [
-        2720,
-        368
+        1600,
+        -48
       ],
-      "id": "027e957b-96c8-41b5-b142-430c6e98a0e0",
+      "id": "bdf5a9cf-0cba-4d38-bbe8-2a365d1b0af2",
       "name": "Wiadomość - Odpowiedź AI Agenta",
-      "webhookId": "c9c38c98-1146-4a47-a02f-021e11d44e00"
+      "webhookId": "c9c38c98-1146-4a47-a02f-021e11d44e00",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "GPT-4o Mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        784,
+        304
+      ],
+      "id": "6673085a-09f7-4b1c-8e33-c844bcfd7b7f",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Transkrypcja').item.json.text }}",
+        "options": {
+          "systemMessage": "=<Cel>\n    <Glowny>Efektywne zarządzanie skrzynką pocztową i komunikacją email</Glowny>\n</Cel>\n<Zmienne>\n<Aktualna Data i Godzina> Aktualna data i godzina to: {{ $now.format('DDDD HH:mm') }} </Aktualna Data i Godzina> \n`</Zmienne>\n\n\n<Instrukcje>\n    <Instrukcja>\n        <Nazwa>PobierzWiadomosci</Nazwa>\n        <Cel>Pobieranie wiadomości z wskazanego okresu.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik prosi o wyświetlenie wiadomości z określonego okresu.\n            - Gdy potrzebujesz znaleźć wiadomości do dalszej analizy lub działania.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`date_after`**: Format YYYY-MM-DDThh:mm, określa początek okresu pobierania wiadomości.\n        </WymaganePola>\n        <OpcjonalnePola>\n            - **`date_before`**: Format YYYY-MM-DDThh:mm, określa koniec okresu pobierania wiadomości.\n            - **`query`**: Pozwala wyszukiwać konkretne wiadomości po tytule, adresie email itp.\n        </OpcjonalnePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>PobierzPojedynczaWiadomosc</Nazwa>\n        <Cel>Pobieranie szczegółów pojedynczej wiadomości.</Cel>\n        <Zastosowanie>\n            - Gdy potrzebujesz zobaczyć pełną treść wybranej wiadomości.\n            - Po znalezieniu wiadomości za pomocą PobierzWiadomosci, aby uzyskać szczegóły.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n        </WymaganePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>DodajEtykiete</Nazwa>\n        <Cel>Dodawanie etykiety do wiadomości w celu kategoryzacji.</Cel>\n        <Zastosowanie>\n            - Gdy wiadomość wymaga odpowiedniego oznaczenia według kategorii.\n            - Po analizie treści wiadomości i ustaleniu właściwej etykiety.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n            - **`label`... [truncated]",
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "b5635353-54f9-45e5-9d24-64bd04d3cfc3",
+      "name": "Agent AI (Gmail)",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1088,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.id }}"
+      },
+      "id": "e96adc95-55f4-4e74-940e-4597802da4af",
+      "name": "Cache",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1,
+      "position": [
+        896,
+        304
+      ],
+      "notesInFlow": false
     },
     {
       "parameters": {
@@ -58,11 +108,11 @@
       "type": "n8n-nodes-base.gmailTool",
       "typeVersion": 2.1,
       "position": [
-        1664,
-        912
+        1264,
+        304
       ],
-      "id": "57822b0c-ff66-4c07-b2ae-97fc6f4542d6",
-      "name": "pobierzWiadomosci",
+      "id": "4f548a17-fa23-418a-8763-47071a1dab15",
+      "name": "Get Message",
       "webhookId": "79cf8843-666b-4145-b4e1-1bdf16d21e14"
     },
     {
@@ -77,11 +127,11 @@
       "type": "n8n-nodes-base.gmailTool",
       "typeVersion": 2.1,
       "position": [
-        1872,
-        944
+        1424,
+        304
       ],
-      "id": "4001a06d-1ec4-4889-8c82-ec9c36ecbc77",
-      "name": "pobierzPojedynczaWiadomosc",
+      "id": "3061af3d-2d4d-4e8d-8c93-de65d1e634b1",
+      "name": "Get Single Message",
       "webhookId": "b884d0f1-6fb7-44f1-9e4a-8383b2677706"
     },
     {
@@ -95,11 +145,11 @@
       "type": "n8n-nodes-base.gmailTool",
       "typeVersion": 2.1,
       "position": [
-        2048,
-        944
+        1568,
+        304
       ],
-      "id": "ab29ba0f-bd00-4ff4-b1e7-cb5a8b75fc43",
-      "name": "dodajEtykiete",
+      "id": "974c5885-72ae-448b-8179-0f8c2dc8ef29",
+      "name": "Add Label",
       "webhookId": "5472da96-1aef-4aab-922e-35685e8a0c57"
     },
     {
@@ -116,11 +166,11 @@
       "type": "n8n-nodes-base.gmailTool",
       "typeVersion": 2.1,
       "position": [
-        2208,
-        944
+        1728,
+        304
       ],
-      "id": "d914c5f4-943a-4910-9ffa-5ad031ea26ec",
-      "name": "wyslijWiadomosc",
+      "id": "e8f7b0be-63ad-4f06-8882-15f426c54182",
+      "name": "Send Message",
       "webhookId": "52628092-d75c-42f7-9c52-503521b1979a"
     },
     {
@@ -137,102 +187,12 @@
       "type": "n8n-nodes-base.gmailTool",
       "typeVersion": 2.1,
       "position": [
-        2368,
-        944
+        1888,
+        304
       ],
-      "id": "9eb5e429-f88f-4abd-8dc8-df7d8fa2681a",
-      "name": "odpowiedzNaWiadomosc",
+      "id": "8d046f76-d690-4906-aedf-2eed07788f1f",
+      "name": "Reply to Message",
       "webhookId": "d2c74e4d-22cd-4c57-9017-8c285012b3dd"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $('Transkrypcja6').item.json.text }}",
-        "options": {
-          "systemMessage": "=<Cel>\n    <Glowny>Efektywne zarządzanie skrzynką pocztową i komunikacją email</Glowny>\n</Cel>\n<Zmienne>\n<Aktualna Data i Godzina> Aktualna data i godzina to: {{ $now.format('DDDD HH:mm') }} </Aktualna Data i Godzina> \n`</Zmienne>\n\n\n<Instrukcje>\n    <Instrukcja>\n        <Nazwa>PobierzWiadomosci</Nazwa>\n        <Cel>Pobieranie wiadomości z wskazanego okresu.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik prosi o wyświetlenie wiadomości z określonego okresu.\n            - Gdy potrzebujesz znaleźć wiadomości do dalszej analizy lub działania.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`date_after`**: Format YYYY-MM-DDThh:mm, określa początek okresu pobierania wiadomości.\n        </WymaganePola>\n        <OpcjonalnePola>\n            - **`date_before`**: Format YYYY-MM-DDThh:mm, określa koniec okresu pobierania wiadomości.\n            - **`query`**: Pozwala wyszukiwać konkretne wiadomości po tytule, adresie email itp.\n        </OpcjonalnePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>PobierzPojedynczaWiadomosc</Nazwa>\n        <Cel>Pobieranie szczegółów pojedynczej wiadomości.</Cel>\n        <Zastosowanie>\n            - Gdy potrzebujesz zobaczyć pełną treść wybranej wiadomości.\n            - Po znalezieniu wiadomości za pomocą PobierzWiadomosci, aby uzyskać szczegóły.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n        </WymaganePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>DodajEtykiete</Nazwa>\n        <Cel>Dodawanie etykiety do wiadomości w celu kategoryzacji.</Cel>\n        <Zastosowanie>\n            - Gdy wiadomość wymaga odpowiedniego oznaczenia według kategorii.\n            - Po analizie treści wiadomości i ustaleniu właściwej etykiety.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n            - **`label`... [truncated]",
-          "returnIntermediateSteps": true
-        }
-      },
-      "id": "e4c883e5-f626-49df-9bb3-5fb4355d3011",
-      "name": "Asystent AI - Skrzynka pocztowa",
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.6,
-      "position": [
-        1744,
-        400
-      ]
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4o-mini",
-          "cachedResultName": "GPT-4o Mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.3,
-      "position": [
-        1440,
-        704
-      ],
-      "id": "d40258da-18a2-40fe-b967-8becb57f4173",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "7AzOZOpey5mYnsPi",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "## Agnet AI",
-        "height": 820,
-        "width": 1120,
-        "color": 3
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        1392,
-        288
-      ],
-      "typeVersion": 1,
-      "id": "c94a858e-9ccc-4b4c-83c2-5e3e60c1e1e5",
-      "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "content": "## Slack - Nowa odpowiedź",
-        "height": 260,
-        "width": 320
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        2624,
-        288
-      ],
-      "typeVersion": 1,
-      "id": "9214c498-5d2c-4935-ae8b-da03a39d4035",
-      "name": "Sticky Note2"
-    },
-    {
-      "parameters": {
-        "content": "# Agent AI - Skrzynka pocztowa",
-        "height": 80,
-        "width": 3100,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -160,
-        160
-      ],
-      "typeVersion": 1,
-      "id": "67b09f47-565f-4295-9528-42641e5fb4e6",
-      "name": "Sticky Note3"
     },
     {
       "parameters": {
@@ -250,12 +210,18 @@
       "type": "n8n-nodes-base.slackTrigger",
       "typeVersion": 1,
       "position": [
-        -48,
-        624
+        -544,
+        -64
       ],
-      "id": "4efa21bd-f676-43cb-9d7b-ca5536f6d631",
-      "name": "Slack Trigger6",
-      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab"
+      "id": "295cd1b1-3eb9-44ac-aa9d-d8859b472e86",
+      "name": "Slack Trigger",
+      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
     },
     {
       "parameters": {
@@ -268,12 +234,22 @@
           },
           "conditions": [
             {
-              "id": "a00b4232-e6f0-4769-ab9d-143316fd8f83",
-              "leftValue": "={{ $json.user }}",
-              "rightValue": "",
+              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
+              "leftValue": "={{ $json.subtype }}",
+              "rightValue": "message_deleted",
               "operator": {
                 "type": "string",
                 "operation": "notEquals"
+              }
+            },
+            {
+              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
               }
             }
           ],
@@ -284,11 +260,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        864,
-        608
+        -320,
+        -64
       ],
-      "id": "ce1f17e8-fcf1-4726-a23b-13300f37582f",
-      "name": "If6"
+      "id": "fab1623a-78c5-462f-bc80-2b4f36e17b2d",
+      "name": "Nieporządany event"
     },
     {
       "parameters": {
@@ -347,69 +323,11 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        464,
-        608
+        -64,
+        -64
       ],
-      "id": "36d6cf91-8036-4cca-9e85-5f489e12945b",
-      "name": "Tekst czy Audio6"
-    },
-    {
-      "parameters": {
-        "resource": "audio",
-        "operation": "transcribe",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.8,
-      "position": [
-        864,
-        384
-      ],
-      "id": "5ad464db-62fe-4263-a9cc-62585c00e27f",
-      "name": "Transkrypcja6"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
-              "leftValue": "={{ $json.subtype }}",
-              "rightValue": "message_deleted",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            },
-            {
-              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
-              "leftValue": "",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        192,
-        624
-      ],
-      "id": "840ac00c-791c-49ad-a292-5ffd40834252",
-      "name": "Nieporządany event6"
+      "id": "5c1ca5de-7a40-43e0-971e-3a8c26256e12",
+      "name": "Tekst czy Audio"
     },
     {
       "parameters": {
@@ -427,11 +345,59 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        640,
-        384
+        224,
+        112
       ],
-      "id": "e16ab3b1-ec9b-4fc2-9785-1a51b603edb3",
-      "name": "Pobierz notatke głosową6"
+      "id": "c804cf3d-d292-4388-b617-d7360cc6ece1",
+      "name": "Pobierz notatke głosową"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        464,
+        112
+      ],
+      "id": "97d2b06e-48ac-490c-bdfd-7713d8b95401",
+      "name": "Transkrypcja"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a00b4232-e6f0-4769-ab9d-143316fd8f83",
+              "leftValue": "={{ $json.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        336,
+        -192
+      ],
+      "id": "c77cae55-68f5-4627-abd5-cce9af3bc6ed",
+      "name": "If"
     },
     {
       "parameters": {
@@ -440,106 +406,36 @@
             {
               "id": "153970be-9674-4f01-ac41-9782f5408f56",
               "name": "id",
-              "value": "={{ $('Slack Trigger6').item.json.thread_ts || $('Slack Trigger6').item.json.ts }}",
+              "value": "={{ $('Slack Trigger').item.json.thread_ts || $('Slack Trigger').item.json.ts }}",
               "type": "string"
             }
           ]
         },
         "options": {}
       },
-      "id": "88dadce5-05ca-4ad7-9df1-a68febc87ad1",
-      "name": "Event ID6",
+      "id": "13e73263-4a4c-4e1c-9f09-02d8825a8ea5",
+      "name": "Event ID",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1120,
-        592
+        704,
+        -48
       ]
-    },
-    {
-      "parameters": {
-        "content": "## Slack - Nowa wiadomość",
-        "height": 500,
-        "width": 1420
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -160,
-        304
-      ],
-      "typeVersion": 1,
-      "id": "04bda272-0568-44d0-9a5f-7a1f09f50d6e",
-      "name": "Sticky Note21"
     }
   ],
   "connections": {
-    "Pamięć podręczna": {
-      "ai_memory": [
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
         [
           {
-            "node": "Asystent AI - Skrzynka pocztowa",
-            "type": "ai_memory",
+            "node": "Agent AI (Gmail)",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
       ]
     },
-    "pobierzWiadomosci": {
-      "ai_tool": [
-        [
-          {
-            "node": "Asystent AI - Skrzynka pocztowa",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "pobierzPojedynczaWiadomosc": {
-      "ai_tool": [
-        [
-          {
-            "node": "Asystent AI - Skrzynka pocztowa",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "dodajEtykiete": {
-      "ai_tool": [
-        [
-          {
-            "node": "Asystent AI - Skrzynka pocztowa",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "wyslijWiadomosc": {
-      "ai_tool": [
-        [
-          {
-            "node": "Asystent AI - Skrzynka pocztowa",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "odpowiedzNaWiadomosc": {
-      "ai_tool": [
-        [
-          {
-            "node": "Asystent AI - Skrzynka pocztowa",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Asystent AI - Skrzynka pocztowa": {
+    "Agent AI (Gmail)": {
       "main": [
         [
           {
@@ -550,100 +446,160 @@
         ]
       ]
     },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
+    "Cache": {
+      "ai_memory": [
         [
           {
-            "node": "Asystent AI - Skrzynka pocztowa",
-            "type": "ai_languageModel",
+            "node": "Agent AI (Gmail)",
+            "type": "ai_memory",
             "index": 0
           }
         ]
       ]
     },
-    "Slack Trigger6": {
+    "Get Message": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent AI (Gmail)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Single Message": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent AI (Gmail)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Label": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent AI (Gmail)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent AI (Gmail)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reply to Message": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent AI (Gmail)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Trigger": {
       "main": [
         [
           {
-            "node": "Nieporządany event6",
+            "node": "Nieporządany event",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If6": {
+    "Nieporządany event": {
       "main": [
         [
           {
-            "node": "Event ID6",
+            "node": "Tekst czy Audio",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Tekst czy Audio6": {
+    "Tekst czy Audio": {
       "main": [
         [
           {
-            "node": "If6",
+            "node": "If",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Pobierz notatke głosową6",
+            "node": "Pobierz notatke głosową",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Transkrypcja6": {
+    "Pobierz notatke głosową": {
       "main": [
         [
           {
-            "node": "Event ID6",
+            "node": "Transkrypcja",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Nieporządany event6": {
+    "Transkrypcja": {
       "main": [
         [
           {
-            "node": "Tekst czy Audio6",
+            "node": "Event ID",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Pobierz notatke głosową6": {
+    "If": {
       "main": [
         [
           {
-            "node": "Transkrypcja6",
+            "node": "Event ID",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Event ID6": {
+    "Event ID": {
       "main": [
         [
           {
-            "node": "Asystent AI - Skrzynka pocztowa",
+            "node": "Agent AI (Gmail)",
             "type": "main",
             "index": 0
           }
         ]
       ]
     }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "78243e79453de537183305a3c3825e24de7eb0bc8972ce5a8ab629f87f2161d2"
   }
 }
