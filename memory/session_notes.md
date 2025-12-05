@@ -3,6 +3,25 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-05, 14:20 - Sesja #15 (Konfiguracja Google OAuth)
+
+**Co robiliśmy:**
+- **Konfiguracja Google Cloud:** Użytkownik przeszedł przez proces tworzenia projektu i konfiguracji OAuth.
+- **Problem Wyboru (Internal vs External):** Przeanalizowano opcję zakupu Google Workspace (Internal) vs darmowy Gmail (External).
+- **Decyzja Strategiczna:** Mimo chęci zakupu Workspace, wybrano **darmowy Gmail (External)** dla szybkości wdrożenia MVP demo. Przejście na Workspace zaplanowano po pierwszym kliencie.
+- **Status:** Utknięto w połowie procesu konfiguracji "OAuth Consent Screen".
+
+**Ustalenia:**
+- **Tryb:** External.
+- **Test Users:** Wymagane dodanie adresu email użytkownika (tego samego co admin).
+- **Cel:** Uzyskanie `Client ID` i `Client Secret` do wklejenia w n8n.
+
+**Następny krok:**
+- Dokończenie konfiguracji OAuth (dodanie Test User, wygenerowanie Credentials).
+- Wklejenie kluczy do n8n.
+- Konfiguracja Postgresa na VPS.
+---
+---
 ## 2025-12-05, 13:30 - Sesja #14 (Działający Slack Bot & Plan na Agenta PRO)
 
 **Co robiliśmy:**
