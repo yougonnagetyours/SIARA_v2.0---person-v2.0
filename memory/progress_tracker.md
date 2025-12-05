@@ -6,13 +6,15 @@ Cel: Uruchomienie Agenta w środowisku n8n na VPS (stabilność) ze sterowaniem 
 
 Status:
 - ✓ **INFRASTRUKTURA:** VPS (Mikr.us) postawiony + Docker + n8n (`https://kacper140-20140.wykr.es`).
-- 🔄 **MIGRACJA:** Przeniesienie logiki z localhosta na VPS.
-- 🔄 **INTEGRACJA:** Konfiguracja Slack App pod nowy adres (Webhook URL na VPS).
-- 📝 **CONTENT:** Profil LinkedIn gotowy (czeka na publikację po weryfikacji demo).
+- ✓ **MIGRACJA:** Logika przeniesiona na VPS.
+- ✓ **INTEGRACJA:** Slack Bot działa i odpowiada ("Rura drożna").
+- ✓ **MVP:** Scenariusz "Scope Creep" działa na prostym modelu LLM.
+- 🔄 **AGENT PRO:** Trwa budowa zaawansowanego agenta z dostępem do Gmaila (wymaga OAuth i Postgres).
 
 ## 🚧 BLOKERY
 
-- **Konfiguracja Slack App:** Należy zaktualizować "Interactivity & Shortcuts" oraz "Event Subscriptions" w Slack API, podając nowy adres Webhooka z VPS.
+- **Google OAuth:** Brak Client ID / Client Secret do obsługi Gmail Tools.
+- **Postgres:** Brak skonfigurowanej bazy danych dla pamięci Agenta.
 
 ## 🕒 HISTORIA
 

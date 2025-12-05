@@ -3,6 +3,66 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-05, 13:30 - Sesja #14 (Działający Slack Bot & Plan na Agenta PRO)
+
+**Co robiliśmy:**
+- **Sukces MVP:** Uruchomiono działający workflow Slack -> n8n -> OpenAI -> Slack (`n8n_workflow_simple_v4.json`).
+- **Implementacja Osobowości:** Wdrożono prompt "Marta - Asertywna Właścicielka" i poprawiono formatowanie na Markdown (kompatybilne ze Slackiem).
+- **Test Bojowy:** Przeprowadzono symulację "Scope Creep" na żywo. Bot poprawnie zidentyfikował prośbę o darmową pracę i odpisał asertywną odmową z cennikiem.
+- **Decyzja Strategiczna (Pivot):** Zrezygnowano z nagrywania prostego demo "kopiuj-wklej". Użytkownik zdecydował się na budowę **zaawansowanego Agenta** (Skrzynka Pocztowa z narzędziami Gmail), aby demo było wiarygodne i pokazywało realną wartość ("Wiara w produkt").
+- **Przygotowanie Agenta PRO:** Stworzono plik `n8n_workflow_agent_openai_only.json`, który jest adaptacją zaawansowanego workflow z Akademii Automatyzacji (zmieniono model Anthropic na OpenAI, zachowano strukturę Tools/Memory).
+
+**Ustalenia:**
+- Nie idziemy na skróty. Demo ma pokazywać realną integrację Gmail <-> Slack.
+- Wymagana konfiguracja Gmail OAuth w Google Cloud Console.
+- Wymagane postawienie bazy Postgres (lub użycie wbudowanej) na VPS dla obsługi pamięci długoterminowej Agenta.
+
+**Następny krok:**
+- Konfiguracja Google OAuth (Client ID/Secret) dla n8n.
+- Uruchomienie kontenera Postgres na VPS.
+- Szczegółowa analiza i konfiguracja węzłów w `n8n_workflow_agent_openai_only.json`.
+---
+---
+## 2025-12-05, 12:45 - Sesja #13 (Walka z n8n i Wdrożenie OpenAI)
+
+**Co robiliśmy:**
+- **Próba wdrożenia OpenAI:** Podjęto próbę dodania węzła `OpenAI Chat Model` do istniejącego workflow "Echo" w n8n.
+- **Problem Techniczny:** Wystąpiły problemy z mapowaniem zmiennych (Slack Channel ID) po wstawieniu nowego węzła. Węzeł końcowy "zgubił" kontekst Triggera.
+- **Blokada Wizualna:** Brak możliwości podejrzenia screenów błędów (ograniczenia `.gitignore` / bezpieczeństwa) utrudnił diagnozę "na ślepo".
+- **Decyzja:** Przerwanie walki "na żywo". Plan naprawczy: Użytkownik dostarczy kod JSON workflow w kolejnej sesji, a System odeśle poprawiony kod do wklejenia.
+- **Status:** Workflow n8n jest obecnie "rozgrzebany" (dodany moduł OpenAI, ale zerwane połączenia).
+
+**Ustalenia:**
+- #Waski: Gotowy z treścią posta i DM-a (czeka na wideo).
+- #Siara: Przejmuje pełną kontrolę nad kodem workflow w następnym kroku.
+- **Next Step:** Naprawa workflow metodą "Copy-Paste JSON" (najpewniejsza metoda bez screenów).
+
+**Następny krok:**
+- Pobraniem JSON workflow od użytkownika.
+- Naprawa powiązań (Mapping) w kodzie.
+- Wdrożenie poprawionego workflow.
+- Nagranie demo.
+---
+---
+## 2025-12-05, 12:00 - Sesja #12 (Strategia Contentowa & Demo Scope Creep)
+
+**Co robiliśmy:**
+- **Strategia LinkedIn:** Opracowano finalną treść posta "Powrót z Warsztatu". Przekaz: "Nudna stabilność (VPS) > Efektowne zabawki (Localhost)".
+- **Korekta Kursu:** Zrezygnowano z tłumaczenia się z nieobecności ("Tłumaczą się winni"). Skupiono się na wartości biznesowej (ciągłość działania 24/7).
+- **Plan Demo:** Zaplanowano nagranie wideo (Loom) pokazującego scenariusz "Scope Creep" na żywo w Slacku (bez pokazywania Gmaila).
+- **Podział Ról:** #Waski dostał formalny zakaz dotykania n8n. Technikaliami zajmuje się #Siara (i Michał).
+- **Przygotowanie n8n:** Dostarczono prompt systemowy ("Marta - Asertywna Dyplomacja") do wklejenia w węzeł OpenAI w n8n.
+
+**Ustalenia:**
+- **Strategia Outreachu:** Najpierw publikujemy post z wideo (Social Proof), a dopiero POTEM wysyłamy zaproszenia do grupy docelowej ("Marta"). Świeży content ma zwiększyć Acceptance Rate.
+- **USP:** Wideo ma pokazać "Draft w 3 sekundy" + "Ludzką kontrolę" (Human-in-the-Loop).
+
+**Następny krok:**
+- Konfiguracja węzła OpenAI w n8n (według dostarczonego promptu).
+- Nagranie wideo demo (Slack: "Scope Creep").
+- Publikacja posta i start kampanii zaproszeń.
+---
+---
 ## 2025-12-04, 21:45 - Sesja #11 (Integracja Slack <-> n8n VPS)
 
 **Co robiliśmy:**

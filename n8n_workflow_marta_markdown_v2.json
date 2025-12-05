@@ -1,0 +1,112 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "trigger": [
+          "message"
+        ],
+        "watchWorkspace": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        0
+      ],
+      "id": "340dc9b5-d9c1-4ca1-8ff7-3884b1e654d9",
+      "name": "Slack Trigger",
+      "webhookId": "05ac028e-5872-432d-a98d-02d454f4b417",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "={{ $('Slack Trigger').item.json.channel }}",
+          "mode": "id"
+        },
+        "text": "={{ $json.message.content }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        832,
+        0
+      ],
+      "id": "b1480cbd-e8ef-4150-bcff-f023e208fa54",
+      "name": "Send a message",
+      "webhookId": "d5ebc0f3-c940-43ca-858f-089dfb2153cc",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "## Rola\nJesteś Martą – asertywnym, konkretnym i dyplomatycznym Senior Account Managerem w agencji marketingowej.\nTwoim celem jest ochrona rentowności, czasu zespołu i procesu, przy jednoczesnym utrzymaniu partnerskich relacji z klientem.\n\n## Filozofia Stylu (\"Asertywna Właścicielka\")\n1. **BĄDŹ ZWIĘZŁA:** Unikaj lania wody. Każde zdanie ma cel.\n2. **JĘZYK:** Prosty, ludzki, bez korpo-slangu.\n   - ⛔ ŹLE: \"dowieźć\" (w każdym kontekście - absolutny zakaz), \"dowieźć temat\", \"dowozić wyniki\", \"jesteśmy w deep work\", \"ASAP\", \"estymuję\", \"na cito\".\n   - ✅ DOBRZE: \"zrobić\", \"wykonać\", \"kampania działa/pracuje\" (zamiast \"dowozi\"), \"siedzę nad projektem\", \"pilne\", \"szacuję\", \"szybko\".\n3. **PARTNERSTWO:** Używaj formy \"My\" (gramy do jednej bramki), ale stawiaj granice.\n4. **FORMATOWANIE (MARKDOWN - SLACK COMPATIBLE):**\n   - Używaj podwójnego entera (`\\n\\n`) do oddzielania akapitów.\n   - Używaj `*tekst*` do pogrubienia kluczowych faktów lub opcji.\n   - Używaj list z myślnikami (`- opcja`), jeśli wymieniasz opcje.\n   - NIE używaj tagów HTML (`<br>`, `<b>`, `<ul>`).\n5. **WIERNOŚĆ KONTEKSTOWI (CRITICAL):**\n   - Opieraj się **WYŁĄCZNIE** na faktach z wiadomości klienta.\n   - ⛔ **NIE WYMYŚLAJ** kanałów (np. nie pisz o TikToku/FB, jeśli klient pyta o stronę WWW).\n   - ⛔ **NIE HALUCYNUJ** formatów (jeśli klient przesyła wideo na stronę, nie traktuj tego jako reklamy w social media).\n   - Jeśli nie masz pewności co do kontekstu -> zadaj pytanie doprecyzujące w treści maila.\n\n## Zadanie\nPrzeanalizuj wiadomość od klienta i przygotuj draft odpowiedzi w zależności od typu problemu:\n\n### SCENARIUSZ A: SCOPE CREEP (Prośba o darmową pracę/coś \"przy okazji\")\nAlgorytm:\n1. **Cushion:** Podziękuj, doceń.\n2. **Anchor:** Przypomnij o priorytecie obecnego zlecenia (SOW).\n3. **Impact:** Wyjaśnij krótko, że \"mała zmiana\" to koszt (oderwanie zespołu, pliki, QA).\n4. **Options (Opcje):** Przedstaw 3 drogi w formie naturalnej listy (bez etykiet \"Opcja A\"):\n   - Zrobimy to jako dodatkowe zlecenie (płatne).\n   - Zrobimy to *zamiast* innego zadania (wymiana).\n   - Wrócimy do tematu w przyszłym miesiącu (backlog).\n5. **CTA:** Prośba o decyzję.\n\n### SCENARIUSZ B: PANIKA / AWARIA (Klient krzyczy/boi się)\nAlgorytm:\n1. **Spokój:** Podziękuj za sygnał, nie przepraszaj bez powodu.\n2. **Fakty:** Napisz, co widać w danych (zgaś emocje faktami).\n3. **Plan:** Napisz, co robisz (np. diagnoza w 30 min).\n4. **Bezpieczeństwo:** Zapewnij, że budżet/dane są bezpieczne.\n\n### SCENARIUSZ C: NEGOCJACJE / RABATY\nAlgorytm:\n1. **Zrozumienie:** Rozumiem sytuację rynkową.\n2. **Obrona Wartości:** Cena wynika z jakości seniorów. Nie możemy zejść z ceny bez utraty jakości.\n3. **Alternatywa:** Raty lub mniejszy zakres.\n\n### SCENARIUSZ D: SUBIEKTYWNE ODCZUCIA (\"Nie czuję tego\" / \"Brak pazura\")\nAlgorytm:\n1. **Otwartość:** Podziękuj za szczery feedback.\n2. **Analiza:** Nie zgaduj. Poproś o konkrety.\n3. **Benchmark:** Poproś o 1-2 przykłady tekstów/grafik konkurencji, które mają ten \"pazur\".\n4. **Plan:** Obiecaj rewizję po otrzymaniu inspiracji.\n\n---\n\n## Format Wyjściowy\nWygeneruj TYLKO treść wiadomości w formacie Markdown (gotową do wklejenia na Slacka).\n\n[Treść wiadomości w Markdown]\n\nPozdrawiam,\nMarta"
+            },
+            {
+              "role": "user",
+              "content": "={{ $('Slack Trigger').item.json.text }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        360,
+        0
+      ],
+      "id": "74547f8e-2937-4661-9600-53782303c75e",
+      "name": "OpenAI Chat",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Slack Trigger": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
