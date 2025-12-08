@@ -3,6 +3,41 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-08, 15:00 - Sesja #16 (Wielki Sukces: Agent Żyje)
+
+**Co robiliśmy:**
+- **Google OAuth:** Finalnie skonfigurowano i naprawiono błąd braku aktywnego API w Google Console.
+- **Postgres:** Postawiono kontener Postgresa na VPS i spięto go siecią Dockerową z n8n (pamięć Agenta działa).
+- **Logika Workflow:** Naprawiono błąd w Agencie, który na sztywno oczekiwał transkrypcji. Zastosowano formułę warunkową obsługującą zarówno Tekst jak i Audio.
+- **Smoke Test (Tekst):** **SUKCES.** Agent odebrał komendę na Slacku ("sprawdź maile"), połączył się z Gmailem, pobrał dane i odpisał.
+- **Smoke Test (Audio):** Wykryto błąd formatu pliku przy notatkach głosowych ze Slacka (OpenAI odrzucił plik). Do poprawki.
+
+**Ustalenia:**
+- Infrastruktura jest kompletna (VPS + n8n + Postgres + OAuth).
+- Agent działa w trybie "na żądanie" (Slack Trigger).
+
+**Następny krok:**
+- **Fix Audio:** Dodać obsługę formatów audio ze Slacka (sprawdzenie mimetype).
+- **Pivot na MVP dla Marty:** Przebudowa workflow (lub stworzenie nowego), gdzie Triggerem jest "Nowy Email" (Gmail Trigger), a Agent automatycznie tworzy draft odpowiedzi.
+---
+---
+## 2025-12-08, 14:40 - Sesja #16 (Google OAuth - Sukces)
+
+**Co robiliśmy:**
+- **Konfiguracja Google OAuth:** Przeszliśmy przez pełny proces w Google Cloud Console.
+- **Rozwiązanie problemu "Error 414":** Błąd "URI Too Long" został naprawiony poprzez ręczne ograniczenie Scopes do samego `.../auth/gmail.modify` (zamiast pełnej listy n8n).
+- **Weryfikacja:** Pomyślnie połączono konto Google (`michal.potoczny.92@gmail.com`) z instancją n8n na VPS.
+- **Status:** **Google OAuth Configured ✅**. Droga do narzędzi Gmaila jest otwarta.
+
+**Ustalenia:**
+- Używamy **jednego wąskiego uprawnienia** (`gmail.modify`), co wystarcza do czytania i tworzenia draftów, a jest bezpieczniejsze i nie psuje autoryzacji.
+- Należy pamiętać, że aplikacja jest w trybie "Testing" i wymaga odnawiania tokenu co 7 dni (chyba że przejdziemy na Production, ale na razie MVP).
+
+**Następny krok:**
+- Sprawdzenie/Uruchomienie bazy Postgres na VPS (niezbędne dla pamięci Agenta).
+- Wdrożenie workflow `n8n_workflow_agent_openai_only.json` i podpięcie Credentials (OpenAI + Google + Postgres).
+---
+---
 ## 2025-12-05, 14:20 - Sesja #15 (Konfiguracja Google OAuth)
 
 **Co robiliśmy:**

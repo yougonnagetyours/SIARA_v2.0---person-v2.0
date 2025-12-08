@@ -5,9 +5,9 @@
         "select": "channel",
         "channelId": {
           "__rl": true,
-          "value": "C08S7S2P0MS",
+          "value": "C0A1HQ6UV5G",
           "mode": "list",
-          "cachedResultName": "5-agentow-ai"
+          "cachedResultName": "general"
         },
         "text": "={{ $json.output }}",
         "otherOptions": {
@@ -25,9 +25,9 @@
         1600,
         -48
       ],
-      "id": "bdf5a9cf-0cba-4d38-bbe8-2a365d1b0af2",
+      "id": "f4614977-73a6-4432-ba76-8c06f6cb2c70",
       "name": "Wiadomość - Odpowiedź AI Agenta",
-      "webhookId": "c9c38c98-1146-4a47-a02f-021e11d44e00",
+      "webhookId": "c0043678-39c7-4af9-85bd-d48d0d15d51c",
       "credentials": {
         "slackApi": {
           "id": "NPzsVJ02vnm3zhgA",
@@ -52,7 +52,7 @@
         784,
         304
       ],
-      "id": "6673085a-09f7-4b1c-8e33-c844bcfd7b7f",
+      "id": "a1c6735c-94e8-477f-9495-9dbd7c4c13a5",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -64,13 +64,13 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $('Transkrypcja').item.json.text }}",
+        "text": "={{ $('Transcription').isExecuted ? $('Transcription').item.json.text : $('Slack Trigger').item.json.text }}",
         "options": {
           "systemMessage": "=<Cel>\n    <Glowny>Efektywne zarządzanie skrzynką pocztową i komunikacją email</Glowny>\n</Cel>\n<Zmienne>\n<Aktualna Data i Godzina> Aktualna data i godzina to: {{ $now.format('DDDD HH:mm') }} </Aktualna Data i Godzina> \n`</Zmienne>\n\n\n<Instrukcje>\n    <Instrukcja>\n        <Nazwa>PobierzWiadomosci</Nazwa>\n        <Cel>Pobieranie wiadomości z wskazanego okresu.</Cel>\n        <Zastosowanie>\n            - Gdy użytkownik prosi o wyświetlenie wiadomości z określonego okresu.\n            - Gdy potrzebujesz znaleźć wiadomości do dalszej analizy lub działania.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`date_after`**: Format YYYY-MM-DDThh:mm, określa początek okresu pobierania wiadomości.\n        </WymaganePola>\n        <OpcjonalnePola>\n            - **`date_before`**: Format YYYY-MM-DDThh:mm, określa koniec okresu pobierania wiadomości.\n            - **`query`**: Pozwala wyszukiwać konkretne wiadomości po tytule, adresie email itp.\n        </OpcjonalnePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>PobierzPojedynczaWiadomosc</Nazwa>\n        <Cel>Pobieranie szczegółów pojedynczej wiadomości.</Cel>\n        <Zastosowanie>\n            - Gdy potrzebujesz zobaczyć pełną treść wybranej wiadomości.\n            - Po znalezieniu wiadomości za pomocą PobierzWiadomosci, aby uzyskać szczegóły.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n        </WymaganePola>\n    </Instrukcja>\n    \n    <Instrukcja>\n        <Nazwa>DodajEtykiete</Nazwa>\n        <Cel>Dodawanie etykiety do wiadomości w celu kategoryzacji.</Cel>\n        <Zastosowanie>\n            - Gdy wiadomość wymaga odpowiedniego oznaczenia według kategorii.\n            - Po analizie treści wiadomości i ustaleniu właściwej etykiety.\n        </Zastosowanie>\n        <WymaganePola>\n            - **`email_id`**: Unikalny numer ID wiadomości email.\n            - **`label`... [truncated]",
           "returnIntermediateSteps": true
         }
       },
-      "id": "b5635353-54f9-45e5-9d24-64bd04d3cfc3",
+      "id": "3817dda0-c7eb-4119-8cec-8c9f0d212aff",
       "name": "Agent AI (Gmail)",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
@@ -84,7 +84,7 @@
         "sessionIdType": "customKey",
         "sessionKey": "={{ $json.id }}"
       },
-      "id": "e96adc95-55f4-4e74-940e-4597802da4af",
+      "id": "4d8c34f2-6871-4cfb-9a80-af8ae1663cb2",
       "name": "Cache",
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1,
@@ -92,7 +92,13 @@
         896,
         304
       ],
-      "notesInFlow": false
+      "notesInFlow": false,
+      "credentials": {
+        "postgres": {
+          "id": "9iT6cNqBpobjvrvH",
+          "name": "Postgres account"
+        }
+      }
     },
     {
       "parameters": {
@@ -111,9 +117,15 @@
         1264,
         304
       ],
-      "id": "4f548a17-fa23-418a-8763-47071a1dab15",
+      "id": "f3bedcb4-942c-40f8-a747-dd83d7f5f8f8",
       "name": "Get Message",
-      "webhookId": "79cf8843-666b-4145-b4e1-1bdf16d21e14"
+      "webhookId": "68e704d0-88d5-48c3-982b-652e1c0b4c70",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -130,9 +142,15 @@
         1424,
         304
       ],
-      "id": "3061af3d-2d4d-4e8d-8c93-de65d1e634b1",
+      "id": "36a824cf-6671-4cf2-bb1a-455a6c118768",
       "name": "Get Single Message",
-      "webhookId": "b884d0f1-6fb7-44f1-9e4a-8383b2677706"
+      "webhookId": "a874ce39-bb3b-42f5-8ae3-35628d793c74",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -148,9 +166,15 @@
         1568,
         304
       ],
-      "id": "974c5885-72ae-448b-8179-0f8c2dc8ef29",
+      "id": "7ba06b44-253e-439c-9ad9-5074deb07686",
       "name": "Add Label",
-      "webhookId": "5472da96-1aef-4aab-922e-35685e8a0c57"
+      "webhookId": "d7a3ea01-7406-4db6-a481-78f99f7d90a6",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -169,9 +193,15 @@
         1728,
         304
       ],
-      "id": "e8f7b0be-63ad-4f06-8882-15f426c54182",
+      "id": "b61a7522-747d-463a-a139-57e86dce4de4",
       "name": "Send Message",
-      "webhookId": "52628092-d75c-42f7-9c52-503521b1979a"
+      "webhookId": "b00f74e3-bfaf-48d3-a073-9ea04b5f0e70",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -190,9 +220,15 @@
         1888,
         304
       ],
-      "id": "8d046f76-d690-4906-aedf-2eed07788f1f",
+      "id": "c7da6a2f-feac-42d2-815b-bbbebd6e4ab1",
       "name": "Reply to Message",
-      "webhookId": "d2c74e4d-22cd-4c57-9017-8c285012b3dd"
+      "webhookId": "d1202640-ae25-401b-ba2e-572c7c0dfee6",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -201,9 +237,9 @@
         ],
         "channelId": {
           "__rl": true,
-          "value": "C08S7S2P0MS",
+          "value": "C0A1HQ6UV5G",
           "mode": "list",
-          "cachedResultName": "5-agentow-ai"
+          "cachedResultName": "general"
         },
         "options": {}
       },
@@ -213,9 +249,9 @@
         -544,
         -64
       ],
-      "id": "295cd1b1-3eb9-44ac-aa9d-d8859b472e86",
+      "id": "c6843013-f198-4175-8ecb-6e280bd9c622",
       "name": "Slack Trigger",
-      "webhookId": "811616af-5144-40fa-bbe4-4f70e339f5ab",
+      "webhookId": "5f3510e9-3292-4dee-a166-45217274b318",
       "credentials": {
         "slackApi": {
           "id": "NPzsVJ02vnm3zhgA",
@@ -225,46 +261,47 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
+        "assignments": {
+          "assignments": [
             {
-              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
-              "leftValue": "={{ $json.subtype }}",
-              "rightValue": "message_deleted",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            },
-            {
-              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
-              "leftValue": "",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
+              "id": "153970be-9674-4f01-ac41-9782f5408f56",
+              "name": "id",
+              "value": "={{ $('Slack Trigger').item.json.thread_ts || $('Slack Trigger').item.json.ts }}",
+              "type": "string"
             }
-          ],
-          "combinator": "and"
+          ]
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
+      "id": "71d59a0a-7f83-433a-a4c5-26c3de0eb116",
+      "name": "Event ID",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        -320,
-        -64
+        704,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        464,
+        112
       ],
-      "id": "fab1623a-78c5-462f-bc80-2b4f36e17b2d",
-      "name": "Nieporządany event"
+      "id": "019ba2cc-04dd-4004-ab23-028e25e021b1",
+      "name": "Transcription",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -326,8 +363,8 @@
         -64,
         -64
       ],
-      "id": "5c1ca5de-7a40-43e0-971e-3a8c26256e12",
-      "name": "Tekst czy Audio"
+      "id": "9b943aa0-2354-4c5a-ba13-947add36b2c9",
+      "name": "Text or Audio?"
     },
     {
       "parameters": {
@@ -348,23 +385,57 @@
         224,
         112
       ],
-      "id": "c804cf3d-d292-4388-b617-d7360cc6ece1",
-      "name": "Pobierz notatke głosową"
+      "id": "195e5f21-34ca-4610-b91b-eaa4eb521fc4",
+      "name": "Download voice note",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
     },
     {
       "parameters": {
-        "resource": "audio",
-        "operation": "transcribe",
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8198dd2d-3d5d-462d-b066-8a5db538fc9b",
+              "leftValue": "={{ $json.subtype }}",
+              "rightValue": "message_deleted",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "5caab4a9-8239-4670-ad0f-e1234237a30f",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 1.8,
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
       "position": [
-        464,
-        112
+        -320,
+        -64
       ],
-      "id": "97d2b06e-48ac-490c-bdfd-7713d8b95401",
-      "name": "Transkrypcja"
+      "id": "2b74bb53-1e7a-4031-b711-e9fce449b4d4",
+      "name": "Validation"
     },
     {
       "parameters": {
@@ -396,31 +467,8 @@
         336,
         -192
       ],
-      "id": "c77cae55-68f5-4627-abd5-cce9af3bc6ed",
-      "name": "If"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "153970be-9674-4f01-ac41-9782f5408f56",
-              "name": "id",
-              "value": "={{ $('Slack Trigger').item.json.thread_ts || $('Slack Trigger').item.json.ts }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "13e73263-4a4c-4e1c-9f09-02d8825a8ea5",
-      "name": "Event ID",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        704,
-        -48
-      ]
+      "id": "e3bf3eea-5354-4b9e-bdfd-2634e7e86bff",
+      "name": "Validation 2"
     }
   ],
   "connections": {
@@ -516,69 +564,7 @@
       "main": [
         [
           {
-            "node": "Nieporządany event",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Nieporządany event": {
-      "main": [
-        [
-          {
-            "node": "Tekst czy Audio",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Tekst czy Audio": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Pobierz notatke głosową",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pobierz notatke głosową": {
-      "main": [
-        [
-          {
-            "node": "Transkrypcja",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Transkrypcja": {
-      "main": [
-        [
-          {
-            "node": "Event ID",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Event ID",
+            "node": "Validation",
             "type": "main",
             "index": 0
           }
@@ -590,6 +576,68 @@
         [
           {
             "node": "Agent AI (Gmail)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcription": {
+      "main": [
+        [
+          {
+            "node": "Event ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text or Audio?": {
+      "main": [
+        [
+          {
+            "node": "Validation 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download voice note",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download voice note": {
+      "main": [
+        [
+          {
+            "node": "Transcription",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation": {
+      "main": [
+        [
+          {
+            "node": "Text or Audio?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validation 2": {
+      "main": [
+        [
+          {
+            "node": "Event ID",
             "type": "main",
             "index": 0
           }
