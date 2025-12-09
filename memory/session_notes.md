@@ -3,6 +3,49 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-09, 12:45 - Sesja #18 (MVP Sukces: Magic Gmail Działa)
+
+**Co robiliśmy:**
+- **Walka z n8n:** Naprawiono błędy mapowania JSON-a (`[object Object]`) i parsowania odpowiedzi AI.
+- **Wdrożenie v4:** Ręcznie skonfigurowano węzły w n8n, dodając "Parser JSON" i poprawne mapowanie zmiennych Gmaila (adres nadawcy ukryty w tablicy).
+- **Smoke Test (Bojowy):** Wysłano maila "Scope Creep" z zewnętrznej skrzynki.
+- **Wynik:** **SUKCES.** Agent odebrał maila, zanalizował go i utworzył poprawny Draft w folderze "Wersje robocze" Gmaila. Powiadomienie na Slacku również dotarło.
+
+**Ustalenia:**
+- Mamy działające MVP. Agent tworzy drafty, ale jako **nowe wiadomości**, a nie w wątku (Reply).
+- Treść generowana przez Martę wymaga doszlifowania (stylistycznie).
+
+**Następny krok (Jutro):**
+- **Wątkowanie:** Sprawdzić, jak rozwiązano "Reply in Thread" w workflow PRO (`agent_AI_gmail.json`), który wcześniej analizowaliśmy. Celem jest sklejanie draftu z oryginalnym mailem.
+- **Tuning Pisarza:** Poprawa promptu Marty, żeby odpowiedzi były bardziej naturalne/lepsze.
+- **Nagranie Demo:** Dopiero po dopracowaniu wątków i stylu.
+---
+## 2025-12-09, 11:30 - Sesja #17 (Postgres Fix & Magic Workflow v4)
+
+**Co robiliśmy:**
+- **Naprawa Infrastruktury (Docker Network):**
+    - Rozwiązano problem połączenia n8n <-> Postgres (`bad address`).
+    - N8n i Postgres znajdowały się w odseparowanych sieciach dockerowych (`bridge` vs `agent_net`).
+    - Zastosowano komendę `docker network connect agent_net n8n`, co skutecznie połączyło kontenery.
+    - Połączenie z bazą danych w n8n świeci na zielono (Host: `postgres`).
+- **Workflow "Magic Gmail" (Ewolucja v1 -> v4):**
+    - Przeszliśmy przez bolesny proces debugowania workflow w n8n.
+    - Problemy: Parsowanie JSON z OpenAI (zwracany jako string), błędy mapowania zmiennych (`[object Object]`), niezgodność wersji węzłów.
+    - **Rozwiązanie (v4):** Stworzono finalny plik `n8n_workflow_magic_gmail_v4_final.json`.
+    - Kluczowe zmiany w v4:
+        - Dodano węzeł `Code` ("Parser JSON") do bezpiecznego zamieniania tekstu z AI na obiekt.
+        - Zastosowano `JSON.stringify()` w promptach, aby uniknąć błędów mapowania.
+        - Zaszyto prompty systemowe (Bramkarz, Marta) bezpośrednio w kodzie JSON.
+- **Dokumentacja:** Stworzono plik `product_mvp/workflow_documentation_v2.md` opisujący logikę procesu.
+
+**Ustalenia:**
+- Workflow v4 jest wersją ostateczną do Smoke Testu.
+- Postgres jest gotowy do działania (pamięć długoterminowa jest możliwa w przyszłości).
+
+**Następny krok:**
+- Przeprowadzenie Smoke Testu (Wysłanie maila "Scope Creep").
+- Nagranie wideo demo (Loom) dla Marty.
+---
 ## 2025-12-08, 15:00 - Sesja #16 (Wielki Sukces: Agent Żyje)
 
 **Co robiliśmy:**

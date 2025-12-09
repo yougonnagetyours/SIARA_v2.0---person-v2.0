@@ -1,0 +1,273 @@
+{
+  "name": "Agent Magic Gmail v4 (Structure Only)",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "q": "-from:noreply -from:no-reply -category:promotions -category:social -subject:faktura label:INBOX is:unread"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        0
+      ],
+      "id": "gmail-trigger",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "WKLEJ_TUTAJ_PROMPT_BRAMKARZA"
+            },
+            {
+              "role": "user",
+              "content": "=Analizuj ten email:\n\nOd: {{ JSON.stringify($json.from) }}\nTemat: {{ $json.subject }}\nSnippet: {{ $json.snippet }}\nTreść: {{ $json.textPlain }}"
+            }
+          ]
+        },
+        "jsonOutput": true
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        40,
+        0
+      ],
+      "id": "ai-bramkarz",
+      "name": "AI Bramkarz",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Naprawiamy odpowiedź AI (z tekstu na obiekt)\ntry {\n  const content = $input.item.json.message.content;\n  const cleanContent = content.replace(/```json/g, '').replace(/```/g, '').trim();\n  return JSON.parse(cleanContent);\n} catch (error) {\n  return { needs_reply: false, reason: \"Błąd parsowania JSON\" };\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ],
+      "id": "json-parser",
+      "name": "Parser JSON"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.needs_reply }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        480,
+        0
+      ],
+      "id": "decision-if",
+      "name": "Czy odpisac?"
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "WKLEJ_TUTAJ_PROMPT_MARTY"
+            },
+            {
+              "role": "user",
+              "content": "=Oto mail od klienta:\nOd: {{ $('Gmail Trigger').item.json.from }}\nTemat: {{ $('Gmail Trigger').item.json.subject }}\nTreść:\n{{ $('Gmail Trigger').item.json.textPlain }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        700,
+        -100
+      ],
+      "id": "ai-pisarz",
+      "name": "AI Pisarz (Marta)",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "create",
+        "subject": "={{ $('Gmail Trigger').item.json.subject }}",
+        "message": "={{ $json.message.content }}",
+        "to": "={{ $('Gmail Trigger').item.json.from }}",
+        "additionalFields": {
+          "sendAsDraft": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        920,
+        -100
+      ],
+      "id": "create-draft",
+      "name": "Create Draft",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0A1HQ6UV5G",
+          "mode": "list",
+          "cachedResultName": "general"
+        },
+        "text": "=🔔 *Nowy Draft!* \n\n*Od:* {{ $('Gmail Trigger').item.json.from }}\n*Temat:* {{ $('Gmail Trigger').item.json.subject }}\n*Status:* {{ $('Parser JSON').item.json.reason }}\n\n>>> Sprawdź Drafty w Gmailu.",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1140,
+        -100
+      ],
+      "id": "slack-notify",
+      "name": "Powiadomienie Slack",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        700,
+        140
+      ],
+      "id": "ignore-node",
+      "name": "Ignoruj"
+    }
+  ],
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Bramkarz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Bramkarz": {
+      "main": [
+        [
+          {
+            "node": "Parser JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parser JSON": {
+      "main": [
+        [
+          {
+            "node": "Czy odpisac?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Czy odpisac?": {
+      "main": [
+        [
+          {
+            "node": "AI Pisarz (Marta)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ignoruj",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Pisarz (Marta)": {
+      "main": [
+        [
+          {
+            "node": "Create Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Draft": {
+      "main": [
+        [
+          {
+            "node": "Powiadomienie Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

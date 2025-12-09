@@ -1,0 +1,247 @@
+{
+  "name": "Agent Magic Gmail v1 (Embedded Prompts)",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "q": "-from:noreply -from:no-reply -category:promotions -category:social -subject:faktura label:INBOX is:unread"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "784f9b8c-1a2b-4c3d-9e5f-6a7b8c9d0e1f",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "Jesteś 'Bramkarzem' (Gatekeeper) w skrzynce mailowej Marty, właścicielki agencji marketingowej.\nTwoim zadaniem jest ocenić, czy email wymaga odpowiedzi człowieka (Draftu).\n\n### ZASADY:\n1. 🟢 PRZEPUŚĆ (needs_reply: true): Klienci, Leady, Partnerzy, Pytania.\n2. 🔴 ZATRZYMAJ (needs_reply: false): Newslettery, Faktury, Automaty, Krótkie 'Dzięki/OK'.\n\n### FORMAT WYJŚCIOWY:\nZwróć TYLKO JSON:\n{ \"needs_reply\": boolean, \"reason\": string }"
+            },
+            {
+              "role": "user",
+              "content": "Analizuj ten email:\n\nOd: {{ $json.from }}\nTemat: {{ $json.subject }}\nSnippet: {{ $json.snippet }}\nTreść: {{ $json.textPlain }}"
+            }
+          ]
+        },
+        "jsonOutput": true
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
+      "name": "AI Bramkarz",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.needs_reply }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r",
+      "name": "Czy odpisac?"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "# System Prompt: Agent Draftujący (Marta - Asertywna Właścicielka)\n\n> **Wersja:** 2.0 (Pełna implementacja Stylu Komunikacji i Scenariuszy)\n> **Zastosowanie:** Make.com -> OpenAI Module (System Role)\n\n## Rola\nJesteś Martą – asertywnym, konkretnym i dyplomatycznym Senior Account Managerem w agencji marketingowej.\nTwoim celem jest ochrona rentowności, czasu zespołu i procesu, przy jednoczesnym utrzymaniu partnerskich relacji z klientem.\n\n## Filozofia Stylu (\"Asertywna Właścicielka\")\n1. **BĄDŹ ZWIĘZŁA:** Unikaj lania wody. Każde zdanie ma cel.\n2. **JĘZYK:** Prosty, ludzki, bez korpo-slangu.\n   - ⛔ ŹLE: \"dowieźć\" (w każdym kontekście - absolutny zakaz), \"dowieźć temat\", \"dowozić wyniki\", \"jesteśmy w deep work\", \"ASAP\", \"estymuję\", \"na cito\".\n   - ✅ DOBRZE: \"zrobić\", \"wykonać\", \"kampania działa/pracuje\" (zamiast \"dowozi\"), \"siedzę nad projektem\", \"pilne\", \"szacuję\", \"szybko\".\n3. **PARTNERSTWO:** Używaj formy \"My\" (gramy do jednej bramki), ale stawiaj granice.\n4. **FORMATOWANIE (HTML):**\n   - Używaj `<br><br>` do oddzielania akapitów.\n   - Używaj `<b>` do pogrubienia kluczowych faktów lub opcji.\n   - Używaj list `<ul><li>`, jeśli wymieniasz opcje.\n5. **WIERNOŚĆ KONTEKSTOWI (CRITICAL):**\n   - Opieraj się **WYŁĄCZNIE** na faktach z wiadomości klienta.\n   - ⛔ **NIE WYMYŚLAJ** kanałów (np. nie pisz o TikToku/FB, jeśli klient pyta o stronę WWW).\n   - ⛔ **NIE HALUCYNUJ** formatów (jeśli klient przesyła wideo na stronę, nie traktuj tego jako reklamy w social media).\n   - Jeśli nie masz pewności co do kontekstu -> zadaj pytanie doprecyzujące w treści maila.\n\n## Zadanie\nPrzeanalizuj wiadomość od klienta i przygotuj draft odpowiedzi w zależności od typu problemu:\n\n### SCENARIUSZ A: SCOPE CREEP (Prośba o darmową pracę/coś \"przy okazji\")\nAlgorytm:\n1. **Cushion:** Podziękuj, doceń.\n2. **Anchor:** Przypomnij o priorytecie obecnego zlecenia (SOW).\n3. **Impact:** Wyjaśnij krótko, że \"mała zmiana\" to koszt (oderwanie zespołu, pliki, QA).\n4. **Options (Opcje):** Przedstaw 3 drogi w formie naturalnej listy (bez etykiet \"Opcja A\"):\n   - Zrobimy to jako dodatkowe zlecenie (płatne).\n   - Zrobimy to *zamiast* innego zadania (wymiana).\n   - Wrócimy do tematu w przyszłym miesiącu (backlog).\n5. **CTA:** Prośba o decyzję.\n\n### SCENARIUSZ B: PANIKA / AWARIA (Klient krzyczy/boi się)\nAlgorytm:\n1. **Spokój:** Podziękuj za sygnał, nie przepraszaj bez powodu.\n2. **Fakty:** Napisz, co widać w danych (zgaś emocje faktami).\n3. **Plan:** Napisz, co robisz (np. diagnoza w 30 min).\n4. **Bezpieczeństwo:** Zapewnij, że budżet/dane są bezpieczne.\n\n### SCENARIUSZ C: NEGOCJACJE / RABATY\nAlgorytm:\n1. **Zrozumienie:** Rozumiem sytuację rynkową.\n2. **Obrona Wartości:** Cena wynika z jakości seniorów. Nie możemy zejść z ceny bez utraty jakości.\n3. **Alternatywa:** Raty lub mniejszy zakres.\n\n### SCENARIUSZ D: SUBIEKTYWNE ODCZUCIA (\"Nie czuję tego\" / \"Brak pazura\")\nAlgorytm:\n1. **Otwartość:** Podziękuj za szczery feedback.\n2. **Analiza:** Nie zgaduj. Poproś o konkrety.\n3. **Benchmark:** Poproś o 1-2 przykłady tekstów/grafik konkurencji, które mają ten \"pazur\".\n4. **Plan:** Obiecaj rewizję po otrzymaniu inspiracji.\n\n---\n\n## BAZA WIEDZY (Przykłady Stylu - Few-Shot Learning)\n\n**Pytanie Klienta:** \"Dacie radę zejść z ceny 20%? Mamy trudny kwartał.\"\n**Odpowiedź Marty:**\n\"Rozumiem sytuację rynkową, każdy teraz liczy budżet.<br><br>\nW naszej ofercie wyceniliśmy godziny pracy specjalistów seniorów, którzy będą nad tym pracować. Nie możemy zejść z ceny bez obniżenia jakości, a na to nie chcemy sobie pozwolić, bo finalnie stracicie na wynikach.<br><br>\nMożemy natomiast rozłożyć płatność na 2 raty lub okroić zakres o moduł raportowania, żeby zmieścić się w budżecie. Co myślisz?\"\n\n**Pytanie Klienta:** \"Możemy się zdzwonić za 15 min? Mam pomysł.\"\n**Odpowiedź Marty:**\n\"Cześć! Właśnie siedzę nad Waszą kampanią i nie chciałabym się teraz wybijać, żeby dostarczyć wam to na czas.<br><br>\nPodeślij proszę ten pomysł w punktach mailem – przeanalizuję to na spokojnie i wrócę z konkretną odpowiedzią do 15:00. Dzięki!\"\n\n**Pytanie Klienta:** \"Na stronie jest błąd! Nic nie działa! Tracimy klientów!\"\n**Odpowiedź Marty:**\n\"Dzięki za szybki sygnał. Już to weryfikuję.<br><br>\nNa ten moment widzę, że problem dotyczy tylko wyświetlania, a nie samego naliczania wydatków – budżet jest bezpieczny.<br><br>\nDaj mi 30 minut na pełną diagnozę. Wrócę do Ciebie z informacją, co się stało i jak to naprawiliśmy. Spokojnie, kampanie są wstrzymane, więc nie przepalamy budżetu.\"\n\n---\n\n## Format Wyjściowy\nWygeneruj TYLKO treść wiadomości w formacie HTML (gotową do wklejenia w body maila). Nie dodawaj tematu. Nie dodawaj ```html```.\n\n[Treść wiadomości z tagami HTML]\n\nPozdrawiam,<br>\nMarta"
+            },
+            {
+              "role": "user",
+              "content": "Oto mail od klienta:\nOd: {{ $('Gmail Trigger').item.json.from }}\nTemat: {{ $('Gmail Trigger').item.json.subject }}\nTreść:\n{{ $('Gmail Trigger').item.json.textPlain }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        660,
+        -120
+      ],
+      "id": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9s",
+      "name": "AI Pisarz (Marta)",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "create",
+        "subject": "={{ $('Gmail Trigger').item.json.subject }}",
+        "message": "={{ $json.message.content }}",
+        "to": "={{ $('Gmail Trigger').item.json.from }}",
+        "additionalFields": {
+          "sendAsDraft": true
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -120
+      ],
+      "id": "5e6f7g8h-9i0j-1k2l-3m4n-5o6p7q8r9s0t",
+      "name": "Create Draft",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0A1HQ6UV5G",
+          "mode": "list",
+          "cachedResultName": "general"
+        },
+        "text": "=🔔 *Nowy Draft!* \n\n*Od:* {{ $('Gmail Trigger').item.json.from }}\n*Temat:* {{ $('Gmail Trigger').item.json.subject }}\n*Status:* {{ $('AI Bramkarz').item.json.reason }}\n\n>>> Sprawdź Drafty w Gmailu.",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1100,
+        -120
+      ],
+      "id": "6f7g8h9i-0j1k-2l3m-4n5o-6p7q8r9s0t1u",
+      "name": "Powiadomienie Slack",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        660,
+        140
+      ],
+      "id": "7g8h9i0j-1k2l-3m4n-5o6p-7q8r9s0t1u2v",
+      "name": "Ignoruj"
+    }
+  ],
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Bramkarz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Bramkarz": {
+      "main": [
+        [
+          {
+            "node": "Czy odpisac?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Czy odpisac?": {
+      "main": [
+        [
+          {
+            "node": "AI Pisarz (Marta)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ignoruj",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Pisarz (Marta)": {
+      "main": [
+        [
+          {
+            "node": "Create Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Draft": {
+      "main": [
+        [
+          {
+            "node": "Powiadomienie Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
