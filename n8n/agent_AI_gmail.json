@@ -25,9 +25,9 @@
         1600,
         -48
       ],
-      "id": "f4614977-73a6-4432-ba76-8c06f6cb2c70",
+      "id": "5aded4e4-5db4-4966-b10e-c1fb8016a950",
       "name": "Wiadomość - Odpowiedź AI Agenta",
-      "webhookId": "c0043678-39c7-4af9-85bd-d48d0d15d51c",
+      "webhookId": "206d55a7-936d-46b2-9a68-15de2507f915",
       "credentials": {
         "slackApi": {
           "id": "NPzsVJ02vnm3zhgA",
@@ -52,7 +52,7 @@
         784,
         304
       ],
-      "id": "a1c6735c-94e8-477f-9495-9dbd7c4c13a5",
+      "id": "9da96056-7aa5-4332-9ad0-385b916e23ce",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -70,7 +70,7 @@
           "returnIntermediateSteps": true
         }
       },
-      "id": "3817dda0-c7eb-4119-8cec-8c9f0d212aff",
+      "id": "f8f06895-a980-48af-80a3-961e7840c2ea",
       "name": "Agent AI (Gmail)",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
@@ -84,7 +84,7 @@
         "sessionIdType": "customKey",
         "sessionKey": "={{ $json.id }}"
       },
-      "id": "4d8c34f2-6871-4cfb-9a80-af8ae1663cb2",
+      "id": "b434c117-c790-4045-97f5-2c9c4a889613",
       "name": "Cache",
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1,
@@ -117,9 +117,9 @@
         1264,
         304
       ],
-      "id": "f3bedcb4-942c-40f8-a747-dd83d7f5f8f8",
+      "id": "c4e2b8b5-2abd-46da-b7b4-3c569e0931e5",
       "name": "Get Message",
-      "webhookId": "68e704d0-88d5-48c3-982b-652e1c0b4c70",
+      "webhookId": "0b3d5c25-8cb9-4992-893c-6c1cbfa2dcb0",
       "credentials": {
         "gmailOAuth2": {
           "id": "UkJS0m5NScuFyhnL",
@@ -142,9 +142,9 @@
         1424,
         304
       ],
-      "id": "36a824cf-6671-4cf2-bb1a-455a6c118768",
+      "id": "c94953a0-8f7e-46cd-aa51-d5e403c05b0c",
       "name": "Get Single Message",
-      "webhookId": "a874ce39-bb3b-42f5-8ae3-35628d793c74",
+      "webhookId": "12627413-303b-4fb7-8fa7-1e43aa036019",
       "credentials": {
         "gmailOAuth2": {
           "id": "UkJS0m5NScuFyhnL",
@@ -166,9 +166,9 @@
         1568,
         304
       ],
-      "id": "7ba06b44-253e-439c-9ad9-5074deb07686",
+      "id": "e1c44168-74da-427c-ac6c-632eb5e30618",
       "name": "Add Label",
-      "webhookId": "d7a3ea01-7406-4db6-a481-78f99f7d90a6",
+      "webhookId": "94a91ab9-9710-49ea-86f9-00345ad84eaf",
       "credentials": {
         "gmailOAuth2": {
           "id": "UkJS0m5NScuFyhnL",
@@ -193,9 +193,9 @@
         1728,
         304
       ],
-      "id": "b61a7522-747d-463a-a139-57e86dce4de4",
+      "id": "e01b0ea4-0a4a-485c-a147-65e67b37d16b",
       "name": "Send Message",
-      "webhookId": "b00f74e3-bfaf-48d3-a073-9ea04b5f0e70",
+      "webhookId": "31a0a2c4-e0e0-4f48-9dfa-dcf13abfcc27",
       "credentials": {
         "gmailOAuth2": {
           "id": "UkJS0m5NScuFyhnL",
@@ -220,9 +220,9 @@
         1888,
         304
       ],
-      "id": "c7da6a2f-feac-42d2-815b-bbbebd6e4ab1",
+      "id": "14560c93-9c07-45ef-ad63-5d0aba65ab60",
       "name": "Reply to Message",
-      "webhookId": "d1202640-ae25-401b-ba2e-572c7c0dfee6",
+      "webhookId": "0f853c55-53eb-463b-ae61-aaa01766b7cc",
       "credentials": {
         "gmailOAuth2": {
           "id": "UkJS0m5NScuFyhnL",
@@ -249,9 +249,9 @@
         -544,
         -64
       ],
-      "id": "c6843013-f198-4175-8ecb-6e280bd9c622",
+      "id": "9de14794-5e8b-4954-b5ff-1be9f051c5bc",
       "name": "Slack Trigger",
-      "webhookId": "5f3510e9-3292-4dee-a166-45217274b318",
+      "webhookId": "6694e8e6-f886-4e0d-be41-7a0567b8d7c1",
       "credentials": {
         "slackApi": {
           "id": "NPzsVJ02vnm3zhgA",
@@ -273,7 +273,7 @@
         },
         "options": {}
       },
-      "id": "71d59a0a-7f83-433a-a4c5-26c3de0eb116",
+      "id": "791abe6b-9ea3-4e7c-a2bf-0ef41efa574f",
       "name": "Event ID",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -294,7 +294,7 @@
         464,
         112
       ],
-      "id": "019ba2cc-04dd-4004-ab23-028e25e021b1",
+      "id": "b6668a9a-a33b-43c3-adea-cc0b71a67535",
       "name": "Transcription",
       "credentials": {
         "openAiApi": {
@@ -363,7 +363,7 @@
         -64,
         -64
       ],
-      "id": "9b943aa0-2354-4c5a-ba13-947add36b2c9",
+      "id": "0b6d65c6-8d84-4a0f-af50-9c831c1037da",
       "name": "Text or Audio?"
     },
     {
@@ -385,7 +385,7 @@
         224,
         112
       ],
-      "id": "195e5f21-34ca-4610-b91b-eaa4eb521fc4",
+      "id": "cad25d89-c5dd-4d43-a2c9-3bd6504c4b28",
       "name": "Download voice note",
       "credentials": {
         "slackApi": {
@@ -434,7 +434,7 @@
         -320,
         -64
       ],
-      "id": "2b74bb53-1e7a-4031-b711-e9fce449b4d4",
+      "id": "152e3bd1-2129-47d3-9c9e-55fba0273d1d",
       "name": "Validation"
     },
     {
@@ -467,7 +467,7 @@
         336,
         -192
       ],
-      "id": "e3bf3eea-5354-4b9e-bdfd-2634e7e86bff",
+      "id": "3a0b1aec-6429-4e8f-875b-e996563acdd9",
       "name": "Validation 2"
     }
   ],

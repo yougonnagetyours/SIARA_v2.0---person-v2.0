@@ -1,20 +1,19 @@
 ## 🎯 AKTUALNY ETAP
 
-**1. Tydzień 1: Budowa Demo (VPS + n8n + Slack)**
+**2. Tydzień 2: Pivot na MVP "Skrzynka Pocztowa" (Real Value)**
 
-Cel: Uruchomienie Agenta w środowisku n8n na VPS (stabilność) ze sterowaniem przez Slacka.
+Cel: Zmiana logiki z "Agent na żądanie" (Slack) na "Automat w tle" (Gmail Trigger). Agent ma sam wyłapywać maile i przygotowywać drafty.
 
 Status:
-- ✓ **INFRASTRUKTURA:** VPS (Mikr.us) postawiony + Docker + n8n (`https://kacper140-20140.wykr.es`).
-- ✓ **MIGRACJA:** Logika przeniesiona na VPS.
-- ✓ **INTEGRACJA:** Slack Bot działa i odpowiada ("Rura drożna").
-- ✓ **MVP:** Scenariusz "Scope Creep" działa na prostym modelu LLM.
-- 🔄 **AGENT PRO:** Trwa budowa zaawansowanego agenta z dostępem do Gmaila (wymaga OAuth i Postgres).
+- ✓ **INFRASTRUKTURA:** VPS (Mikr.us) + Docker + n8n + Postgres (Pamięć).
+- ✓ **INTEGRACJA:** Google OAuth skonfigurowany (Scope: `gmail.modify`).
+- ✓ **SMOKE TEST 1 (Slack Tekst):** SUKCES. Agent czyta maile na komendę.
+- ❌ **SMOKE TEST 2 (Slack Audio):** BŁĄD. Problemy z formatem plików audio.
+- 🔄 **LOGIKA:** Przebudowa workflow pod "New Email Trigger".
 
 ## 🚧 BLOKERY
 
-- **Google OAuth:** Brak Client ID / Client Secret do obsługi Gmail Tools.
-- **Postgres:** Brak skonfigurowanej bazy danych dla pamięci Agenta.
+- **Brak Workflow MVP:** Trzeba stworzyć/przerobić workflow, aby reagował na nowe maile, a nie na komendę ze Slacka.
 
 ## 🕒 HISTORIA
 
@@ -26,3 +25,4 @@ Status:
 ### 1. TECH STACK (2025-12-04)
 - ✓ Decyzja o porzuceniu localhosta (problemy z tunelem).
 - ✓ Wdrożenie na VPS (Mikr.us) dla stabilności demo.
+- ✓ Konfiguracja Google OAuth i Postgres (2025-12-08).
