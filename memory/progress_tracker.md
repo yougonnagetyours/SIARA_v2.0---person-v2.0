@@ -8,12 +8,12 @@ Status:
 - ✓ **INFRASTRUKTURA:** VPS (Mikr.us) + Docker + n8n + Postgres (Pamięć).
 - ✓ **SIECI:** Naprawiono komunikację międzykontenerową (Docker Network).
 - ✓ **INTEGRACJA:** Google OAuth skonfigurowany (Scope: `gmail.modify`).
-- ✓ **MVP (v4):** Workflow działa. Drafty powstają w Gmailu. Slack powiadamia.
-- 🔄 **DOSTRAJANIE:** Trwa praca nad obsługą wątków (Reply) i stylem odpowiedzi.
+- ✓ **MVP (v5):** Workflow w pełni funkcjonalny. Agent tworzy drafty jako **odpowiedzi w wątku** (Reply in Thread).
+- 🔄 **DOSTRAJANIE:** Trwa tuning promptu Marty (styl komunikacji).
 
 ## 🚧 BLOKERY
 
-- **Brak wątkowania:** Drafty tworzą się jako nowe maile, co utrudnia konwersację. Do rozwiązania w v5.
+- (Brak)
 
 ## 🕒 HISTORIA
 

@@ -102,3 +102,14 @@ Jesteś osobistym asystentem biznesowym. Pomagasz przedsiębiorcy przeprowadzić
 - Nie nadpisuj plików bez pytania
 - Zapisuj tylko istotne ustalenia, nie całą rozmowę
 - Przy zapisywaniu session_notes ZAWSZE używaj pełnej daty i godziny w formacie RRRR-MM-DD, GG:MM
+
+## 🚫 ZASADY PAMIĘCI (CRITICAL)
+
+- **`GEMINI.md` (Router Systemowy):**
+  - **STATUS:** 🛑 READ-ONLY (Tylko do odczytu).
+  - **ZAKAZ:** Nigdy nie zapisuj tam postępów, faktów ani notatek. To plik konfiguracyjny systemu.
+
+- **`session_notes.md` (w `agents/waski` lub `memory/`):**
+  - **STATUS:** ✅ WRITE (Do zapisu).
+  - **NAKAZ:** Wszystkie postępy, wnioski, fakty techniczne i ustalenia zapisuj TUTAJ.
+  - **NARZĘDZIE:** Używaj śmiało `save_memory` lub `replace` (wg Algorytmu Kotwicy) w kontekście tego pliku.

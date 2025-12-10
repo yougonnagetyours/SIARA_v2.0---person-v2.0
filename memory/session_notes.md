@@ -1,7 +1,28 @@
 # Notatki z Sesji
 
-Najnowsze wpisy na górze ↓
+Najnowsze wpisy na górę ↓
 
+---
+## 2025-12-10, 10:45 - Sesja #19 (MVP v5: Wątkowanie Działa!)
+
+**Co robiliśmy:**
+- **Naprawa n8n (v5):**
+    - Zmieniono operację w węźle Gmail z `Create Draft` na `Reply`.
+    - Skonfigurowano opcję "Create Draft" wewnątrz `Reply`, aby nie wysyłać wiadomości od razu.
+    - Naprawiono mapowanie zmiennych dla AI Pisarza (zamiana `textPlain` na `text` oraz precyzyjne wyciągnięcie nadawcy z obiektu `from`).
+- **Test Bojowy:**
+    - Scenariusz: "Start kampanii na LinkedIn" (Scope Creep).
+    - Wynik: Agent poprawnie odebrał maila, zanalizował treść i utworzył **draft odpowiedzi w wątku** (Reply in Thread).
+    - Treść draftu: Asertywna odmowa (zgodnie z promptem Marty).
+
+**Ustalenia:**
+- Mamy w pełni funkcjonalne MVP (v5). Agent czyta, myśli, odpisuje w wątku.
+- Prompt Marty wymaga lekkiego tuningu (styl, ton), ale technologia działa.
+- **Zasady Pamięci:** Wprowadzono rygor: Zero zapisu w `GEMINI.md`, wszystko w `session_notes.md`.
+
+**Następny krok (Jutro):**
+- **Tuning Promptu:** Dopracowanie stylu Marty na podstawie naszych test cases (Scope Creep, Panika, Vibe Check).
+- **Nagranie Demo:** Skoro technologia działa, czas na wideo dla klientów.
 ---
 ## 2025-12-09, 12:45 - Sesja #18 (MVP Sukces: Magic Gmail Działa)
 
