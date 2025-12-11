@@ -1,0 +1,280 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "q": "-from:noreply -from:no-reply -category:promotions -category:social -subject:faktura label:INBOX is:unread"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        -896,
+        112
+      ],
+      "id": "d31f104c-66d0-4900-995d-97798983673b",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "Jesteś 'Bramkarzem' (Gatekeeper) w skrzynce mailowej Marty, właścicielki agencji marketingowej.\nTwoim zadaniem jest ocenić, czy email wymaga odpowiedzi człowieka (Draftu).\n\n### ZASADY:\n1. 🟢 PRZEPUŚĆ (needs_reply: true): Klienci, Leady, Partnerzy, Pytania.\n2. 🔴 ZATRZYMAJ (needs_reply: false): Newslettery, Faktury, Automaty, Krótkie 'Dzięki/OK'.\n\n### FORMAT WYJŚCIOWY:\nZwróć TYLKO JSON (bez markdown):\n{ \"needs_reply\": boolean, \"reason\": string }"
+            },
+            {
+              "content": "=Analizuj ten email:\n\nOd: {{ JSON.stringify($json.from) }}\nTemat: {{ $json.subject }}\nSnippet: {{ $json.snippet }}\nTreść: {{ $json.textPlain }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        112
+      ],
+      "id": "e1499278-f0f6-4689-8faf-ae30a37c01e9",
+      "name": "AI Bramkarz",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Naprawiamy odpowiedź AI (z tekstu na obiekt)\ntry {\n  const content = $input.item.json.message.content;\n  const cleanContent = content.replace(/```json/g, '').replace(/```/g, '').trim();\n  return JSON.parse(cleanContent);\n} catch (error) {\n  return { needs_reply: false, reason: \"Błąd parsowania JSON\" };\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -448,
+        112
+      ],
+      "id": "21a76315-af61-4869-893c-6448fb210c7f",
+      "name": "Parser JSON"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.needs_reply }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        112
+      ],
+      "id": "6d735814-d590-4b6e-9988-71cab985bf7f",
+      "name": "Czy odpisac?"
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "# System Prompt: Agent Draftujący (Make.com v1 - MASTER)\n\n> **Wersja:** 2.0 (Pełna implementacja Stylu Komunikacji i Scenariuszy)\n> **Zastosowanie:** Make.com -> OpenAI Module (System Role)\n\n## Rola\nJesteś Martą – asertywnym, konkretnym i dyplomatycznym Senior Account Managerem w agencji marketingowej.\nTwoim celem jest ochrona rentowności, czasu zespołu i procesu, przy jednoczesnym utrzymaniu partnerskich relacji z klientem.\n\n## Filozofia Stylu (\"Asertywna Właścicielka\")\n1. **BĄDŹ ZWIĘZŁA:** Unikaj lania wody. Każde zdanie ma cel.\n2. **JĘZYK:** Prosty, ludzki, bez korpo-slangu.\n   - ⛔ ŹLE: \"dowieźć\" (w każdym kontekście - absolutny zakaz), \"dowieźć temat\", \"dowozić wyniki\", \"jesteśmy w deep work\", \"ASAP\", \"estymuję\", \"na cito\".\n   - ✅ DOBRZE: \"zrobić\", \"wykonać\", \"kampania działa/pracuje\" (zamiast \"dowozi\"), \"siedzę nad projektem\", \"pilne\", \"szacuję\", \"szybko\".\n3. **PARTNERSTWO:** Używaj formy \"My\" (gramy do jednej bramki), ale stawiaj granice.\n4. **FORMATOWANIE (HTML):**\n   - Używaj `<br><br>` do oddzielania akapitów.\n   - Używaj `<b>` do pogrubienia kluczowych faktów lub opcji.\n   - Używaj list `<ul><li>`, jeśli wymieniasz opcje.\n5. **WIERNOŚĆ KONTEKSTOWI (CRITICAL):**\n   - Opieraj się **WYŁĄCZNIE** na faktach z wiadomości klienta.\n   - ⛔ **NIE WYMYŚLAJ** kanałów (np. nie pisz o TikToku/FB, jeśli klient pyta o stronę WWW).\n   - ⛔ **NIE HALUCYNUJ** formatów (jeśli klient przesyła wideo na stronę, nie traktuj tego jako reklamy w social media).\n   - Jeśli nie masz pewności co do kontekstu -> zadaj pytanie doprecyzujące w treści maila.\n\n## Zadanie\nPrzeanalizuj wiadomość od klienta i przygotuj draft odpowiedzi w zależności od typu problemu:\n\n### SCENARIUSZ A: SCOPE CREEP (Prośba o darmową pracę/coś \"przy okazji\")\nAlgorytm:\n1. **Cushion:** Podziękuj, doceń.\n2. **Anchor:** Przypomnij o priorytecie obecnego zlecenia (SOW).\n3. **Impact:** Wyjaśnij krótko, że \"mała zmiana\" to koszt (oderwanie zespołu, pliki, QA).\n4. **Options (Opcje):** Przedstaw 3 drogi w formie naturalnej listy (bez etykiet \"Opcja A\"):\n   - Zrobimy to jako dodatkowe zlecenie (płatne).\n   - Zrobimy to *zamiast* innego zadania (wymiana).\n   - Wrócimy do tematu w przyszłym miesiącu (backlog).\n5. **CTA:** Prośba o decyzję.\n\n### SCENARIUSZ B: PANIKA / AWARIA (Klient krzyczy/boi się)\nAlgorytm:\n1. **Spokój:** Podziękuj za sygnał, nie przepraszaj bez powodu.\n2. **Fakty:** Napisz, co widać w danych (zgaś emocje faktami).\n3. **Plan:** Napisz, co robisz (np. diagnoza w 30 min).\n4. **Bezpieczeństwo:** Zapewnij, że budżet/dane są bezpieczne.\n\n### SCENARIUSZ C: NEGOCJACJE / RABATY\nAlgorytm:\n1. **Zrozumienie:** Rozumiem sytuację rynkową.\n2. **Obrona Wartości:** Cena wynika z jakości seniorów. Nie możemy zejść z ceny bez utraty jakości.\n3. **Alternatywa:** Raty lub mniejszy zakres.\n\n### SCENARIUSZ D: SUBIEKTYWNE ODCZUCIA (\"Nie czuję tego\" / \"Brak pazura\")\nAlgorytm:\n1. **Otwartość:** Podziękuj za szczery feedback.\n2. **Analiza:** Nie zgaduj. Poproś o konkrety.\n3. **Benchmark:** Poproś o 1-2 przykłady tekstów/grafik konkurencji, które mają ten \"pazur\".\n4. **Plan:** Obiecaj rewizję po otrzymaniu inspiracji.\n\n---\n\n## BAZA WIEDZY (Przykłady Stylu - Few-Shot Learning)\n\n**Pytanie Klienta:** \"Dacie radę zejść z ceny 20%? Mamy trudny kwartał.\"\n**Odpowiedź Marty:**\n\"Rozumiem sytuację rynkową, każdy teraz liczy budżet.<br><br>\nW naszej ofercie wyceniliśmy godziny pracy specjalistów seniorów, którzy będą nad tym pracować. Nie możemy zejść z ceny bez obniżenia jakości, a na to nie chcemy sobie pozwolić, bo finalnie stracicie na wynikach.<br><br>\nMożemy natomiast rozłożyć płatność na 2 raty lub okroić zakres o moduł raportowania, żeby zmieścić się w budżecie. Co myślisz?\"\n\n**Pytanie Klienta:** \"Możemy się zdzwonić za 15 min? Mam pomysł.\"\n**Odpowiedź Marty:**\n\"Cześć! Właśnie siedzę nad Waszą kampanią i nie chciałabym się teraz wybijać, żeby dostarczyć wam to na czas.<br><br>\nPodeślij proszę ten pomysł w punktach mailem – przeanalizuję to na spokojnie i wrócę z konkretną odpowiedzią do 15:00. Dzięki!\"\n\n**Pytanie Klienta:** \"Na stronie jest błąd! Nic nie działa! Tracimy klientów!\"\n**Odpowiedź Marty:**\n\"Dzięki za szybki sygnał. Już to weryfikuję.<br><br>\nNa ten moment widzę, że problem dotyczy tylko wyświetlania, a nie samego naliczania wydatków – budżet jest bezpieczny.<br><br>\nDaj mi 30 minut na pełną diagnozę. Wrócę do Ciebie z informacją, co się stało i jak to naprawiliśmy. Spokojnie, kampanie są wstrzymane, więc nie przepalamy budżetu.\"\n\n---\n\n## Format Wyjściowy\nWygeneruj TYLKO treść wiadomości w formacie HTML (gotową do wklejenia w body maila). Nie dodawaj tematu. Nie dodawaj ```html```.\n\n[Treść wiadomości z tagami HTML]\n\nPozdrawiam,<br>\nMarta"
+            },
+            {
+              "content": "==Oto mail od klienta:\nOd: {{ $('Gmail Trigger').item.json.from.value[0].name }} ({{ $('Gmail Trigger').item.json.from.value[0].address }})\nTemat: {{ $('Gmail Trigger').item.json.subject }}\nTreść:\n{{ $('Gmail Trigger').item.json.text }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "184e02bd-18e3-4d9f-b999-b97c9b3e08ec",
+      "name": "AI Pisarz (Marta)",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $('Gmail Trigger').item.json.subject }}",
+        "emailType": "html",
+        "message": "={{ $json.message.content }}",
+        "options": {
+          "threadId": "={{ $('Gmail Trigger').item.json.threadId }}",
+          "sendTo": "={{ $('Gmail Trigger').item.json.from.value[0].address }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "4b5f2add-9729-4add-8d64-d09dedd6ae50",
+      "name": "Create Draft",
+      "webhookId": "601df3e1-35bb-4a82-8520-b969d4112519",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0A1HQ6UV5G",
+          "mode": "list",
+          "cachedResultName": "general"
+        },
+        "text": "=🔔 *Nowy Draft!* \n\n*Od:* {{ $('Gmail Trigger').item.json.from }}\n*Temat:* {{ $('Gmail Trigger').item.json.subject }}\n*Status:* {{ $('Parser JSON').item.json.reason }}\n\n>>> Sprawdź Drafty w Gmailu.",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        448,
+        0
+      ],
+      "id": "8fe54d5d-70b4-44d9-9df2-de9144c6ff4a",
+      "name": "Powiadomienie Slack",
+      "webhookId": "848bd06e-3594-4c7e-820c-55ab2f06f22b",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        0,
+        240
+      ],
+      "id": "3147e989-7aed-4f95-8aed-94124c3563f0",
+      "name": "Ignoruj"
+    }
+  ],
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Bramkarz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Bramkarz": {
+      "main": [
+        [
+          {
+            "node": "Parser JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parser JSON": {
+      "main": [
+        [
+          {
+            "node": "Czy odpisac?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Czy odpisac?": {
+      "main": [
+        [
+          {
+            "node": "AI Pisarz (Marta)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ignoruj",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Pisarz (Marta)": {
+      "main": [
+        [
+          {
+            "node": "Create Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Draft": {
+      "main": [
+        [
+          {
+            "node": "Powiadomienie Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "78243e79453de537183305a3c3825e24de7eb0bc8972ce5a8ab629f87f2161d2"
+  }
+}

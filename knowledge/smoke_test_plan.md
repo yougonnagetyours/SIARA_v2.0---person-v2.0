@@ -1,54 +1,51 @@
-# 🧪 PLAN SMOKE TESTU: "Agent Draftujący (Human-in-the-Loop)"
+# 🧪 PLAN SMOKE TESTU v2.0: "Agent Magic Gmail" (Real Product)
 
 ## 1. HIPOTEZA BIZNESOWA
-**Jeśli** pokażę właścicielce agencji (Marta), że Agent AI potrafi przygotować odpowiedź do klienta **w jej stylu** i wymaga tylko jednego kliknięcia ("Wyślij" lub "Edytuj"),
-**To** uzna to za bezpieczne rozwiązanie, które zdejmuje jej ciężar z pleców bez ryzyka wizerunkowego,
-**Co** doprowadzi do umówienia się na demo na jej danych i sprzedaży wdrożenia MVP (cel: 3000-5000 zł za setup).
+**Jeśli** pokażę właścicielce agencji (Marta) **nagranie działającego systemu**, gdzie mail od klienta automatycznie zamienia się w gotowy draft w Gmailu i powiadomienie na Slacku,
+**To** uzna to za "game changer" w oszczędzaniu czasu (koniec z pustą kartką i przeklejaniem),
+**Co** doprowadzi do sprzedaży wdrożenia (Setup: 3000-5000 zł + opcjonalny maintenance).
 
 ## 2. WARTOŚĆ DLA KLIENTA (HOOK)
-Nie sprzedajemy "chatbota" (który bredzi).
-Sprzedajemy **"Inteligentny Brudnopis"**.
+Nie sprzedajemy "przyszłości". Sprzedajemy **"Gotowy Proces"**.
 
-**Hasło:** *"Twój nowy asystent przygotuje 90% odpowiedzi. Ty dajesz tylko finalne 'OK'. Zero ryzyka, pełna kontrola."*
+**Hasło:** *"Twój Gmail sam pisze drafty. Ty tylko sprawdzasz i wysyłasz. Odzyskaj 1h dziennie."*
 
-## 3. FORMA TESTU (Metoda "Show, Don't Tell")
+**Kluczowe benefity:**
+1.  **Zero klikania:** Mail wpada -> Draft powstaje sam.
+2.  **Human-in-the-Loop:** Nic nie wychodzi bez Twojej zgody (bezpieczeństwo).
+3.  **Kontekst:** Agent wie, o co chodzi w wątku (dzięki Thread ID).
+4.  **Kontrola:** Powiadomienie na Slacku, że "praca wykonana".
 
-*   **Kanał:** LinkedIn (konto osobiste).
-*   **Podejście:** Inżynier, który rozwiązuje konkretny problem (Wąski już napisał profil).
-*   **Asset (Przynęta):** Krótkie wideo (Loom, max 60s) - **"Demo Agenta w Akcji"**.
-    *   *Scenariusz:*
-        1. Wpada trudny mail od klienta ("Gdzie są wyniki?!").
-        2. Agent (w tle) analizuje bazę wiedzy i historię.
-        3. Agent wystawia draft na Slacku/Mailu: empatyczny, konkretny, z danymi.
-        4. Użytkownik klika jeden guzik: "Wyślij". Koniec.
-    *   *Dystrybucja:* Direct Message do wyselekcjonowanej grupy.
+## 3. FORMA TESTU (Metoda "Look over my shoulder")
 
-## 4. HARMONOGRAM (2 Tygodnie)
+*   **Kanał:** LinkedIn (DMs + Posty) / Bezpośrednie relacje.
+*   **Asset Główny:** Wideo (Loom, max 90s) - **"Magic Gmail w 60 sekund"**.
+    *   *Scenariusz Demo:*
+        1.  Wysyłasz maila do siebie (jako "Klient") z typowym problemem (np. "Gdzie te banery?").
+        2.  Pokazujesz Slacka: "O, już jest powiadomienie".
+        3.  Przełączasz na Gmaila: "Wchodzę w Drafty... Otwieram... Gotowa odpowiedź. Styl asertywny, konkretny. Klikam Wyślij. Koniec."
+        4.  Komentarz: "To działo się samo, gdy piłem kawę."
 
-### Tydzień 1: Budowa Demo i Profil
-1.  **Profil LinkedIn:** Publikacja przygotowanego draftu (Inżynier Procesów).
-2.  **Laboratorium (Demo MVP):**
-    *   Zbudowanie prostego scenariusza w Make.com/n8n.
-    *   Symulacja: Gmail -> GPT-4 (z promptem Marty) -> Draft w Google Docs/Slack.
-    *   To nie musi być produkcyjne, ma **wyglądać** i działać na jednym przykładzie.
-3.  **Nagranie Wideo:**
-    *   Loom. Bez lania wody. "Patrz, wpada mail, tu masz gotową odpowiedź. Pasuje? Klikasz. Nie pasuje? Edytujesz. Oszczędzasz 15 min na jednym mailu."
-4.  **Lista Targetowa:**
-    *   20-30 właścicieli agencji (wyglądających na zarobionych).
+## 4. HARMONOGRAM (Najbliższe dni)
 
-### Tydzień 2: Ofensywa (Outreach)
-1.  **Zaczepka (Smart):**
-    *   Nie: "Kup pan bota".
-    *   Tak: "Cześć, testuję narzędzie, które pisze drafty odpowiedzi do klientów w stylu właściciela. Szukam 3 osób, które chcą zerknąć, czy to faktycznie 'brzmi jak człowiek'. Podeślesz jeden trudny mail z przeszłości, a ja Ci odeślę, jak by odpisał mój Agent?"
-2.  **Demo na ich danych:**
-    *   To jest klucz. Jak zobaczą, że AI "mówi ich głosem", są kupieni.
+### Etap 1: Assety (Dziś/Jutro)
+1.  **Nagranie Demo:** Masz działający system. Nagraj to. Musi być dynamiczne. Żadnego lania wody. Czysta akcja.
+2.  **Oferta One-Pager (Notion/PDF):**
+    *   Co to jest?
+    *   Dla kogo? (Agencje, Freelancerzy, PM-owie).
+    *   Ile to kosztuje? (Cena "Beta" dla pierwszych 3 osób).
+    *   Technikalia: "Bezpieczne, na Twoim Gmailu, Twoje klucze API".
+
+### Etap 2: Ofensywa (Outreach)
+1.  **LinkedIn Post:** "Jako inżynier procesów nienawidzę marnotrawstwa (Lean). Zautomatyzowałem najnudniejszą część pracy biurowej - odpisywanie na maile. Zobaczcie efekt." (Wąski to napisze).
+2.  **Direct Message:**
+    *   "Cześć [Imie], widzę, że prowadzisz agencję. Jako inżynier zajmujący się optymalizacją procesów, zbudowałem narzędzie, które eliminuje 'ręczne' pisanie draftów odpowiedzi. To nie jest kolejny chatbot, tylko 'inteligentna wtyczka' do Twojego Gmaila. Chcesz zobaczyć 60s nagranie, jak to działa w praktyce?"
 
 ## 5. NARZĘDZIA I BUDŻET
-*   **Budżet:** Grosze (API OpenAI do testów).
-*   **Tech:** Make.com / n8n (do spięcia logiki).
-*   **AI:** GPT-4o (do generowania jakościowych tekstów).
+*   **Tech:** Gotowy (n8n + Gmail + OpenAI + Slack).
+*   **Koszt:** Twój czas na nagranie i rozmowy.
 
 ## 6. KRYTERIA SUKCESU (KPI)
-1.  **Zainteresowanie:** 5 osób wyśle swojego "starego maila" do przetestowania.
-2.  **Efekt WOW:** 3 osoby powiedzą "To brzmi jak ja" lub "To jest wystarczająco dobre".
-3.  **Sprzedaż:** 1 klient na płatne wdrożenie MVP.
+1.  **Zainteresowanie:** 10 osób obejrzy nagranie Demo.
+2.  **Rozmowy:** 3 osoby zapytają "ile to kosztuje" lub "czy zadziała z moim CRM".
+3.  **Sprzedaż:** 1 wdrożenie płatne.

@@ -1,40 +1,38 @@
 ## 🎯 AKTUALNY ETAP
 
-**2. Tydzień 2: Pivot na MVP "Skrzynka Pocztowa" (Real Value)**
+**3. Tydzień 2: Stabilizacja i Content Marketing (Smoke Test v2)**
 
-Cel: Zmiana logiki z "Agent na żądanie" (Slack) na "Automat w tle" (Gmail Trigger). Agent ma sam wyłapywać maile i przygotowywać drafty.
+Cel: Nagranie finalnego demo (Video) i publikacja posta na LinkedIn, który generuje leady (Beta Testers).
 
 Status:
-- ✓ **INFRASTRUKTURA:** VPS (Mikr.us) + Docker + n8n + Postgres (Pamięć).
-- ✓ **SIECI:** Naprawiono komunikację międzykontenerową (Docker Network).
-- ✓ **INTEGRACJA:** Google OAuth skonfigurowany (Scope: `gmail.modify`).
-- ✓ **MVP (v5):** Workflow w pełni funkcjonalny. Agent tworzy drafty jako **odpowiedzi w wątku** (Reply in Thread).
-- 🔄 **DOSTRAJANIE:** Trwa tuning promptu Marty (styl komunikacji).
+- ✓ **INFRASTRUKTURA:** VPS + Docker + n8n + OAuth.
+- ✓ **PIVOT:** Zmiana z "Auto-Pilot" na "Command Center" (Slack Trigger).
+- ✓ **WORKFLOW:** Magic Gmail v5 (Golden Master) - działa stabilnie.
+- 🔄 **CONTENT CREATION:**
+    - Draft posta LinkedIn: [In Progress]
+    - Scenariusz wideo: [In Progress]
+    - Nagranie wideo: [Pending]
+- 🔄 **OUTREACH:**
+    - Profil LinkedIn: [Gotowy - czeka na wklejenie]
+    - Rozgrzewka sieci (Blank Invites): [Pending - Zadanie na dziś wieczór]
+- 🔜 **NEXT STEP:** Publikacja materiałów.
 
 ## 🚧 BLOKERY
 
-- (Brak)
+- (Brak) - Wszystkie problemy techniczne (n8n, Gmail API, Threading) zostały rozwiązane.
 
 ## 🕒 HISTORIA
 
 ### 0. PRZYGOTOWANIE (2025-11-26)
 - ✓ Zdefiniowanie Persony (Michał - Inżynier Procesów).
-- ✓ Określenie grupy docelowej (Agencje Marketingowe).
 - ✓ Restrukturyzacja projektu.
 
 ### 1. TECH STACK (2025-12-04)
-- ✓ Decyzja o porzuceniu localhosta (problemy z tunelem).
-- ✓ Wdrożenie na VPS (Mikr.us) dla stabilności demo.
-- ✓ Konfiguracja Google OAuth i Postgres (2025-12-08).
-- ✓ Pierwszy udany Smoke Test MVP (2025-12-09).
+- ✓ Wdrożenie na VPS (Mikr.us).
+- ✓ Konfiguracja Google OAuth (2025-12-08).
 
-
-### 0. PRZYGOTOWANIE (2025-11-26)
-- ✓ Zdefiniowanie Persony (Michał - Inżynier Procesów).
-- ✓ Określenie grupy docelowej (Agencje Marketingowe).
-- ✓ Restrukturyzacja projektu.
-
-### 1. TECH STACK (2025-12-04)
-- ✓ Decyzja o porzuceniu localhosta (problemy z tunelem).
-- ✓ Wdrożenie na VPS (Mikr.us) dla stabilności demo.
-- ✓ Konfiguracja Google OAuth i Postgres (2025-12-08).
+### 2. MVP BUILD (2025-12-09)
+- ✓ Pierwszy Smoke Test (v4).
+- ✓ Wdrożenie wątkowania odpowiedzi (v5).
+- ✓ Implementacja sterowania ze Slacka (v6 - Command Center).
+- ✓ Finalizacja "Golden Master" workflow (v5 OnDemand).

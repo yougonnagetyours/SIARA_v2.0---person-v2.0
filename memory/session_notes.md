@@ -3,6 +3,76 @@
 Najnowsze wpisy na górę ↓
 
 ---
+## 2025-12-11, 18:00 - Sesja #22 (Strategia Rozgrzewki LinkedIn)
+
+**Co robiliśmy:**
+- **Analiza Grupy Docelowej:** Michał celuje w właścicieli małych agencji (5-15 os.), którzy toną w operacyjce.
+- **Strategia Zapraszania ("Cichy Inżynier"):**
+    - Decyzja: Wysyłamy zaproszenia **BEZ notatki** (Blank Invites).
+    - Powód: Nagłówek profilu ("Inżynier Procesów | Automatyzacja...") jest wystarczającym filtrem i "lepem". Notatki sprzedażowe palą mosty.
+    - Timing: Zaproszenia idą DZIŚ (przed publikacją wideo), aby nowy content ("Inżynier vs Gmail") trafił do feedu świeżych kontaktów (Freshness Boost).
+- **Profil LinkedIn:**
+    - Opis "O mnie" (About) uznano za gotowy i spójny z nową narracją.
+    - Zadanie dla Michała: Wkleić opis na profil -> Wysłać 20 zaproszeń.
+
+**Ustalenia:**
+- Zanim opublikujemy wideo, musimy mieć "oczy", które na nie spojrzą.
+- Nie spamujemy. Budujemy sieć w oparciu o ciekawość ("Kim jest ten inżynier?").
+
+**Następny krok (Jutro):**
+- Nagranie i montaż wideo (według scenariusza Wąskiego).
+- Publikacja posta.
+- Obsługa ewentualnych komentarzy/reakcji.
+
+---
+## 2025-12-11, 17:30 - Sesja #21 (Smoke Test: SUKCES)
+
+**Co robiliśmy:**
+- **Finalizacja n8n (Magic Gmail v5):**
+    - Rozwiązano problem "głuchego telefonu" w przepływie danych. Wdrożono metodę referencji (`$('Get many messages')...`) zamiast polegania na danych wejściowych z poprzedniego kroku.
+    - Naprawiono tworzenie draftów: teraz poprawnie przypisują się do istniejących wątków (Thread ID) i mają status DRAFT.
+    - Naprawiono powiadomienia Slack: zawierają poprawne linki bezpośrednie do draftu w Gmailu.
+    - **Zabezpieczenie:** Wyeksportowano działający workflow do `n8n/AgentMagicGmail_v5_OnDemand.json` (Golden Master).
+- **Strategia Smoke Testu (Pivot v2.0):**
+    - Zaktualizowano `knowledge/smoke_test_plan.md`. Stary plan zarchiwizowano jako `_OLD`.
+    - Nowa narracja: "Inżynier Procesów" (autentyczna dla Michała), a nie "Właściciel Agencji".
+    - Argument sprzedażowy: "Zbudowałem to dla siebie, bo nienawidzę marnotrawstwa (Lean). Chcesz zobaczyć demo?"
+- **Content:**
+    - Wąski przygotował draft posta na LinkedIn oraz scenariusz wideo (60s).
+    - Ustalono format wideo: **4:5 z dynamicznym zoomem** (optymalny na mobile LinkedIn i Instagram).
+    - Zapisano drafty w `agents/waski/drafts/linkedin_post_magic_gmail_v1.md`.
+
+**Ustalenia:**
+- System działa stabilnie i jest gotowy do pokazania światu.
+- Nie udajemy agencji. Gramy kartą "Inżyniera od optymalizacji".
+- Instagram traktujemy jako "recykling" (wrzucamy to samo wideo co na LI).
+
+**Następny krok (Jutro):**
+- Finalna redakcja posta i scenariusza przez Michała (nadanie osobistego szlifu).
+- Nagranie wideo (Screen recording + Voiceover).
+- Publikacja (LinkedIn + Instagram).
+---
+## 2025-12-11, 10:00 - Sesja #20 (Pivot na Slack Command Center)
+
+**Co robiliśmy:**
+- **Zmiana Architektury (Pivot):** Zrezygnowano z automatycznego triggera (Polling) na rzecz modelu "Na Żądanie" sterowanego ze Slacka.
+    - Powód: Problemy z testowaniem (opóźnienia, ignorowanie starych maili) i potrzeba "poczucia kontroli" dla Persony (Marta).
+- **Slack Command Center:**
+    - Wdrożono `Slack Trigger` reagujący na słowo kluczowe `draftuj` na kanale.
+    - Zastosowano logikę "Odkurzacz": Komenda uruchamia `Gmail Get Many Messages`, który pobiera i przetwarza paczkę maili z etykiety `Draft Asystent`.
+- **System Etykiet (UX):** Wprowadzono wizualny status procesu w Gmailu:
+    - Fioletowa `Draft Asystent` = Do zrobienia.
+    - Zielona `✅ Draft Gotowy` = Zrobione.
+- **Decyzje Techniczne:** Odrzucono pomysł wdrożenia Agenta AI (LangChain) w MVP (zbyt wolny/drogi). Postawiono na deterministyczny workflow w n8n.
+
+**Ustalenia:**
+- Workflow w n8n jest gotowy i skonfigurowany pod demo (Slack -> Gmail -> Slack).
+- System jest odporny na "stare maile" i działa natychmiast po komendzie.
+
+**Następny krok:**
+- Przeprowadzenie "Wielkiego Testu" (Integracja Slack-Gmail na żywo).
+- Nagranie wideo demo (Loom) dla Marty.
+---
 ## 2025-12-10, 10:45 - Sesja #19 (MVP v5: Wątkowanie Działa!)
 
 **Co robiliśmy:**
