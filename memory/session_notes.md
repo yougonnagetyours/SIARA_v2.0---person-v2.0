@@ -1,6 +1,43 @@
 # Notatki z Sesji
 
-Najnowsze wpisy na górę ↓
+Najnowsze wpisy na górze ↓
+
+---
+## 2025-12-12, 12:15 - Sesja #24 (Budowa CRM w Notion)
+
+**Co robiliśmy:**
+- **Infrastruktura Pomiarowa:** Stworzono prosty CRM w Notion ("CRM - Smoke Test") do śledzenia postępów walidacji.
+- **Definicja Metryk:** Ustalono kluczowe statusy (`Zaproszony`, `Demo Umówione`) oraz źródła (`Outreach`, `Content`), aby mierzyć skuteczność działań.
+- **Zasady UX:** Tabela służy tylko do podglądu statusu, szczegółowe notatki z rozmów lądują wewnątrz strony rekordu.
+- **Instrukcja:** Zapisano procedurę obsługi CRM w pliku `knowledge/crm_instruction.md`.
+
+**Ustalenia:**
+- CRM jest gotowy na przyjęcie pierwszych leadów.
+- Użytkownik zobowiązał się do wykonania "zimnego outreachu" (zaproszenia na LinkedIn) jutro.
+
+**Następny krok (JUTRO):**
+- Wysłanie zaproszeń na LinkedIn (10-20 osób).
+- Uzupełnienie CRM.
+- Nagranie i publikacja wideo demo.
+
+---
+## 2025-12-12, 11:30 - Sesja #23 (Dodanie Monitoringu)
+
+**Co robiliśmy:**
+- **Upgrade Workflow (Monitoring):**
+    - Dodano węzeł **Schedule Trigger** ("Harmonogram") do procesu n8n.
+    - Ustawiono interwał sprawdzania skrzynki co **15 minut**.
+    - Skonfigurowano połączenie równoległe: Agent działa teraz w trybie hybrydowym – reaguje na komendę ze Slacka ("Na żądanie") ORAZ samoczynnie sprawdza etykietę (Monitoring).
+- **Bezpieczeństwo:**
+    - Potwierdzono, że mechanizm usuwania etykiety (`removeLabels`) na początku procesu chroni przed duplikowaniem pracy.
+
+**Ustalenia:**
+- Użytkownik samodzielnie aktualizuje plik JSON w n8n.
+- System stał się "bezobsługowy" – nie wymaga już "popychania" przez Slacka.
+
+**Następny krok:**
+- Aktywacja harmonogramu na VPS.
+- Powrót do działań contentowych (LinkedIn).
 
 ---
 ## 2025-12-11, 18:00 - Sesja #22 (Strategia Rozgrzewki LinkedIn)

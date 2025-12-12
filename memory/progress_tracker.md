@@ -7,7 +7,7 @@ Cel: Nagranie finalnego demo (Video) i publikacja posta na LinkedIn, który gene
 Status:
 - ✓ **INFRASTRUKTURA:** VPS + Docker + n8n + OAuth.
 - ✓ **PIVOT:** Zmiana z "Auto-Pilot" na "Command Center" (Slack Trigger).
-- ✓ **WORKFLOW:** Magic Gmail v5 (Golden Master) - działa stabilnie.
+- ✓ **WORKFLOW:** Magic Gmail v5 (OnDemand + Monitoring 15min).
 - 🔄 **CONTENT CREATION:**
     - Draft posta LinkedIn: [In Progress]
     - Scenariusz wideo: [In Progress]

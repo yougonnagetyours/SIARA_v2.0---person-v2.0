@@ -12,7 +12,7 @@
       "typeVersion": 2,
       "position": [
         160,
-        -112
+        -48
       ],
       "id": "775fd7b2-f905-4865-aece-b8cd03ee0a60",
       "name": "Usuń Etykietę (Start)",
@@ -154,8 +154,8 @@
       "type": "n8n-nodes-base.slackTrigger",
       "typeVersion": 1,
       "position": [
-        -592,
-        -112
+        -576,
+        16
       ],
       "id": "c5b0e665-12eb-4be7-b940-acb10287307d",
       "name": "Slack Trigger",
@@ -195,8 +195,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -368,
-        -112
+        -352,
+        16
       ],
       "id": "3751aca6-da72-4609-bc4d-95a91cef0519",
       "name": "If"
@@ -214,8 +214,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        -96,
-        -160
+        -80,
+        -112
       ],
       "id": "cff3d471-9838-4977-9563-4c23c488b7eb",
       "name": "Get many messages",
@@ -226,6 +226,26 @@
           "name": "Gmail account"
         }
       }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -416,
+        -192
+      ],
+      "id": "547e5c6a-5163-43d0-a53d-5d2cfd8b07af",
+      "name": "Schedule Trigger"
     }
   ],
   "connections": {
@@ -300,6 +320,17 @@
         [
           {
             "node": "Usuń Etykietę (Start)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many messages",
             "type": "main",
             "index": 0
           }
