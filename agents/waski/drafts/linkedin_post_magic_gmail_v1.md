@@ -1,58 +1,62 @@
-# Draft Posta i Scenariusza - Magic Gmail (11.12.2025)
+# Draft Posta i Scenariusza - Case Study: "Projekt Marta" (16.12.2025)
 
-## 🎬 SCENARIUSZ WIDEO (60s) - "Inżynier vs Gmail"
-**Format:** 4:5 (Portret/Kwadrat) z dynamicznym ZOOMEM.
+## 🎬 SCENARIUSZ WIDEO (60s) - "Projekt Marta: Case Study"
+**Format:** 2:3 (Pionowe)
+**Styl:** Profesjonalne Case Study. Konkret, wynik, wdrożenie.
+**Układ:** Ty (Ekspert) + Demo systemu (Gmail/Slack).
 
-| Czas | Co widać na ekranie (ZOOM!) | Co mówisz (Voiceover) |
+| Czas | Wizja (To co widać) | Fonia (To co słychać) |
 | :--- | :--- | :--- |
-| **0:00-0:05** | (Zoom na skrzynkę odbiorczą, setki maili). Kursor nerwowo lata. | "Jako inżynier procesów nienawidzę jednej rzeczy: marnowania czasu na powtarzalną pracę." |
-| **0:05-0:12** | (Zoom na maila od Klienta: "Gdzie wyniki?"). | "Każdego dnia dostajesz te same maile. 'Gdzie raport?', 'Poprawcie logo'. Odpisywanie to 15 minut wyjęte z życia." |
-| **0:12-0:20** | (Przełączenie na n8n – widok ogólny, potem zbliżenie na noda "AI Pisarz"). | "Więc zbudowałem system. Nie chatbota, który bredzi. Inteligentny proces, który rozumie kontekst Twojego klienta." |
-| **0:20-0:35** | **MAGIA:** (Widok Gmaila. Wpada mail. Odświeżasz. Pojawia się Draft. Otwierasz go). | "Patrz teraz. Wpada mail. Ja nic nie robię. Piję kawę. Wchodzę w drafty... i BUM. Gotowa odpowiedź. Asertywna, konkretna, w moim stylu." |
-| **0:35-0:45** | (Zoom na treść draftu w Gmailu. Przewijasz tekst). | "Zero kopiowania do ChataGPT. Wszystko czeka w Gmailu. Sprawdzam, klikam 'Wyślij'. Koniec." |
-| **0:45-0:55** | (Widok Slacka z powiadomieniem "Nowy Draft"). | "Dostaję tylko powiadomienie na Slacka: 'Zrobione'. Tak wygląda automatyzacja, a nie zabawa w prompty." |
-| **0:55-1:00** | (Twoja twarz lub plansza z napisem: "Chcesz to u siebie? Napisz DM"). | "Oszczędzam tak godzinę dziennie. Chcesz zobaczyć, jak to zadziała u Ciebie? Napisz 'DRAFT' w komentarzu." |
+| **0:00-0:08** | **[GADAJĄCA GŁOWA]** Profesjonalny kadr. Pewny głos. | "W ramach 'Projektu Marta' wziąłem na warsztat największą zmorę każdego Project Managera: skrzynkę odbiorczą." |
+| **0:08-0:15** | **[GRAFIKA/EKRAN]** Zrzut ekranu zapchanej skrzynki lub grafika z napisem "MARTA: PM" i wykresem spadającej produktywności. | "Marta traciła średnio 60 minut dziennie na samą obsługę powtarzalnych maili. To 5 godzin w tygodniu wyrzucone w błoto." |
+| **0:15-0:22** | **[GADAJĄCA GŁOWA]** | "Cel wdrożenia był prosty: Marta ma przestać pisać maile, a zacząć je tylko zatwierdzać." |
+| **0:22-0:35** | **[SCREEN RECORDING - GMAIL]** Płynne przejście. Mail wpada -> System myśli (krótko) -> Pojawia się gotowy Draft. | "Zbudowałem system, który działa w tle. Analizuje treść od klienta, rozumie kontekst projektu i przygotowuje idealną odpowiedź. Czeka ona w draftach." |
+| **0:35-0:48** | **[SCREEN RECORDING - SLACK]** Przejście na Slacka. Kliknięcie przycisku przy powiadomieniu. | "A dla przyspieszenia decyzji – spiąłem to ze Slackiem. Marta dostaje powiadomienie, sprawdza treść jednym rzutem oka i klika 'Wyślij'. Bez otwierania poczty." |
+| **0:48-0:55** | **[GADAJĄCA GŁOWA]** | "Wynik? Czas reakcji skrócony o 80%. Pełna kontrola nad treścią, zero klepania w klawiaturę." |
+| **0:55-1:00** | **[NAPISY KOŃCOWE]** Call to Action: "Obserwuj Projekt Marta". | "To pierwszy etap optymalizacji pracy Marty. Chcesz zobaczyć kolejne moduły? Obserwuj profil." |
 
 ---
 
 ## 📝 POST NA LINKEDIN
 
-**Nagłówek (Hook):**
-Nie zatrudniłem asystentki. Zatrudniłem algorytm. (I odzyskałem 5h w tygodniu)
+**Nagłówek:**
+Projekt Marta: Jak odzyskaliśmy 5 godzin tygodniowo dzięki automatyzacji?
 
 **Treść:**
-Jako inżynier zajmujący się optymalizacją procesów (na co dzień PLM/Automotive), mam alergię na "Muda" – marnotrawstwo.
+W zarządzaniu projektami najdroższą walutą jest czas i skupienie.
+W ramach realizowanego przeze mnie **"Projektu Marta"**, zidentyfikowaliśmy "cichego zabójcę" produktywności:
 
-Największy złodziej czasu w małym biznesie i agencji?
-📧 Skrzynka odbiorcza.
+📧 **Bieżąca obsługa skrzynki mailowej.**
 
-Nie te ważne maile strategiczne.
-Te powtarzalne:
-- "Gdzie jest faktura?"
-- "Czy możecie poprawić X?"
-- "Kiedy będzie raport?"
+Marta (Project Manager) poświęcała średnio godzinę dziennie na odpowiedzi typu:
+- "Status jest bez zmian."
+- "Fakturę prześlę w piątek."
+- "Dziękuję, odebrałam."
 
-Każdy to 5-10 minut. 10 maili to ponad godzina dziennie.
-To 20 godzin w miesiącu przepalonych na klepanie w klawiaturę.
+Niby drobnostki, ale przy skali miesiąca to **20 godzin** pracy operacyjnej, której nikt nie docenia, a którą trzeba wykonać.
 
-Postanowiłem to naprawić. Inżyniersko.
+**Wdrożone rozwiązanie:**
+Zamiast szukać "szybszego klienta poczty", zbudowaliśmy dedykowanego Agenta AI, który przejął proces tworzenia treści.
 
-❌ Bez kopiowania treści do ChataGPT.
-❌ Bez "botów", które odpisują głupoty klientom.
-❌ Bez wychodzenia z Gmaila.
+⚙️ **Jak to działa w ekosystemie Marty?**
+1.  **Analiza:** Każdy wpływający mail jest analizowany pod kątem intencji i pilności.
+2.  **Kreacja:** System przygotowuje **gotowy draft odpowiedzi** w Gmailu, zachowując profesjonalny styl Marty.
+3.  **Decyzja (Slack):** Jeśli Marta jest w biegu, dostaje szybki podgląd na Slacku z opcją "Wyślij jednym klikiem".
 
-Zbudowałem system (Agenta AI), który działa w tle:
-1. Czyta maila i rozumie kontekst (wie, kim jest klient).
-2. Przygotowuje DRAFT odpowiedzi w moim stylu (konkretnym i asertywnym).
-3. Zapisuje go w Gmailu i daje mi znać na Slacku.
+**Kluczowe założenie biznesowe:**
+Pełna kontrola (Human-in-the-loop). Automat wykonuje 95% "czarnej roboty" (pisanie), ale to człowiek podejmuje te 5% decyzji (wysyłka).
 
-Ja tylko wchodzę, sprawdzam i klikam "Wyślij".
-Efekt? Zamiast 10 minut – 30 sekund na maila.
+Efekt?
+Zamiast pisać maila przez 3 minuty, Marta zatwierdza go w 15 sekund.
+Skalując to na cały tydzień – "odzyskaliśmy" prawie jeden pełny dzień roboczy w miesiącu.
 
-Zobacz na wideo (60s), jak to wygląda na żywym organizmie. 👇
+To pierwszy z modułów usprawniających pracę operacyjną w tym projekcie.
+W kolejce: Kalendarz i Raportowanie.
+
+🎥 **Zobacz na wideo (60s), jak wygląda ten proces w praktyce.**
 
 ---
-**Chcesz wdrożyć taki "Inteligentny Brudnopis" u siebie?**
-Szukam 3 osób do beta-testów. Napisz "DRAFT" w komentarzu lub wyślij mi DM, a pokażę Ci, jak to podpiąć pod Twojego Gmaila.
+👇 Ile czasu dziennie zajmuje Ci "odkopywanie się" z maili? 30 minut? Godzina?
+Daj znać w komentarzu.
 
-#Automatyzacja #AI #Produktywność #InżynieriaProcesów #n8n
+#Automatyzacja #AI #BusinessProcess #Efficiency #Engineering #n8n #CaseStudy

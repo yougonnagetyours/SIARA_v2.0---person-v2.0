@@ -6,20 +6,18 @@ Cel: Nagranie finalnego demo (Video) i publikacja posta na LinkedIn, który gene
 
 Status:
 - ✓ **INFRASTRUKTURA:** VPS + Docker + n8n + OAuth.
-- ✓ **PIVOT:** Zmiana z "Auto-Pilot" na "Command Center" (Slack Trigger).
-- ✓ **WORKFLOW:** Magic Gmail v5 (OnDemand + Monitoring 15min).
-- 🔄 **CONTENT CREATION:**
-    - Draft posta LinkedIn: [In Progress]
-    - Scenariusz wideo: [In Progress]
-    - Nagranie wideo: [Pending]
+- ✓ **WORKFLOW:** Magic Gmail v5 (OnDemand + Monitoring 15min) + Dokumentacja v3.1.
+- ✓ **CONTENT:**
+    - Scenariusz wideo: **[GOTOWY - v6 Gold Master]**
+    - Post LinkedIn: **[GOTOWY - v6 Lead Magnet]**
 - 🔄 **OUTREACH:**
     - Profil LinkedIn: [Gotowy - czeka na wklejenie]
-    - Rozgrzewka sieci (Blank Invites): [Pending - Zadanie na dziś wieczór]
-- 🔜 **NEXT STEP:** Publikacja materiałów.
+    - Rozgrzewka sieci: [Pending]
+- 🔜 **NEXT STEP:** Dzień zdjęciowy (Nagranie Demo).
 
 ## 🚧 BLOKERY
 
-- (Brak) - Wszystkie problemy techniczne (n8n, Gmail API, Threading) zostały rozwiązane.
+- (Brak) - Wszystkie zasoby do nagrania są gotowe.
 
 ## 🕒 HISTORIA
 

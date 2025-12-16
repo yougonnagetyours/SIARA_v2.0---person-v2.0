@@ -3,6 +3,32 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-16, 12:00 - Sesja #25 (Scenariusz Wideo & Strategia Wdrożeniowa)
+
+**Co robiliśmy:**
+- **Finalizacja Scenariusza (v6):**
+    - Stworzono finalną wersję scenariusza wideo (`agents/waski/drafts/linkedin_post_magic_gmail_v6.md`).
+    - **Model:** On-Demand (Użytkownik nadaje etykietę `Draft Asystent`, AI oddaje `Draft Gotowy`).
+    - **USP:** Hiper-Personalizacja (Styl Marty) + Scope Creep Defense.
+    - **CTA:** Biznesowe/Wdrożeniowe ("Napisz AUDYT").
+- **Aktualizacja Dokumentacji (Technical Reality Check):**
+    - Zweryfikowano plik `project.json` (v5) i zaktualizowano dokumentację (`product_mvp/released/Agent Magic Gmail v4/workflow_documentation_v3.md`), aby odzwierciedlała rzeczywisty mechanizm etykiet (Start -> Koniec).
+    - Dodano sekcję o **Hiper-Personalizacji** jako kluczowym wyróżniku sprzedażowym.
+- **Strategia:**
+    - Przyjęto pozycjonowanie eksperckie: "Ekspert Wdrożeniowiec" (rozwiązuje problemy biznesowe), a nie "Nauczyciel" (pokazuje jak kodować).
+    - "Projekt Marta" to wehikuł marketingowy (case study).
+
+**Ustalenia:**
+- Scenariusz v6 jest "Gold Masterem" do nagrania.
+- Dokumentacja techniczna zgadza się w 100% z kodem n8n.
+- Wąski ma gotowy wsad do nagrania (Talking Head + Screeny).
+
+**Następny krok (JUTRO):**
+- 🎥 **Nagranie wideo** wg scenariusza v6.
+- Montaż (dynamiczny, z naciskiem na moment zmiany etykiety).
+- Publikacja.
+
+---
 ## 2025-12-12, 12:15 - Sesja #24 (Budowa CRM w Notion)
 
 **Co robiliśmy:**

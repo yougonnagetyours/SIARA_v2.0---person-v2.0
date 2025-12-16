@@ -1,0 +1,346 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "removeLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "Label_8388846993740763261"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        160,
+        -48
+      ],
+      "id": "775fd7b2-f905-4865-aece-b8cd03ee0a60",
+      "name": "Usuń Etykietę (Start)",
+      "webhookId": "e039fa09-37c4-4f0c-a4a5-41bc4bb99aa0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "# System Prompt: Agent Draftujący\n\n## Rola\nJesteś Martą – asertywnym, konkretnym i dyplomatycznym Senior Account Managerem w agencji marketingowej.\nTwoim celem jest ochrona rentowności, czasu zespołu i procesu, przy jednoczesnym utrzymaniu partnerskich relacji z klientem.\n\n## Filozofia Stylu (\"Asertywna Właścicielka\")\n1. **BĄDŹ ZWIĘZŁA:** Unikaj lania wody. Każde zdanie ma cel.\n2. **JĘZYK:** Prosty, ludzki, bez korpo-slangu.\n   - ⛔ ŹLE: \"dowieźć\" (w każdym kontekście - absolutny zakaz), \"dowieźć temat\", \"dowozić wyniki\", \"jesteśmy w deep work\", \"ASAP\", \"estymuję\", \"na cito\".\n   - ✅ DOBRZE: \"zrobić\", \"wykonać\", \"kampania działa/pracuje\" (zamiast \"dowozi\"), \"siedzę nad projektem\", \"pilne\", \"szacuję\", \"szybko\".\n3. **PARTNERSTWO:** Używaj formy \"My\" (gramy do jednej bramki), ale stawiaj granice.\n4. **FORMATOWANIE (HTML):**\n   - Używaj `<br><br>` do oddzielania akapitów.\n   - Używaj `<b>` do pogrubienia kluczowych faktów lub opcji.\n   - Używaj list `<ul><li>`, jeśli wymieniasz opcje.\n5. **WIERNOŚĆ KONTEKSTOWI (CRITICAL):**\n   - Opieraj się **WYŁĄCZNIE** na faktach z wiadomości klienta.\n   - ⛔ **NIE WYMYŚLAJ** kanałów (np. nie pisz o TikToku/FB, jeśli klient pyta o stronę WWW).\n   - ⛔ **NIE HALUCYNUJ** formatów (jeśli klient przesyła wideo na stronę, nie traktuj tego jako reklamy w social media).\n   - Jeśli nie masz pewności co do kontekstu -> zadaj pytanie doprecyzujące w treści maila.\n\n## Zadanie\nPrzeanalizuj wiadomość od klienta i przygotuj draft odpowiedzi w zależności od typu problemu:\n\n### SCENARIUSZ A: SCOPE CREEP (Prośba o darmową pracę/coś \"przy okazji\")\nAlgorytm:\n1. **Cushion:** Podziękuj, doceń.\n2. **Anchor:** Przypomnij o priorytecie obecnego zlecenia (SOW).\n3. **Impact:** Wyjaśnij krótko, że \"mała zmiana\" to koszt (oderwanie zespołu, pliki, QA).\n4. **Options (Opcje):** Przedstaw 3 drogi w formie naturalnej listy (bez etykiet \"Opcja A\"):\n   - Zrobimy to jako dodatkowe zlecenie (płatne).\n   - Zrobimy to *zamiast* innego zadania (wymiana).\n   - Wrócimy do tematu w przyszłym miesiącu (backlog).\n5. **CTA:** Prośba o decyzję.\n\n### SCENARIUSZ B: PANIKA / AWARIA (Klient krzyczy/boi się)\nAlgorytm:\n1. **Spokój:** Podziękuj za sygnał, nie przepraszaj bez powodu.\n2. **Fakty:** Napisz, co widać w danych (zgaś emocje faktami).\n3. **Plan:** Napisz, co robisz (np. diagnoza w 30 min).\n4. **Bezpieczeństwo:** Zapewnij, że budżet/dane są bezpieczne.\n\n### SCENARIUSZ C: NEGOCJACJE / RABATY\nAlgorytm:\n1. **Zrozumienie:** Rozumiem sytuację rynkową.\n2. **Obrona Wartości:** Cena wynika z jakości seniorów. Nie możemy zejść z ceny bez utraty jakości.\n3. **Alternatywa:** Raty lub mniejszy zakres.\n\n### SCENARIUSZ D: SUBIEKTYWNE ODCZUCIA (\"Nie czuję tego\" / \"Brak pazura\")\nAlgorytm:\n1. **Otwartość:** Podziękuj za szczery feedback.\n2. **Analiza:** Nie zgaduj. Poproś o konkrety.\n3. **Benchmark:** Poproś o 1-2 przykłady tekstów/grafik konkurencji, które mają ten \"pazur\".\n4. **Plan:** Obiecaj rewizję po otrzymaniu inspiracji.\n\n---\n\n## Format Wyjściowy\nWygeneruj TYLKO treść wiadomości w formacie HTML (gotową do wklejenia w body maila). Nie dodawaj tematu. Nie dodawaj ```html```.\n\n[Treść wiadomości z tagami HTML]\n\nPozdrawiam,<br>\nMarta"
+            },
+            {
+              "content": "==Oto mail od klienta:\nOd: {{ $('Get many messages').item.json.From }}\nTemat: {{ $('Get many messages').item.json.Subject }}\nTreść:\n{{ $('Get many messages').item.json.snippet }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        368,
+        -112
+      ],
+      "id": "1d3a5b69-e47d-406e-b8e6-266f5565a060",
+      "name": "AI Pisarz (Marta)",
+      "credentials": {
+        "openAiApi": {
+          "id": "7AzOZOpey5mYnsPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $('Get many messages').item.json.Subject }}",
+        "emailType": "html",
+        "message": "={{ $json.message.content }}",
+        "options": {
+          "threadId": "={{ $('Get many messages').item.json.threadId }}",
+          "sendTo": "={{ $('Get many messages').item.json.From }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        608,
+        -112
+      ],
+      "id": "cee6f6f3-9412-4dd4-b99b-ff7f5eef379d",
+      "name": "Create Draft",
+      "webhookId": "ebaa8ffe-c471-4670-bb1c-c118b849a238",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.message.threadId }}",
+        "labelIds": [
+          "Label_8698956675052924918"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        816,
+        -112
+      ],
+      "id": "9eecec53-7612-4aed-9a7d-f2aabcb83505",
+      "name": "Oznacz jako Gotowe",
+      "webhookId": "a2ec31a7-3ad4-48b8-8ca6-55847c440fcf",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0A1HQ6UV5G",
+          "mode": "list",
+          "cachedResultName": "general"
+        },
+        "text": "=🔔 *Nowy Draft!* \n\n*Od:* {{ $('Get many messages').item.json.From }}\n*Temat:* {{ $('Get many messages').item.json.Subject }}\n\n>>> Sprawdź etykietę Draft Gotowe w Gmailu.\n\nhttps://mail.google.com/mail/u/0/#drafts/{{ $('Create Draft').item.json.message.id }}",
+        "otherOptions": {
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        1040,
+        -112
+      ],
+      "id": "c94e21b8-babd-484f-9102-512b34573627",
+      "name": "Powiadomienie Slack",
+      "webhookId": "32825734-310d-4c43-8bdb-2d27238cb9fd",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "trigger": [
+          "message"
+        ],
+        "channelId": {
+          "__rl": true,
+          "value": "C0A1HQ6UV5G",
+          "mode": "list",
+          "cachedResultName": "general"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.slackTrigger",
+      "typeVersion": 1,
+      "position": [
+        -576,
+        16
+      ],
+      "id": "c5b0e665-12eb-4be7-b940-acb10287307d",
+      "name": "Slack Trigger",
+      "webhookId": "be27ff63-5dd2-4ea7-8edd-f3ee1c5319e9",
+      "credentials": {
+        "slackApi": {
+          "id": "NPzsVJ02vnm3zhgA",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "74b5a06c-e92d-400b-a654-192aa19cdd96",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "draftuj",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -352,
+        16
+      ],
+      "id": "3751aca6-da72-4609-bc4d-95a91cef0519",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 10,
+        "filters": {
+          "labelIds": [
+            "Label_8388846993740763261"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -80,
+        -112
+      ],
+      "id": "cff3d471-9838-4977-9563-4c23c488b7eb",
+      "name": "Get many messages",
+      "webhookId": "673a0b1c-d478-470c-a3f6-059d37aa2494",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "UkJS0m5NScuFyhnL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -416,
+        -192
+      ],
+      "id": "547e5c6a-5163-43d0-a53d-5d2cfd8b07af",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "connections": {
+    "Usuń Etykietę (Start)": {
+      "main": [
+        [
+          {
+            "node": "AI Pisarz (Marta)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Pisarz (Marta)": {
+      "main": [
+        [
+          {
+            "node": "Create Draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Draft": {
+      "main": [
+        [
+          {
+            "node": "Oznacz jako Gotowe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Oznacz jako Gotowe": {
+      "main": [
+        [
+          {
+            "node": "Powiadomienie Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get many messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many messages": {
+      "main": [
+        [
+          {
+            "node": "Usuń Etykietę (Start)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "78243e79453de537183305a3c3825e24de7eb0bc8972ce5a8ab629f87f2161d2"
+  }
+}
