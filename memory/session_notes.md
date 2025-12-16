@@ -11,6 +11,7 @@ Najnowsze wpisy na górze ↓
     - **Model:** On-Demand (Użytkownik nadaje etykietę `Draft Asystent`, AI oddaje `Draft Gotowy`).
     - **USP:** Hiper-Personalizacja (Styl Marty) + Scope Creep Defense.
     - **CTA:** Biznesowe/Wdrożeniowe ("Napisz AUDYT").
+- **Bonus:** Stworzono scenariusz na Instagram Reels (`agents/waski/drafts/instagram_reel_magic_gmail.md`) w formacie "Tech-Lifehack".
 - **Aktualizacja Dokumentacji (Technical Reality Check):**
     - Zweryfikowano plik `project.json` (v5) i zaktualizowano dokumentację (`product_mvp/released/Agent Magic Gmail v4/workflow_documentation_v3.md`), aby odzwierciedlała rzeczywisty mechanizm etykiet (Start -> Koniec).
     - Dodano sekcję o **Hiper-Personalizacji** jako kluczowym wyróżniku sprzedażowym.
@@ -24,7 +25,8 @@ Najnowsze wpisy na górze ↓
 - Wąski ma gotowy wsad do nagrania (Talking Head + Screeny).
 
 **Następny krok (JUTRO):**
-- 🎥 **Nagranie wideo** wg scenariusza v6.
+- **START DNIA:** Weryfikacja i akceptacja obu skryptów (LinkedIn + Instagram).
+- 🎥 **NAGRYWAMY:** Realizacja materiału wideo (obie platformy za jednym zamachem).
 - Montaż (dynamiczny, z naciskiem na moment zmiany etykiety).
 - Publikacja.
 
