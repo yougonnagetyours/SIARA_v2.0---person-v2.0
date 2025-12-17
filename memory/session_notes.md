@@ -3,6 +3,26 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-17, 10:00 - Sesja #26 (Skrypty v3 & Strategia Social Media)
+
+**Co robiliśmy:**
+- **Finalizacja materiałów wideo:**
+    - **Wideo Główne (LinkedIn/YouTube):** Zatwierdzono `agents/waski/drafts/video_demo_script_final_v3.md` (Wersja "Praktyk", 90 sek). Kluczowa zmiana: język "partner-to-partner", zastąpienie imienia "Marta" uniwersalnym "klientka/ona", usunięcie tonu "nauczyciela".
+    - **Rolka (Instagram/TikTok):** Zatwierdzono `agents/waski/drafts/instagram_reel_magic_gmail_v2.md` (Wersja "Lifehack", 45 sek). Format dynamiczny, skupiony na korzyści "tu i teraz".
+- **Decyzje Strategiczne:**
+    - **Słownictwo:** "Schemat" zamiast "Mapy" (bardziej inżynierskie). "Agent" zamiast "Magic" (pozycjonowanie high-ticket).
+    - **Lead Magnet:** Zamiast wysyłać plik `.json` (którego klient nie otworzy), wysyłamy wizualny schemat/zrzut ekranu workflow z opisami.
+    - **Narracja:** "Nie buduj statku NASA, zacznij od Proof of Concept".
+
+**Ustalenia:**
+- Mamy komplet skryptów gotowych do nagrania.
+- Następnym krokiem jest fizyczna produkcja (nagranie + montaż) oraz przygotowanie assetu "Schemat" (grafika) do wysyłki.
+
+**Następny krok:**
+- Nagranie obu materiałów wideo.
+- Przygotowanie pliku graficznego ze schematem procesu.
+
+---
 ## 2025-12-16, 12:00 - Sesja #25 (Scenariusz Wideo & Strategia Wdrożeniowa)
 
 **Co robiliśmy:**
@@ -577,4 +597,3 @@ Najnowsze wpisy na górze ↓
 - Zatwierdzenie finalnej wersji profilu LinkedIn.
 - Wgranie profilu na LinkedIn.
 - Rozpoczęcie "Tygodnia 1" z planu (przygotowanie wideo/Loom).
----
