@@ -26,14 +26,14 @@ Mogę w ten sposób oznaczyć kilka takich wiadomości"
 *(Kadr: Slack w telefonie. Kciuk wpisuje komendę.)*
 **Napis na ekranie:** "Jedno słowo i spokój."
 **Voiceover:** "Potem wchodzę na Slacka. Piszę: **'draftuj'**.
-Tyle. Nie odpalam póki co skomplikowanego systemów. Po prostu daję znać agentowi, że ma robotę."
+Tyle. Po prostu daję znać agentowi, że ma robotę."
 
 #### 4. WYNIK - "SPOKÓJ DUCHA" (0:30 - 0:40)
 *(Kadr: Widok gotowego draftu w Gmailu. Przewijasz tekst.)*
 **Napis na ekranie:** "I Gotowe. Asertywnie. Z klasą."
 **Voiceover:** "Wchodzę ponownie na maila i mam gotowe odpowiedzi jako drafty w tym samym wątku.
-Konkretną, w moim stylu, ale bez moich nerwów.
-Klikam 'Wyślij' i wracam do swoich spraw."
+Konkretne, w moim stylu, ale bez moich nerwów.
+Klikam 'Wyślij' lub ewentualnie poprawiam i wracam do swoich spraw."
 
 #### 5. CTA (0:40 - 0:50)
 *(Kadr: Ty do kamery, uśmiech.)*
