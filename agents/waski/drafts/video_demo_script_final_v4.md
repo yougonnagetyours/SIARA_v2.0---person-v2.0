@@ -17,7 +17,7 @@ Bo wdrożenia nie robi się na hurra. Zobaczcie jak wygląda ten proces w prakty
 *(Ekran: Przejście na Gmail lub Twoja twarz. Jeśli Gmail - pokaż maila z tematem "Szybka prośba".)*
 
 "Ostatnio wdrażałem u klientki system do walki z tzw. **Scope Creepem**.
-Nikt z nas nie lubi maili pt. *'szybkie pytanko'* czy *'drobna poprawka gratis'*.
+Znacie to? Mail w stylu: *'Hej, skoro Wasz grafik i tak już siedzi w plikach, to niech zerknie na moją prezentację. To tylko 15 minut.'*
 To są tacy 'ukryci' zabójcy marży. Odpisanie na nie zajmuje z reguły najwięcej czasu, bo trzeba balansować między byciem miłym a asertywnym, żeby nie psuć relacji."
 
 #### 2. DEMO - "PEŁNA KONTROLA" (0:30 - 0:45)

@@ -18,7 +18,8 @@ Dlatego wdrożyłem **Proof of Concept**. Agenta AI, który zdejmuje mi z głowy
 #### 2. AKCJA - "MAGIA W TLE" (0:12 - 0:25)
 *(Kadr: Szybki montaż. 1. Zbliżenie na maila 'Drobna poprawka'. 2. Nadanie etykiety. 3. Slack.)*
 **Napis na ekranie:** "Klik. Klik. Gotowe."
-**Voiceover:** "Przychodzi mail o 'darmową poprawkę', która z reguły kosztuje kilka ładnych godzin , a klient mysli, że to "2 kliknięcia". Taki typowy **scope creep**.
+**Voiceover:** "Przychodzi mail: 'Hej, skoro grafik już siedzi w plikach, to niech zerknie na moją prezentację. To tylko 15 minut.'
+Klasyczny **scope creep**, który rozwala dzień.
 Zamiast tracić czas na dyplomację – nadaję etykietę **'Draft Asystent'**.
 Wchodzę na Slacka, piszę **'draftuj'** i wracam do kawy. Agent właśnie robi robotę za mnie."
 
