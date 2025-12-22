@@ -6,8 +6,10 @@ Ekran: 3 maile:
 - Re: Propozycje tekstów - nie czuję tego
 
 Kiedyś na takie maile odpisywałbym ok 15 minut na jeden i pewnie po naciskach ze strony klienta w końcu bym uległ.
+
 Zbudowany przeze mnie prosty Agent AI robi to w sekundę. 
-Odpowiada za mnie, w moim stylu, ale w przeciwieństwie do mnie jest asertywny i jednocześnie kulturalny
+Odpowiada za mnie, w moim stylu, ale w przeciwieństwie do mnie jest asertywny i jednocześnie kulturalny.
+
 Pokażę to na żywym przykładzie.
 
 Niewygodny mail -> Nadajemy etykietę "Draft Asystent" -> I jeśli chcemy od razu mieć to z głowy, to wchodzimy na Slacka, na odpowiedni kanał i dajemy agentowi komendę "draftuj"
