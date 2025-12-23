@@ -3,6 +3,50 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-23, 09:30 - Sesja #27 (Finalny Skrypt: "Mine")
+
+**Co robiliśmy:**
+- **Zmiana Contentowa:** Użytkownik dostarczył własną, finalną wersję skryptu: `agents/waski/drafts/Insta_reel_magic_mine.md`.
+    - **Charakterystyka:** Hybryda. Łączy problem (trudni klienci) z technicznym demo (Slack/Etykiety) i wizją rozwoju (CRM/Second Brain).
+    - **Decyzja:** To jest ten jedyny, właściwy skrypt ("Golden Master"). Idzie jako **Reel/Video na LinkedIn ORAZ Instagram**.
+- **Zdefiniowano "Boot Sequence" po świętach:**
+    1.  **Produkcja:** Dokończyć montaż (B-rolle) do wideo `Insta_reel_magic_mine.md`.
+    2.  **Dystrybucja:** Upload materiału (LinkedIn + Instagram).
+    3.  **Sprzedaż:** Start procesu Outreach (cel: 50 prospektów w CRM).
+- **Strategia Instagram (Decyzja):**
+    - **Status:** IG to kanał wspierający (Support), a nie główny front (Core).
+    - **Zagrożenie:** Na firmowym Instagramie agencji często siedzi Junior/Stażysta (który boi się AI), a nie Marta (Właścicielka). Pisanie tam może trafić w próżnię.
+    - **Taktyka:** Traktujemy IG jako "Weryfikator Vibe'u" i miejsce na recykling treści (Rolka i tak jest gotowa). Outreach robimy tam tylko, jeśli na LinkedIn cisza.
+
+**Ustalenia:**
+- Wracamy po przerwie z gotowym planem egzekucji opartym o skrypt "Mine".
+- Nie wymyślamy koła na nowo, tylko realizujemy ustalone kroki.
+
+**Następny krok (Po powrocie):**
+- Montaż B-rolli do skryptu "Mine".
+- Publikacja.
+- Start polowania na leady.
+
+---
+## 2025-12-23, 09:00 - Sesja #27 (Status Przedświąteczny)
+
+**Co robiliśmy:**
+- **Status Produkcji Wideo:** Główny materiał jest **nagrany i pocięty**. Brakuje tylko przebitek (B-rolli).
+- **Decyzja Strategiczna (Timing):** Przesunięcie publikacji na "po świętach".
+    - Powód: 23 grudnia w B2B to martwy okres. Publikacja teraz spaliłaby zasięgi (algorytm LinkedIna w święta śpi, klienci jedzą pierogi).
+- **Plan na Przerwę:** Regeneracja. Odcinamy się od operacyjki, żeby wrócić ze świeżą głową do Smoke Testu.
+
+**Ustalenia:**
+- Materiał wideo jest bezpieczny (Draft).
+- Start kampanii (publikacja + outreach) nastąpi w pierwszym tygodniu roboczym po świętach/Nowym Roku.
+- Cel pozostaje bez zmian: Walidacja rentowności pomysłu na "Marcie".
+
+**Następny krok (Po Świętach):**
+- Dodać B-rolle.
+- Opublikować wideo.
+- Odpalić Smoke Test.
+
+---
 ## 2025-12-17, 10:00 - Sesja #26 (Skrypty v3 & Strategia Social Media)
 
 **Co robiliśmy:**
