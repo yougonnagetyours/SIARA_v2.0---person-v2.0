@@ -3,6 +3,26 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-29, 11:30 - Sesja #30 (Prompt Tuning & OAuth Fix)
+
+**Co robiliśmy:**
+- **Diagnostyka Awarii:** Zidentyfikowano przyczynę niedziałającego Agenta – wygaśnięcie tokenu Google OAuth (w trybie "Testing" wygasa co 7 dni).
+- **Prompt Engineering (Marta v5):**
+    - Stworzono finalną wersję promptu systemowego: `projects/001_AgentMagicGmail_v5(On-Demand)/AD/system_prompt_marta_v5.md`.
+    - **Nowe Scenariusze:** Dodano obsługę "Paniki" (awaria) i "Vibe Check" (niejasny feedback klienta).
+    - **Formatowanie:** Wymuszono używanie znaczników HTML `<br>` zamiast zwykłego Entera, aby drafty w Gmailu miały czytelne akapity.
+    - **Fix:** Usunięto cudzysłowy z przykładów (Few-Shot), które powodowały błędy w odpowiedziach Agenta.
+
+**Ustalenia:**
+- Prompt v5 jest "Golden Masterem".
+- Użytkownik musi ręcznie odświeżać token w n8n co tydzień (do czasu weryfikacji aplikacji przez Google).
+
+**Następny krok:**
+- Odświeżenie tokenu w n8n (Reconnect).
+- Test generalny (Slack -> Gmail -> Slack) z nowym promptem.
+- Nagranie finalnego demo.
+
+---
 ## 2025-12-29, 11:00 - Sesja #29 (Checklista Startowa)
 
 **Co robiliśmy:**
