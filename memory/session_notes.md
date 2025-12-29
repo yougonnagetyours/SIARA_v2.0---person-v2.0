@@ -3,6 +3,48 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2025-12-29, 11:00 - Sesja #29 (Checklista Startowa)
+
+**Co robiliśmy:**
+- **Opracowano Checklistę Startową:** Podzielono zadania na "Dziś" (Produkcja) i "Po Sylwestrze" (Przygotowanie Pola Walki).
+- **Zdefiniowano krytyczne zadanie techniczne:** **6 Stycznia wieczorem** należy odświeżyć token Google w n8n (wygasa co 7 dni w trybie testowym). Bez tego system padnie w dniu premiery.
+- **Ustalono scenariusze "Live Demo":** System musi działać, aby móc udowodnić sceptykom (na callu lub przez Loom), że to nie makieta, tylko żywy automat.
+
+**Zadania (Do wykonania DZIŚ):**
+1.  **Wideo:** Dodać B-rolle (screeny z n8n/Gmail) + Wypalić napisy.
+2.  **Asset:** Stworzyć "Schemat" (PDF/JPG z opisami workflow).
+
+**Zadania (Do wykonania 3-6 Stycznia):**
+1.  **LinkedIn:** Zaktualizować profil (nowe Bio).
+2.  **Outreach:** Stworzyć listę "Hit List 50" (URL do profili klientów).
+3.  **Tech:** Odświeżyć token Google w n8n (Reconnect).
+
+**Następny krok (Po 3 Stycznia):**
+- Weryfikacja gotowości (System + Profil + Materiały).
+- 7 Stycznia: START.
+
+---
+## 2025-12-29, 10:45 - Sesja #28 (Harmonogram Styczniowy)
+
+**Co robiliśmy:**
+- **Decyzja o Terminie:** Wstrzymano publikację do **7 stycznia 2025** (po okresie świątecznym/Nowym Roku), aby uniknąć "martwej strefy" w B2B.
+- **Harmonogram Smoke Testu:**
+    - **Start:** 7 Stycznia.
+    - **Czas trwania:** 14 dni (do 21 Stycznia).
+    - **Kryterium Stopu:** Jeśli po dotarciu do 50 osób (Post/DM) będzie 0 sprzedaży i <3 rozmowy -> Pivot.
+- **Strategia Awaryjna:** Ustalono treść wiadomości Direct Message w przypadku braku reakcji na post.
+    - **Korekta copy:** Zmieniono frazę "opinię inżynierską" na **"opinię praktyka"** (bardziej przystępne).
+- **Zadania na przerwę:** Użytkownik kończy montaż wideo dzisiaj, a potem odpoczywa do 3 stycznia.
+
+**Ustalenia:**
+- Widzimy się po Nowym Roku, aby odpalić maszynę.
+- Plan jest zapięty, materiały (prawie) gotowe.
+
+**Następny krok (Po 3 Stycznia):**
+- Finalne sprawdzenie assetów (Video, Schemat).
+- 7 Stycznia: Publikacja i Start Outreachu.
+
+---
 ## 2025-12-23, 09:30 - Sesja #27 (Finalny Skrypt: "Mine")
 
 **Co robiliśmy:**

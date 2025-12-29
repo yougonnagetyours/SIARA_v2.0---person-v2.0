@@ -2,18 +2,19 @@
 
 **3. Tydzień 2: Stabilizacja i Content Marketing (Smoke Test v2)**
 
-Cel: Nagranie finalnego demo (Video) i publikacja posta na LinkedIn, który generuje leady (Beta Testers).
+Cel: Nagranie finalnego demo (Video) i publikacja posta na LinkedIn (Start Kampanii).
 
 Status:
-- ✓ **INFRASTRUKTURA:** VPS + Docker + n8n + OAuth.
-- ✓ **WORKFLOW:** Magic Gmail v5 (OnDemand + Monitoring 15min) + Dokumentacja v3.1.
-- ✓ **CONTENT:**
-    - Scenariusz wideo: **[GOTOWY - v6 Gold Master]**
-    - Post LinkedIn: **[GOTOWY - v6 Lead Magnet]**
-- 🔄 **OUTREACH:**
-    - Profil LinkedIn: [Gotowy - czeka na wklejenie]
-    - Rozgrzewka sieci: [Pending]
-- 🔜 **NEXT STEP:** Dzień zdjęciowy (Nagranie Demo).
+- ✓ **INFRASTRUKTURA:** Gotowa (VPS + n8n + OAuth).
+- ✓ **WORKFLOW:** Gotowy (Magic Gmail v5).
+- ✓ **CONTENT:** Skrypty gotowe. Montaż w toku (Deadline: 29.12).
+- ⏸️ **KAMPANIA:** Wstrzymana do **7 Stycznia 2025** (Martwy okres świąteczny).
+
+## 📅 NAJBLIŻSZE KROKI (STYCZEŃ 2025)
+
+1. **07.01 (Środa):** Publikacja Wideo + Start Outreachu.
+2. **07.01 - 21.01:** 14-dniowy Smoke Test (Cel: 50 kontaktów).
+3. **21.01 (Środa):** Decyzja Pivot/Scale.
 
 ## 🚧 BLOKERY
 

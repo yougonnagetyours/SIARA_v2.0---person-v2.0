@@ -45,7 +45,49 @@ Nie sprzedajemy "przyszłości". Sprzedajemy **"Gotowy Proces"**.
 *   **Tech:** Gotowy (n8n + Gmail + OpenAI + Slack).
 *   **Koszt:** Twój czas na nagranie i rozmowy.
 
-## 6. KRYTERIA SUKCESU (KPI)
+## 🗓️ HARMONOGRAM SMOKE TESTU (STYCZEŃ 2025)
+
+**Start:** 7 Stycznia 2025 (Środa)
+**Koniec:** 21 Stycznia 2025 (Środa)
+**Czas trwania:** 14 dni
+
+### Faza 1: Atak (7.01 - 14.01)
+*   **Cel:** Zasięg i dotarcie do świadomości.
+*   **Akcje:**
+    1.  Publikacja Wideo Demo (LinkedIn + Instagram).
+    2.  Dystrybucja "Cichy Inżynier" (20 zaproszeń dziennie).
+    3.  Lead Magnet: "Napisz 'SCHEMAT', wyślę Ci mapę procesu".
+
+### Faza 2: Przesiew (14.01 - 21.01)
+*   **Cel:** Rozmowy i Oferty.
+*   **Akcje:**
+    1.  Wysyłka schematu do zainteresowanych z pytaniem sprzedażowym ("Chcesz wdrożenie?").
+    2.  Follow-up do milczących kontaktów.
+
+## 🚨 PROCEDURA AWARYJNA (Brak reakcji)
+
+Jeśli po 48h od publikacji jest cisza (brak leadów), uruchamiamy **Direct Outreach**.
+
+**Skrypt wiadomości (DM):**
+> "Cześć [Imię],
+>
+> Wrzucałem ostatnio demo automatu do maili, o którym mam w nagłówku. Zbudowałem to jako inżynier procesów, żeby nie tracić czasu na powtarzalne wiadomości.
+>
+> Potrzebuję weryfikacji kogoś z "pola walki". Jako właściciel agencji – myślisz, że takie pół-automatyczne podejście (AI robi draft, Ty akceptujesz) ma sens w Twojej codzienności, czy to raczej zbędny gadżet?
+>
+> Będę wdzięczny za opinię praktyka."
+
+## 🛑 KRYTERIA PIVOTU (21.01.2025)
+
+Uznajemy pomysł za **zły/do zmiany**, jeśli spełnione zostaną łącznie:
+1.  Dotarliśmy z ofertą/wideo do **50 osób** (zasięg organiczny lub DM).
+2.  Zrealizowaliśmy **0 sprzedaży**.
+3.  Odbyło się **mniej niż 3 rozmowy** (demo/audyt).
+4.  Feedback jest letni ("Fajne, ale nie potrzebuję").
+
+---
+
+## 4. Wskaźniki sukcesu (KPI) - ZAKTUALIZOWANE
 1.  **Zainteresowanie:** 10 osób obejrzy nagranie Demo.
 2.  **Rozmowy:** 3 osoby zapytają "ile to kosztuje" lub "czy zadziała z moim CRM".
 3.  **Sprzedaż:** 1 wdrożenie płatne.
