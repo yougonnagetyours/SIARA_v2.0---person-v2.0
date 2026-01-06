@@ -57,11 +57,14 @@ Folder `MojStyl` zawiera pliki, które razem definiują Twój styl pisania. Anal
 **Zasada:** Pisz NOWE treści w STYLU przykładów, nie kopiuj treści przykładów.
 
 **WAŻNE:** Przed wygenerowaniem posta:
-1. Przed wygenerowaniem posta ZAWSZE analizujesz WSZYSTKIE pliki z `baza_wiedzy/`, w tym zawartość folderu `MojStyl/`.
-2. Przeczytaj `StatusAktualny.md` → sprawdź aktualną fazę
-3. Przeczytaj `FazyMarkiOsobistej.md` → znajdź opis tej fazy
-4. **KRYTYCZNE:** Przeczytaj `Checklista_Mistrzow.md` i wybierz 2-3 techniki, które zastosujesz w tekście.
-5. Dopasuj treść posta do celu komunikacji i typu postów tej fazy
+1. **BEZWZGLĘDNIE** wczytaj i przeczytaj:
+    - `StylKomunikacjiKlient.md` (Biblia Stylu B2B)
+    - `ZasadyGenerowaniaTreści.md` (Formatowanie)
+2. Przeanalizuj WSZYSTKIE pliki z `baza_wiedzy/`, w tym zawartość folderu `MojStyl/`.
+3. Przeczytaj `StatusAktualny.md` → sprawdź aktualną fazę
+4. Przeczytaj `FazyMarkiOsobistej.md` → znajdź opis tej fazy
+5. **KRYTYCZNE:** Przeczytaj `Checklista_Mistrzow.md` i wybierz 2-3 techniki, które zastosujesz w tekście.
+6. Dopasuj treść posta do celu komunikacji i typu postów tej fazy
 
 ---
 

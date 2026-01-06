@@ -1,0 +1,41 @@
+flowchart TD
+    %% Style definitions
+    classDef mail fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef action fill:#e1f5fe,stroke:#0277bd,stroke-width:2px;
+    classDef ai fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+    classDef result fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+
+    %% Nodes
+    A["📩 Nowy Trudny Mail"]
+    B{"Decyzja Człowieka"}
+    C["🏷️ Etykieta: 'Draft Asystent'"]
+    
+    subgraph S1 ["🤖 AUTOMATYZACJA (n8n + GPT-4)"]
+        direction TB
+        D["📥 Pobranie Treści"]
+        E["🧠 Analiza Stylu i Historii"]
+        F["✍️ Generowanie Odpowiedzi"]
+    end
+    
+    G["📝 Utworzenie Draftu"]
+    H["✅ Etykieta: 'Draft Gotowy'"]
+    I["🔔 Powiadomienie na Slacku"]
+    J["🚀 Kliknij 'Wyślij'"]
+
+    %% Connections
+    A --> B
+    B -- "Ignoruj" --> A
+    B -- "Deleguj" --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+
+    %% Apply Styles
+    class A mail;
+    class B,C,J action;
+    class E,F ai;
+    class G,H,I result;

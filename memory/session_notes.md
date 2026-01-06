@@ -3,6 +3,30 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-06 - Sesja #31 (Start Kampanii "Freelancer")
+
+**Co robiliśmy:**
+- **Zmiana Strategii (Safety First):** Zrezygnowano z narracji "Inżynier na Etacie" na rzecz bezpieczniejszej persony **"Freelancer / Konsultant"** (projekt poboczny). Minimalizuje to ryzyko konfliktu z pracodawcą.
+- **Content:**
+    - Wygenerowano finalną wersję posta: `agents/waski/campaigns/01_Launch_AgentGmail/1_linkedin_post_static_v3_compliant.md`.
+    - Post jest zgodny z rygorystycznymi zasadami (`ZasadyGenerowaniaTreści.md`): brak hashtagów, krótka forma, jeden styl punktorów.
+    - Zrezygnowano z wideo na rzecz statycznego screena z n8n (Social Proof).
+- **Lead Magnet:**
+    - Przygotowano wsad tekstowy do infografiki (Dymki na screen n8n).
+    - Wygenerowano kod Mermaid (`...modern.mmd`) jako opcję zapasową dla inżynierów.
+
+**Ustalenia:**
+- Post jest gotowy do publikacji.
+- Brakuje tylko **wizuala** (Screen n8n z nałożonymi w Canvie dymkami).
+
+**Zadania na JUTRO (Priorytet):**
+1.  **Canva:** Nałożyć dymki na screen `Flow.png` wg instrukcji Siary (1. Zlecenie, 2. Pisarz AI, 3. Wynik).
+2.  **Publikacja:** Wrzucić posta na LinkedIn + screen z Canvy.
+3.  **Obsługa:** Czekać na komentarze "AGENT" i wysyłać PDF (Lead Magnet).
+
+**Status:** 🟡 Oczekuje na grafikę (Jutro rano).
+
+---
 ## 2025-12-29, 11:30 - Sesja #30 (Prompt Tuning & OAuth Fix)
 
 **Co robiliśmy:**

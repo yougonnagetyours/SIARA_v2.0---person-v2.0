@@ -1,0 +1,40 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#f6f8fa', 'fontFamily': 'arial', 'fontSize': '16px'}}}%%
+flowchart TD
+    %% Global Styles
+    classDef base fill:#ffffff,stroke:#e1e4e8,stroke-width:1px,color:#24292e,rx:10,ry:10;
+    classDef start fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#0d47a1,rx:10,ry:10;
+    classDef human fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,color:#f57f17,rx:10,ry:10;
+    classDef ai fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px,color:#4a148c,rx:10,ry:10,stroke-dasharray: 5 5;
+    classDef success fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:#1b5e20,rx:10,ry:10;
+    
+    %% Nodes
+    A["📩 Nowy Trudny Mail"] ::: start
+    B{"🤔 Decyzja"} ::: human
+    C["🏷️ Nadaję etykietę:<br/>'Draft Asystent'"] ::: human
+    
+    subgraph AI_BOX ["✨ MAGIA (n8n + GPT-4)"]
+        direction TB
+        D["📥 Pobranie Treści"] ::: base
+        E["🧠 Analiza Stylu i Historii"] ::: base
+        F["✍️ Pisanie Draftu"] ::: base
+    end
+    
+    G["📝 Utworzenie Draftu w Gmail"] ::: success
+    H["✅ Zmiana etykiety na:<br/>'Draft Gotowy'"] ::: success
+    I["🔔 Ping na Slacku"] ::: success
+    J["🚀 Klikam 'Wyślij'"] ::: human
+
+    %% Connections
+    A --> B
+    B -- "To tylko spam" --> A
+    B -- "Deleguję!" --> C
+    C -.-> D
+    D --> E
+    E --> F
+    F -.-> G
+    G --> H
+    H --> I
+    I --> J
+
+    %% Styling the Subgraph
+    style AI_BOX fill:#fafafa,stroke:#d1d5da,stroke-width:1px,color:#586069,rx:10,ry:10
