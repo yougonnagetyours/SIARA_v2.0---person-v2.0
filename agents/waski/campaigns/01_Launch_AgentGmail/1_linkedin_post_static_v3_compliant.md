@@ -12,7 +12,7 @@ Deleguję te najgorsze maile.
 
 Kiedy zacząłem realizować zlecenia dla klientów, wpadłem w pułapkę.
 
-Trzy typy wiadomości drenowały moją energię przed pierwszą kawą.
+Trzy typy wiadomości wysysały moją energię już przed pierwszą kawą.
 
 1. "Szybka prośba przy okazji" (czyli darmowa robota)
 2. "PILNE!!! KAMPANIA NIE DZIAŁA???" (panika zamiast faktów)

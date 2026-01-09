@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Mockup Generator</title>
+    <style>
+        body {
+            background-color: #121212; /* Gmail Dark Mode Background */
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #e8eaed;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .label-text {
+            color: #9aa0a6;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        /* Gmail Row Styles */
+        .email-row {
+            background-color: #1f1f1f; /* Unread/Selected color */
+            border-bottom: 1px solid #3c4043;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            height: 48px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px; /* Slight rounded corners for modern look */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .email-row:hover {
+            box-shadow: 0 1px 3px 1px rgba(0,0,0, 0.5);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Columns */
+        .col-checkbox { width: 40px; display: flex; justify-content: center; color: #9aa0a6; }
+        .col-star { width: 40px; display: flex; justify-content: center; color: #9aa0a6; }
+        .col-sender { width: 200px; font-weight: 700; color: #e8eaed; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .col-subject { flex: 1; display: flex; align-items: center; overflow: hidden; white-space: nowrap; }
+        .col-date { width: 80px; text-align: right; font-weight: 700; color: #e8eaed; font-size: 12px; }
+
+        /* Icons simulation */
+        .icon-square { width: 18px; height: 18px; border: 2px solid #9aa0a6; border-radius: 2px; }
+        .icon-star { font-size: 18px; }
+
+        /* Subject Parts */
+        .subject-text { font-weight: 700; color: #e8eaed; margin-right: 10px; }
+        .snippet-text { font-weight: 400; color: #9aa0a6; }
+        .dash { color: #9aa0a6; margin: 0 5px; }
+
+        /* Labels (Badges) */
+        .badge {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+            white-space: nowrap;
+        }
+
+        /* Specific Label Colors */
+        .badge-red {
+            background-color: #5c1b1b;
+            color: #fca5a5;
+            border: 1px solid #fca5a5;
+        }
+
+        .badge-blue {
+            background-color: #1e3a8a;
+            color: #93c5fd;
+            border: 1px solid #93c5fd;
+        }
+
+        .badge-green {
+            background-color: #14532d;
+            color: #86efac;
+            border: 1px solid #86efac;
+        }
+
+        /* Visual Separator */
+        .visual-separator {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5f6368;
+            font-size: 24px;
+        }
+        
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #5f6368;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- SCENE 1: BEFORE -->
+        <div class="label-text">SCENA 1: PROBLEM (09:14)</div>
+        <div class="email-row">
+            <div class="col-checkbox"><div class="icon-square"></div></div>
+            <div class="col-star"><span class="icon-star">☆</span></div>
+            <div class="col-sender">Marek (Klient Kluczowy)</div>
+            <div class="col-subject">
+                <span class="badge badge-red">PILNE</span>
+                <span class="subject-text">RE: PILNE!!! Kampania leży, tracimy budżet!!!</span>
+                <span class="dash">-</span>
+                <span class="snippet-text">Cześć, dlaczego to nie działa? Miało być wczoraj...</span>
+            </div>
+            <div class="col-date">09:14</div>
+        </div>
+
+        <div class="visual-separator">
+            <div class="arrow-down"></div>
+        </div>
+
+        <!-- SCENE 2: AFTER -->
+        <div class="label-text">SCENA 2: ROZWIĄZANIE (09:15)</div>
+        <div class="email-row">
+            <div class="col-checkbox"><div class="icon-square"></div></div>
+            <div class="col-star"><span class="icon-star">★</span></div> <!-- Starred for effect -->
+            <div class="col-sender">Marek (Klient Kluczowy)</div>
+            <div class="col-subject">
+                <span class="badge badge-red">PILNE</span>
+                <span class="badge badge-blue">Draft Asystent</span>
+                <span class="badge badge-green">Draft Gotowy</span>
+                <span class="subject-text">RE: PILNE!!! Kampania leży, tracimy budżet!!!</span>
+                <span class="dash">-</span>
+                <span class="snippet-text">Cześć Marku, widzę zgłoszenie. Agent już analizuje logi, zaraz...</span>
+            </div>
+            <div class="col-date">09:15</div>
+        </div>
+    </div>
+
+</body>
+</html>

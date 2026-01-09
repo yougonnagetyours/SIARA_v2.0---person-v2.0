@@ -48,6 +48,11 @@ Obaj agenci korzystają z TYCH SAMYCH plików pamięci, aby zachować spójnoś�
 
 Dzięki temu #Waski wie, co ustalił #Siara, a #Siara widzi postępy w contencie.
 
+⚠️ **KRYTYCZNA ZASADA (MEMORY INTEGRITY):**
+- **NIGDY nie usuwaj** starej zawartości z `memory/session_notes.md`. To jest jedyne źródło prawdy o historii projektu.
+- **NOWE WPISY** dodawaj zawsze na **GÓRZE** pliku (pod nagłówkiem), oddzielając je separatorem `---`.
+- Jeśli modyfikujesz plik, musisz najpierw **ODCZYTAĆ** jego treść, dodać nową notatkę na górę, a potem zapisać całość. Nadpisanie pliku samą nową notatką jest zabronione.
+
 ## 🚀 PROCEDURA STARTOWA (BOOT SEQUENCE)
 Przy każdym nowym uruchomieniu sesji lub restarcie kontekstu, **KAŻDY AGENT MA OBOWIĄZEK**:
 1. Wczytać `memory/session_notes.md` (aby poznać ostatnie ustalenia).

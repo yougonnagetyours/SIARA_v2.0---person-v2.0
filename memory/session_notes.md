@@ -3,6 +3,33 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-09 - Sesja #32 (Finalizacja Launchu & Remont Profilu)
+
+**Co robiliśmy:**
+- **Remont Profilu LinkedIn:**
+    - Zaktualizowano Nagłówek: *PLM i Procesy | Automatyzacja & AI dla Managerów... (Human-in-the-Loop 80/20)*.
+    - Zaktualizowano Bio ("O mnie"): Narracja "Inżynier Procesów", który walczy z "Chaosem Operacyjnym" (szklany sufit).
+    - Zapisano w: `agents/waski/drafts/linkedin_profile_draft_v2.md`.
+- **Finalizacja Kampanii "Agent Gmail":**
+    - **Post:** Zatwierdzono tekst (`1_linkedin_post_static_v3_compliant.md`) i stworzono grafikę "Przed/Po" (`1_linkedin_post_image_comparison.png`) pokazującą proces (Pilne -> Gotowe).
+    - **Lead Magnet:** Przygotowano PDF z mapą procesu (`2_Mapa_Procesu_Agent_AI_Gmail.pdf`) do wysyłki w DM.
+- **Strategia Launchu:**
+    - Przesunięto start na **Poniedziałek (12.01) godz. 08:45**.
+    - Opracowano "Launch Protocol" (`agents/siara/plans/launch_plan_2026-01-12_AgentGmail.md`).
+    - Taktyka Outreach: "Cichy Snajper" (Puste zaproszenia do CEO, profil robi robotę).
+
+**Ustalenia:**
+- Wszystkie assety są gotowe na dysku.
+- Weekend jest wolny.
+- Startujemy w poniedziałek rano wg planu.
+
+**Następny krok (Poniedziałek 08:30):**
+1. Wczytać plan: `agents/siara/plans/launch_plan_2026-01-12_AgentGmail.md`.
+2. Rozgrzewka (Komentarze u innych).
+3. Publikacja Posta (08:45).
+4. Zapraszanie CEO (bez notatki).
+
+---
 ## 2026-01-06 - Sesja #31 (Start Kampanii "Freelancer")
 
 **Co robiliśmy:**
@@ -145,7 +172,7 @@ Najnowsze wpisy na górze ↓
     - **Narracja:** "Nie buduj statku NASA, zacznij od Proof of Concept".
 
 **Ustalenia:**
-- Mamy komplet skryptów gotowych do nagrania.
+- Mamy komplet skrytpów gotowych do nagrania.
 - Następnym krokiem jest fizyczna produkcja (nagranie + montaż) oraz przygotowanie assetu "Schemat" (grafika) do wysyłki.
 
 **Następny krok:**

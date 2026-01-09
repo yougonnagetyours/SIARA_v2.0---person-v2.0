@@ -1,24 +1,30 @@
 ## 🎯 AKTUALNY ETAP
 
-**3. Tydzień 2: Stabilizacja i Content Marketing (Smoke Test v2)**
+**4. LAUNCH WEEK: Ofensywa LinkedIn (Start Kampanii)**
 
-Cel: Nagranie finalnego demo (Video) i publikacja posta na LinkedIn (Start Kampanii).
+**Data Startu:** 12 Stycznia 2026 (Poniedziałek)
+**Cel:** Publikacja materiału, dotarcie do 15 CEO Agencji, zebranie pierwszych leadów ("AGENT").
 
-Status:
+**Status Zasobów:**
 - ✓ **INFRASTRUKTURA:** Gotowa (VPS + n8n + OAuth).
-- ✓ **WORKFLOW:** Gotowy (Magic Gmail v5).
-- ✓ **CONTENT:** Skrypty gotowe. Montaż w toku (Deadline: 29.12).
-- ⏸️ **KAMPANIA:** Wstrzymana do **7 Stycznia 2025** (Martwy okres świąteczny).
+- ✓ **WORKFLOW:** Gotowy (Magic Gmail v5 On-Demand).
+- ✓ **PROFIL LINKEDIN:** Zaktualizowany (Nagłówek PLM + Bio "Human-in-the-Loop").
+- ✓ **CONTENT:** Post (Tekst + Grafika "Przed/Po") gotowy na dysku.
+- ✓ **LEAD MAGNET:** PDF (Mapa Procesu) gotowy na dysku.
+- ⏳ **OUTREACH:** Startuje 12.01 o 09:00 (Lista 15 CEO).
 
-## 📅 NAJBLIŻSZE KROKI (STYCZEŃ 2025)
+## 📅 HARMONOGRAM (STYCZEŃ 2026)
 
-1. **07.01 (Środa):** Publikacja Wideo + Start Outreachu.
-2. **07.01 - 21.01:** 14-dniowy Smoke Test (Cel: 50 kontaktów).
-3. **21.01 (Środa):** Decyzja Pivot/Scale.
+1. **12.01 (Poniedziałek):** 
+   - 08:30: Rozgrzewka (Komentarze).
+   - 08:45: 🚀 PUBLIKACJA POSTA.
+   - 09:00: Zaproszenia do CEO (Cichy Snajper).
+2. **12.01 - 19.01:** Obsługa leadów + Feedback loop.
+3. **19.01:** Analiza wyników i decyzja o kolejnym kroku (Video vs Kolejny Post).
 
 ## 🚧 BLOKERY
 
-- (Brak) - Wszystkie zasoby do nagrania są gotowe.
+- (Brak) - Wszystkie systemy sprawne. Oczekujemy na godzinę "Zero".
 
 ## 🕒 HISTORIA
 
@@ -35,3 +41,9 @@ Status:
 - ✓ Wdrożenie wątkowania odpowiedzi (v5).
 - ✓ Implementacja sterowania ze Slacka (v6 - Command Center).
 - ✓ Finalizacja "Golden Master" workflow (v5 OnDemand).
+
+### 3. CONTENT & PIVOT (2026-01-09)
+- ✓ Zmiana strategii z Wideo na Statyczny Post (Szybciej + Czytelniej).
+- ✓ Stworzenie grafiki "Przed/Po" (Gmail Dark Mode).
+- ✓ Remont Profilu LinkedIn pod "Inżyniera PLM".
+- ✓ Opracowanie Launch Protocol na 12.01.
