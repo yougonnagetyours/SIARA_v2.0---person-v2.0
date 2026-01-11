@@ -38,7 +38,7 @@ Moja stawka godzinowa spadała, frustracja rosła.
 
 Dlatego zbudowałem system.
 
-Zatrudniłem Agenta AI, który ma przewagę nade mną.
+Stworzyłem Agenta AI, który ma przewagę nade mną.
 
 Nie ma wyrzutów sumienia.
 
@@ -73,4 +73,4 @@ Chcesz zobaczyć ten proces "pod maską"?
 
 Napisz AGENT w komentarzu.
 
-Podeślę Ci mapę procesu, żebyś zobaczył, jak wdrożyć taki spokój u siebie.
+Podeślę Ci mapę procesu, żebyś zobaczył/zonbaczyła, jak wdrożyć taki "spokój" u siebie.

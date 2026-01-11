@@ -3,6 +3,25 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-11 - Sesja #33 (Niedzielna Odprawa & Refactor)
+
+**Co robiliśmy:**
+- **Walidacja Przedstartowa:** Potwierdzono gotowość wszystkich zasobów (Post v3, Grafika, Lead Magnet).
+- **Targeting (Top 15):** Przeanalizowano listę 50 agencji i wybrano "Top 15" z największym bólem operacyjnym (pasujących do Persony Marty).
+- **CRM Setup:** Wygenerowano gotowy plik CSV (`4_Target_List_Top15_For_Notion_CRM_READY.csv`) do importu w Notion.
+- **Housekeeping:** Przeniesiono wszystkie kampanie z folderu `agents/waski` do nowego katalogu głównego `BUSINESS_ASSETS/Campaigns`.
+- **Status Techniczny:** Użytkownik potwierdził odświeżenie tokenu Google w n8n. System jest sprawny.
+
+**Ustalenia:**
+- Lista celów w Notion ma status "Do wysłania". Jutro rano zmieniamy go na "Zaproszony".
+- **Token n8n:** ✅ ODŚWIEŻONY.
+
+**Plan na JUTRO (Poniedziałek 12.01):**
+1. 08:30 - Kawa i Rozgrzewka (Komentarze).
+2. 08:45 - Publikacja Posta.
+3. 09:00 - Atak na Listę 15 CEO (Zaproszenia bez notatki).
+
+---
 ## 2026-01-09 - Sesja #32 (Finalizacja Launchu & Remont Profilu)
 
 **Co robiliśmy:**

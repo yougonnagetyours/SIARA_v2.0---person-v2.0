@@ -1,49 +1,49 @@
-## 🎯 AKTUALNY ETAP
+# Śledzenie Postępów Projektu (Progress Tracker)
 
-**4. LAUNCH WEEK: Ofensywa LinkedIn (Start Kampanii)**
+## 📌 Status Makro
+**Etap:** Walidacja Rynkowa (Smoke Test)
+**Cel:** 5 wersji Demo / 1 Klient płacący
+**Deadline:** 21 Stycznia 2026 (Koniec testu)
+**Status:** 🚀 **READY TO LAUNCH**
 
-**Data Startu:** 12 Stycznia 2026 (Poniedziałek)
-**Cel:** Publikacja materiału, dotarcie do 15 CEO Agencji, zebranie pierwszych leadów ("AGENT").
+## 🗓️ Oś Czasu
 
-**Status Zasobów:**
-- ✓ **INFRASTRUKTURA:** Gotowa (VPS + n8n + OAuth).
-- ✓ **WORKFLOW:** Gotowy (Magic Gmail v5 On-Demand).
-- ✓ **PROFIL LINKEDIN:** Zaktualizowany (Nagłówek PLM + Bio "Human-in-the-Loop").
-- ✓ **CONTENT:** Post (Tekst + Grafika "Przed/Po") gotowy na dysku.
-- ✓ **LEAD MAGNET:** PDF (Mapa Procesu) gotowy na dysku.
-- ⏳ **OUTREACH:** Startuje 12.01 o 09:00 (Lista 15 CEO).
+- [x] **Tydzień 0 (26.11 - 04.12):** Przygotowanie fundamentów.
+    - [x] Konfiguracja VPS i n8n.
+    - [x] Stworzenie Persony (Marta).
+    - [x] Napisanie skryptów wideo.
+- [x] **Tydzień 1 (05.12 - 11.12):** Budowa MVP.
+    - [x] Workflow "Magic Gmail" (v5).
+    - [x] Integracja Slack <-> Gmail.
+    - [x] Smoke Test techniczny (Sukces).
+- [x] **Tydzień 2 (12.12 - 11.01):** Produkcja Contentu & Przerwa Świąteczna.
+    - [x] Nagranie wideo (Draft).
+    - [x] Pivot na post statyczny (Decyzja).
+    - [x] Remont profilu LinkedIn.
+- [ ] **Tydzień 3 (12.01 - 19.01):** **LAUNCH WEEK.**
+    - [ ] Publikacja Posta Launchowego (Poniedziałek).
+    - [ ] Outreach do Top 15 CEO.
+    - [ ] Obsługa leadów (Wysyłka PDF).
 
-## 📅 HARMONOGRAM (STYCZEŃ 2026)
+## 📋 Backlog Zadań (Najbliższe)
 
-1. **12.01 (Poniedziałek):** 
-   - 08:30: Rozgrzewka (Komentarze).
-   - 08:45: 🚀 PUBLIKACJA POSTA.
-   - 09:00: Zaproszenia do CEO (Cichy Snajper).
-2. **12.01 - 19.01:** Obsługa leadów + Feedback loop.
-3. **19.01:** Analiza wyników i decyzja o kolejnym kroku (Video vs Kolejny Post).
+| Zadanie | Priorytet | Status | Przypisany |
+|---|---|---|---|
+| **START KAMPANII (12.01)** | 🔴 Critical | Do zrobienia | #Waski |
+| **Outreach (15 zaproszeń)** | 🔴 Critical | Do zrobienia | User |
+| [x] Odświeżenie Tokenu Google (n8n) | 🟢 Done | **ZROBIONE** | User |
+| Obsługa komentarzy "AGENT" | 🟡 High | Czeka | #Waski |
 
-## 🚧 BLOKERY
+## 📉 Wyniki (KPI)
 
-- (Brak) - Wszystkie systemy sprawne. Oczekujemy na godzinę "Zero".
+| Metryka | Cel | Aktualnie |
+|---|---|---|
+| Liczba Leadów (Komentarz/DM) | 20 | 0 |
+| Wysłane Demo (PDF) | 10 | 0 |
+| Umówione Spotkania | 3 | 0 |
+| Sprzedaż | 1 | 0 |
 
-## 🕒 HISTORIA
-
-### 0. PRZYGOTOWANIE (2025-11-26)
-- ✓ Zdefiniowanie Persony (Michał - Inżynier Procesów).
-- ✓ Restrukturyzacja projektu.
-
-### 1. TECH STACK (2025-12-04)
-- ✓ Wdrożenie na VPS (Mikr.us).
-- ✓ Konfiguracja Google OAuth (2025-12-08).
-
-### 2. MVP BUILD (2025-12-09)
-- ✓ Pierwszy Smoke Test (v4).
-- ✓ Wdrożenie wątkowania odpowiedzi (v5).
-- ✓ Implementacja sterowania ze Slacka (v6 - Command Center).
-- ✓ Finalizacja "Golden Master" workflow (v5 OnDemand).
-
-### 3. CONTENT & PIVOT (2026-01-09)
-- ✓ Zmiana strategii z Wideo na Statyczny Post (Szybciej + Czytelniej).
-- ✓ Stworzenie grafiki "Przed/Po" (Gmail Dark Mode).
-- ✓ Remont Profilu LinkedIn pod "Inżyniera PLM".
-- ✓ Opracowanie Launch Protocol na 12.01.
+## 🧠 Wnioski i Decyzje (Log)
+- **2026-01-11:** Decyzja o przeniesieniu kampanii do katalogu `BUSINESS_ASSETS`. Wybór Top 15 firm z bólami operacyjnymi. Token n8n odświeżony.
+- **2026-01-09:** Zmiana formatu z Wideo na Statyczny Post + PDF. Uznano, że prostota wygra z "hollywoodzką produkcją".
+- **2025-12-11:** Pivot strategii: Nie sprzedajemy "Agencji", tylko "System Inżyniera".
