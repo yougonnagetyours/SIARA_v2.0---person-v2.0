@@ -11,6 +11,7 @@ Najnowsze wpisy na górze ↓
 - **CRM Setup:** Wygenerowano gotowy plik CSV (`4_Target_List_Top15_For_Notion_CRM_READY.csv`) do importu w Notion.
 - **Housekeeping:** Przeniesiono wszystkie kampanie z folderu `agents/waski` do nowego katalogu głównego `BUSINESS_ASSETS/Campaigns`.
 - **Status Techniczny:** Użytkownik potwierdził odświeżenie tokenu Google w n8n. System jest sprawny.
+- **R&D (MCP):** Zbadano temat integracji Notion przez Model Context Protocol. Potwierdzono wykonalność (Google Search). Decyzja: Wdrożenie we wtorek (po launchu).
 
 **Ustalenia:**
 - Lista celów w Notion ma status "Do wysłania". Jutro rano zmieniamy go na "Zaproszony".
