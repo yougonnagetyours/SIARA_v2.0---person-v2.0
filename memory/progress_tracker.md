@@ -29,8 +29,8 @@
 
 | Zadanie | Priorytet | Status | Przypisany |
 |---|---|---|---|
-| **START KAMPANII (12.01)** | 🔴 Critical | Do zrobienia | #Waski |
-| **Outreach (15 zaproszeń)** | 🔴 Critical | Do zrobienia | User |
+| **START KAMPANII (13.01)** | 🟢 Done | **PUBLISHED** | #Waski |
+| **Outreach (15 zaproszeń)** | 🟢 Done | **ZROBIONE** | User |
 | [x] Odświeżenie Tokenu Google (n8n) | 🟢 Done | **ZROBIONE** | User |
 | Obsługa komentarzy "AGENT" | 🟡 High | Czeka | #Waski |
 

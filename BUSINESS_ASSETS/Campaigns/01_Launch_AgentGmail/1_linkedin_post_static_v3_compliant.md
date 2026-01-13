@@ -55,7 +55,7 @@ Klikam "Wyślij" i wracam do pracy głębokiej.
 
 To nie jest automat do spamu.
 
-To tarcza, która chroni mój czas i procesy.
+To tarcza, która chroni mój czas i skupienie.
 
 A to dopiero fundament.
 
@@ -73,4 +73,4 @@ Chcesz zobaczyć ten proces "pod maską"?
 
 Napisz AGENT w komentarzu.
 
-Podeślę Ci mapę procesu, żebyś zobaczył/zonbaczyła, jak wdrożyć taki "spokój" u siebie.
+Podeślę Ci mapę procesu, żebyś zobaczył/zobaczyła, jak wdrożyć taki "spokój" u siebie.

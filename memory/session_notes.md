@@ -3,6 +3,28 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-13 - Sesja #34 (OFFICIAL LAUNCH DAY)
+
+**Co robiliśmy:**
+- **PUBLIKACJA:** Post startowy ("Deleguję te najgorsze maile") wylądował na LinkedIn.
+    - Wersja finalna: Z poprawkami ("skupienie", "zobaczyła").
+    - Asset: Grafika "Przed/Po" + Pierwszy komentarz z CTA ("napisz AGENT").
+- **OFENSYWA (Outreach):**
+    - Wysłano 15 zaproszeń do CEO z listy "Top 15 For Notion".
+    - Strategia: "Cichy Snajper" (Blank Invites).
+    - Taktyka "Double Tap": W jednej agencji zaproszono obu partnerów dla wzmocnienia efektu.
+- **Housekeeping:** Zapisano finalną treść posta w `BUSINESS_ASSETS/Campaigns/01_Launch_AgentGmail/1_linkedin_post_PUBLISHED_2026-01-13.md`.
+
+**Ustalenia:**
+- Czekamy 45-60 min na "mielenie" algorytmu.
+- Wdrożono procedurę obsługi leadów (PDF dla komentujących, PDF po przyjęciu zaproszenia).
+- **Status:** OCZEKIWANIE NA REAKCJE.
+
+**Następny krok:**
+- Obsługa komentarzy "AGENT" (wysyłka DM).
+- Obsługa przyjętych zaproszeń (wysyłka DM po 15 min).
+
+---
 ## 2026-01-11 - Sesja #33 (Niedzielna Odprawa & Refactor)
 
 **Co robiliśmy:**
