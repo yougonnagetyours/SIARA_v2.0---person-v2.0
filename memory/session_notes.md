@@ -24,6 +24,12 @@ Najnowsze wpisy na górze ↓
 - Obsługa komentarzy "AGENT" (wysyłka DM).
 - Obsługa przyjętych zaproszeń (wysyłka DM po 15 min).
 
+**Log Zdarzeń (Live):**
+- Magdalena Drzazga (Chapter1): Zaakceptowała zaproszenie.
+- **ACTION:** Wysłano wiadomość DM wg wzorca "Czysta Inżynieria" + PDF.
+- Utworzono `BUSINESS_ASSETS/.../5_Outreach_Log.md` do śledzenia wyników.
+- Utworzono `agents/waski/.../historia_rozmow_outreach.md` jako bazę stylu.
+
 ---
 ## 2026-01-11 - Sesja #33 (Niedzielna Odprawa & Refactor)
 

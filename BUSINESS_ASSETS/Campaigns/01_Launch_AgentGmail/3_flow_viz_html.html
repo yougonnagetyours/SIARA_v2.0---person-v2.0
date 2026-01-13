@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proces Magic Gmail - Schemat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --ai-purple: #7C3AED;
+            --success: #059669;
+            --bg: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            padding: 40px;
+            border: 1px solid var(--border);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Timeline Flow */
+        .flow {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .step {
+            position: relative;
+            padding-bottom: 40px;
+            padding-left: 30px;
+            border-left: 2px solid var(--border);
+        }
+
+        .step:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+
+        .icon-box {
+            position: absolute;
+            left: -41px; /* Adjust based on icon size + border width */
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: white;
+            border: 2px solid var(--border);
+            z-index: 2;
+        }
+
+        .step-content {
+            background: #F8FAFC;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Specific Colors */
+        .step.start .icon-box { border-color: var(--primary); color: var(--primary); background: #EFF6FF; }
+        .step.start .step-title { color: var(--primary); }
+
+        .step.ai .icon-box { border-color: var(--ai-purple); color: var(--ai-purple); background: #F5F3FF; }
+        .step.ai .step-title { color: var(--ai-purple); }
+
+        .step.end .icon-box { border-color: var(--success); color: var(--success); background: #ECFDF5; }
+        .step.end .step-title { color: var(--success); }
+
+        /* Security Badge */
+        .safety-badge {
+            margin-top: 40px;
+            background: #FFFBEB;
+            border: 1px solid #FCD34D;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+            font-size: 13px;
+            color: #92400E;
+        }
+
+        .safety-badge svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #9CA3AF;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Agent Gmail (On-Demand)</h1>
+            <div class="subtitle">Schemat procesu Human-in-the-Loop</div>
+        </header>
+
+        <div class="flow">
+            <!-- Triggery -->
+            <div class="step start" style="border-left: 2px dashed var(--border);">
+                <div class="icon-box" style="background: #F3F4F6; color: #4B5563; border-color: #9CA3AF;">⏱️</div>
+                <div class="step-content" style="background: #FFFFFF;">
+                    <div class="step-title" style="color: #374151;">Dwa tryby pracy (Trigger)</div>
+                    <ul class="step-desc" style="padding-left: 20px; margin: 0;">
+                        <li><strong>Monitoring (Tło):</strong> System sprawdza co 15 minut TYLKO maile z etykietą "Draft Asystent". Resztę ignoruje.</li>
+                        <li><strong>Tryb Pilny (Slack):</strong> Piszesz komendę <code>draftuj</code> na Slacku, by wymusić pobranie oflagowanych maili "teraz".</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Krok 1 -->
+            <div class="step start">
+                <div class="icon-box">🏷️</div>
+                <div class="step-content">
+                    <div class="step-title">1. Twoja Decyzja (Etykietowanie)</div>
+                    <p class="step-desc">
+                        Widzisz maila, który drenuje Twoją energię (Scope Creep, Panika). 
+                        Nadajesz mu etykietę <strong>"Draft Asystent"</strong>. 
+                        To Twój jedyny ruch.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Krok 2 -->
+            <div class="step ai">
+                <div class="icon-box">🧠</div>
+                <div class="step-content">
+                    <div class="step-title">2. Analiza & Styl (AI)</div>
+                    <p class="step-desc">
+                        System analizuje historię wątku. Pisze odpowiedź 
+                        <strong>w Twoim stylu</strong> (konkretnie, bez "lania wody", asertywnie). 
+                        Stosuje Twoje zasady biznesowe.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Krok 3 -->
+            <div class="step end">
+                <div class="icon-box">✅</div>
+                <div class="step-content">
+                    <div class="step-title">3. Weryfikacja</div>
+                    <p class="step-desc">
+                        Gotowy <strong>Draft</strong> czeka w Gmailu (zmienia etykietę na zieloną).
+                        Dostajesz powiadomienie na Slacku. Klikasz "Wyślij" lub nanosisz poprawkę w 5 sekund.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="safety-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+            <div>
+                <strong>Bezpieczeństwo przede wszystkim:</strong>
+                Agent nigdy nie wysyła wiadomości samodzielnie. Tylko Ty masz przycisk "Wyślij". System działa na bezpiecznej infrastrukturze.
+            </div>
+        </div>
+
+        <footer>
+            Czysta Inżynieria Procesów © 2026
+        </footer>
+    </div>
+
+</body>
+</html>

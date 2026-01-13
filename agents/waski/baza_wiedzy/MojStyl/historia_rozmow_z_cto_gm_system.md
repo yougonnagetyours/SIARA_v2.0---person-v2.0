@@ -153,3 +153,41 @@
 >Będę wdzięczny za sygnał z Państwa strony, gdyby sytuacja miała się zmienić.
 >Pozdrawiam serdecznie i życzę miłego dnia!
 
+## 2 grudnia
+
+**Krzysztof Paluch** - 14:30
+>Dzień dobry, Panie Michale, chciałem podpytać, czy od strony technicznej działa Pan cały czas w Teamcenter? 
+>Czy może przez ostatnie miesiące obszar Pana kompetencji się powiększył? Jeśli jest taki, jak poprzednio, to też jest ok. 
+>Podpytuję po prostu, czy coś się zmieniło od strony technicznej u Pana. Pozdrawiam.
+
+**Michał Potoczny** - 16:31
+>Dzień dobry Panie Krzysztofie,
+
+>dziękuję za pytanie.
+
+>Jeśli chodzi o Teamcenter to tutaj cały czas jestem "w boju". Na co dzień pracuję operacyjnie z systemem i regularnie prowadzę szkolenia, co wymusza bycie na bieżąco z każdym niuansem. Także od strony technicznej tutaj ręka jest cały czas "na pulsie".
+
+>Jeśli chodzi natomiast o nowe kompetencje (AI & Automatyzacja) to tutaj musiałem się trochę zastanowić, bo trochę się przez ostatni czas działo :) Zaczęło się już jakiś czas temu, ale dopiero ścieżka self-learning w AIdeas zainspirowała mnie do przejścia od teorii do budowy własnych narzędzi. Być może kojarzy Pan, że wspominałem na naszej pierwszej rozmowie o pomyśle wykorzystania AI w supporcie?
+
+>Obecnie testuję własnego "agenta", którego zadaniem jest wsparcie w trudnej komunikacji mailowej (np. asertywne odpowiedzi na próby rozszerzania zakresu prac "gratis" czy zarządzanie sytuacjami kryzysowymi).
+
+>Pracuję teraz nad przeniesieniem tego rozwiązania z lokalnych testów do n8n osadzonego na prywatnym serwerze (VPC/AWS). Buduję w ten sposób bezpieczne środowisko, aby docelowo móc tworzyć bardziej zaawansowane narzędzia, jak np. system RAG na bazie wiedzy firmowej.
+
+>Podsumowując, w Teamcenter utrzymuję pełną sprawność operacyjną, a równolegle buduję nowe twarde kompetencje do wdrażania bezpiecznych automatyzacji wspartych AI
+
+>Pozdrawiam serdecznie
+## 13 stycznia
+
+**Krzysztof Paluch**
+> Dzień dobry, Panie Michale, wszystkie najlepszego w Nowym Roku! Chciałem zapytać, jak sytuacja u Pana i nastawienie biorąc pod uwagę nasze poprzednie rozmowy? 😊
+
+**Michał Potoczny**
+> Dzień dobry Panie Krzysztofie,
+>
+> Wzajemnie, również wszystkiego dobrego w Nowym Roku!
+>
+> Moje nastawienie pozostaje niezmienne – podtrzymuję pełne zainteresowanie współpracą 😊 
+>
+> Moja ostatnia aktywność na LinkedIn może sugerować zmianę branży, ale to efekt inspiracji programem AIdeas – buduję sobie po prostu własne automatyzacje i asystentów w n8n.
+>
+> Mój priorytet zawodowy to nadal PLM i Teamcenter, i przy tym zostaję 😊

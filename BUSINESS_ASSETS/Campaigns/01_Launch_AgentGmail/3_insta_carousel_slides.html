@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Carousel - Aurora Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-preview: #111827; /* Ciemne tło przeglądarki, żeby slajdy świeciły */
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --accent: #4F46E5; /* Indigo-600 */
+        }
+
+        body {
+            background-color: var(--bg-preview);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .slide {
+            width: 540px;
+            height: 675px;
+            /* AURORA GRADIENT: Wyraźny, kolorowy, nowoczesny */
+            background: radial-gradient(circle at 0% 0%, #E0E7FF 0%, rgba(255,255,255,0) 50%), 
+                        radial-gradient(circle at 100% 100%, #F3E8FF 0%, rgba(255,255,255,0) 50%),
+                        #FFFFFF;
+            position: relative;
+            padding: 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Miękki cień */
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2); 
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 44px;
+            line-height: 1.1;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 24px 0;
+            letter-spacing: -0.03em;
+        }
+
+        h2 {
+            font-size: 34px;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+        }
+
+        p {
+            font-size: 22px;
+            line-height: 1.5;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .highlight {
+            color: var(--accent);
+            background: -webkit-linear-gradient(45deg, #4F46E5, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tech-font {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        /* Elements */
+        .tag {
+            display: inline-block;
+            background: #FFFFFF;
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Lekkie uniesienie */
+            border: 1px solid #E5E7EB;
+        }
+
+        /* Slide 2: List */
+        .list-container {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 20px;
+            color: var(--text-main);
+        }
+
+        .badge-x {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            background: #FFE4E6; /* Soft Red */
+            color: #E11D48; /* Strong Red */
+            border-radius: 12px; /* Smooth square */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            box-shadow: 0 2px 4px rgba(225, 29, 72, 0.1);
+        }
+
+        .list-text strong { display: block; font-weight: 700; color: #111827; }
+        .list-text small { display: block; font-size: 16px; color: #6B7280; font-weight: 500; margin-top: 2px; }
+
+        /* Slide 3: Flow */
+        .flow-container {
+            margin-top: 40px;
+            position: relative; 
+            padding-left: 15px;
+        }
+
+        .flow-step {
+            background: rgba(255, 255, 255, 0.8); /* Półprzezroczyste */
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #E0E7FF;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(4px); /* Efekt szkła */
+        }
+        
+        .flow-icon-circle {
+            position: absolute; left: -19px; top: 0; 
+            width: 38px; height: 38px; 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 18px;
+            background: #FFFFFF;
+            border: 2px solid #E5E7EB;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        /* Slide 4: CTA */
+        .cta-box {
+            background: #1F2937;
+            color: white;
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-cmd {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 48px;
+            color: #FCD34D;
+            display: block;
+            margin-top: 10px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(252, 211, 77, 0.3); /* Lekka poświata */
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #9CA3AF;
+        }
+        
+        .arrow-hint {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            font-size: 16px;
+            color: #6B7280;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- SLAJD 1: HOOK -->
+    <div class="slide">
+        <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div class="tag">Problem</div>
+            <h1>Mój Asystent AI jest bardziej <span class="highlight tech-font">asertywny</span> ode mnie.</h1>
+            <p>
+                Deleguję mu "trudne maile", żeby chronić swój czas i skupienie.
+            </p>
+        </div>
+        <div class="pagination">1/4</div>
+    </div>
+
+    <!-- SLAJD 2: BÓL -->
+    <div class="slide">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div class="tag">Diagnostyka</div>
+                <h2>3 typy wiadomości, które kradną Twój czas:</h2>
+            </div>
+            
+            <div class="list-container" style="width: 100%;">
+                <div class="list-item">
+                    <div class="badge-x">✕</div>
+                    <div class="list-text">
+                        <strong>"Szybka prośba przy okazji"</strong>
+                        <small>(czyli darmowa robota)</small>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="badge-x">✕</div>
+                    <div class="list-text">
+                        <strong>"PILNE!!! Panika!"</strong>
+                        <small>(emocje zamiast faktów)</small>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="badge-x">✕</div>
+                    <div class="list-text">
+                        <strong>"Nie czuję tego..."</strong>
+                        <small>(brak konkretów)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="arrow-hint">Przesuń ➡️</div>
+        <div class="pagination">2/4</div>
+    </div>
+
+    <!-- SLAJD 3: FLOW -->
+    <div class="slide">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div style="text-align: center;">
+                <div class="tag">Rozwiązanie</div>
+                <h2 class="tech-font highlight">Jak to działa?</h2>
+                <p style="font-size: 18px; margin-bottom: 30px;">Twój proces w 3 krokach:</p>
+            </div>
+            
+            <div class="flow-container" style="width: 100%;">
+                <!-- Krok 1 -->
+                <div style="position: relative; padding-bottom: 20px; padding-left: 20px; border-left: 3px solid #E0E7FF;">
+                    <div class="flow-icon-circle" style="color: #4F46E5;">🏷️</div>
+                    <div class="flow-step">
+                        <div style="font-weight: 700; color: #4F46E5; font-size: 18px; margin-bottom: 4px;">Ty: Etykieta</div>
+                        <div style="font-size: 14px; color: #4B5563; line-height: 1.3;">Oznaczasz trudnego maila. <strong>AI widzi TYLKO to.</strong></div>
+                    </div>
+                </div>
+
+                <!-- Krok 2 -->
+                <div style="position: relative; padding-bottom: 20px; padding-left: 20px; border-left: 3px solid #F3E8FF;">
+                    <div class="flow-icon-circle" style="color: #7C3AED;">🧠</div>
+                    <div class="flow-step">
+                        <div style="font-weight: 700; color: #7C3AED; font-size: 18px; margin-bottom: 4px;">AI: Analiza</div>
+                        <div style="font-size: 14px; color: #4B5563; line-height: 1.3;">System sprawdza historię i pisze odpowiedź.</div>
+                    </div>
+                </div>
+
+                <!-- Krok 3 -->
+                <div style="position: relative; padding-left: 20px;">
+                    <div class="flow-icon-circle" style="color: #059669;">✅</div>
+                    <div class="flow-step">
+                        <div style="font-weight: 700; color: #059669; font-size: 18px; margin-bottom: 4px;">Wynik: Draft</div>
+                        <div style="font-size: 14px; color: #4B5563; line-height: 1.3;">Gotowy mail czeka w Gmailu. Zero stresu.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination">3/4</div>
+    </div>
+
+    <!-- SLAJD 4: CTA -->
+    <div class="slide">
+        <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div class="tag">System</div>
+            <h1>Chcesz wdrożyć taki <span class="highlight tech-font">spokój</span> u siebie?</h1>
+            <p>Przygotowałem schemat tego procesu w PDF.</p>
+
+            <div class="cta-box">
+                <div style="font-size: 18px; opacity: 0.9;">Napisz w komentarzu:</div>
+                <span class="cta-cmd">AGENT</span>
+                <div style="margin-top: 15px; font-size: 16px; opacity: 0.7;">Wyślę Ci schemat w DM.</div>
+            </div>
+        </div>
+        <div class="pagination">4/4</div>
+    </div>
+
+</body>
+</html>
