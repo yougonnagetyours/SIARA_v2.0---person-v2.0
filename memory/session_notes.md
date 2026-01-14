@@ -3,6 +3,31 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-13 - Sesja #34 (Popołudniowa: Outreach & Assety)
+
+**Co robiliśmy:**
+- **Kryzys Posta:** LinkedIn "zabił" zasięg porannego posta.
+- **Pivot na Outreach:** Skupiliśmy się na bezpośrednim dotarciu.
+    - **Wynik:** 2/2 zaproszenia przyjęte (Magdalena Drzazga, Kamila Makówka-Nowak).
+    - **Wysłano:** DM z PDF-em (Wariant "Czysty Proces").
+- **Assety (Produkcja):**
+    - Stworzono `gmail_process_flow.html` (Schemat dla klienta).
+    - Stworzono `3_insta_carousel_slides.html` (Generator Karuzeli Instagram - Dark Mode).
+- **Systematyzacja:**
+    - Wdrożono `SOP_Outreach_Process.md`.
+    - Uruchomiono logi: `5_Outreach_Log.md` i `historia_rozmow_outreach.md`.
+- **Targeting (Grupa Delta):** Wybrano 5 kolejnych CEO do ataku (Osiński, Berliński, Kliszczak, Miernikowski, Rabsztyn).
+
+**Ustalenia:**
+- Posty to dodatek. Prawdziwa gra toczy się w DM.
+- Wysłano kolejne zaproszenia (Puste).
+- Instagram traktujemy jako "recykling" (materiały gotowe).
+
+**Następny krok:**
+- Monitoring odpowiedzi na DM.
+- Obsługa przyjętych zaproszeń z Grupy Delta.
+
+---
 ## 2026-01-13 - Sesja #34 (OFFICIAL LAUNCH DAY)
 
 **Co robiliśmy:**
