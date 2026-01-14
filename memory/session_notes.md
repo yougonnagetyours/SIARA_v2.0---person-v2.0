@@ -3,6 +3,33 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-14 - Sesja #35 (Outreach Delta & Instagram Offensive)
+
+**Co robiliśmy:**
+- **Outreach (LinkedIn):**
+    - Wysłano DM (Wariant C: "Konsultant") do Mariusza (Michała) Kliszczaka i Andrzeja Rabsztyna.
+    - Wysłano zaproszenia do reszty Grupy Delta (Osiński, Berliński, Miernikowski).
+    - Zaktualizowano `5_Outreach_Log.md` (nowy standard tagowania czasem i wariantem).
+- **Strategia Contentu (Instagram):**
+    - Wygenerowano assety graficzne (Karuzela) z pliku HTML.
+    - Zoptymalizowano opis i hashtagi pod Personę Marty (Performance Agency).
+    - Opublikowano post (Karuzela "3 typy wiadomości").
+    - **Rebranding:** Zmieniono nick na `michal.potoczny.pro` i Bio na wersję "Freedom Fighter" (Inżynier Procesów).
+- **System:**
+    - Stworzono `6_Scripts_and_Templates.md` (Centrum Szablonów A/B/C).
+    - Przeniesiono profil LI do `8_LinkedIn_Profile_Optimization.md`.
+    - Zarchiwizowano Bio Insta w `7_Instagram_Bio.md`.
+
+**Ustalenia:**
+- Czekamy na wyniki testu A/B/C do Piątku (17.01).
+- **Wariant C (Ask First)** jest preferowaną metodą kontaktu.
+- Instagram służy jako "dowód społeczny" i kanał wsparcia.
+
+**Następny krok (Piątek 09:00):**
+- Checkpoint wyników (Czy ktoś odpisał?).
+- Decyzja o piwocie (Jeśli 0 odp -> Wideo Demo).
+
+---
 ## 2026-01-13 - Sesja #34 (Popołudniowa: Outreach & Assety)
 
 **Co robiliśmy:**

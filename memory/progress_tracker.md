@@ -39,9 +39,13 @@
 | Metryka | Cel | Aktualnie |
 |---|---|---|
 | Liczba Leadów (Komentarz/DM) | 20 | 0 |
-| Wysłane Demo (PDF) | 10 | 0 |
+| Wysłane Demo (PDF) | 10 | 4 (DM) |
 | Umówione Spotkania | 3 | 0 |
 | Sprzedaż | 1 | 0 |
+
+## 🚨 Next Checkpoint: Piątek 17.01 (09:00)
+**Warunek Pivotu:** Jeśli do piątku liczba odpowiedzi na DM wyniesie **0** (dla grupy 7 osób), uznajemy, że "PDF w ciemno" nie działa.
+**Plan B:** Zmiana Lead Magnetu na **Wideo Demo** (Loom) w DM.
 
 ## 🧠 Wnioski i Decyzje (Log)
 - **2026-01-11:** Decyzja o przeniesieniu kampanii do katalogu `BUSINESS_ASSETS`. Wybór Top 15 firm z bólami operacyjnymi. Token n8n odświeżony.
