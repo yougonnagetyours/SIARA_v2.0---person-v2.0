@@ -3,6 +3,26 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-14 - PLAN OPERACYJNY (Aktualizacja: Wideo w Piątek)
+
+**CZWARTEK (15.01) - TOTAL OUTREACH:**
+*   **Cel:** Skoro masz wolne moce przerobowe (bo wideo przesunięte), to jutro jest dzień "Handlowca".
+*   **Zadanie:**
+    1.  Praca w Notion (skoro gotowe i wygodniejsze).
+    2.  Wysłanie **MAX** zaproszeń (bezpieczny limit: 20-25 sztuk).
+    3.  Obsługa DM (jeśli ktoś odpisze).
+*   **Zasada:** Zero rozpraszaczy. Czysta egzekucja na liście.
+
+**PIĄTEK (16.01) - DEEP WORK & PRODUCTION:**
+*   **Cel:** Stworzenie Assetu (Wideo Demo).
+*   **Zadanie:**
+    1.  **Analiza Poranna:** Sprawdzamy wyniki czwartkowego outreachu (Czy jest trakcja?).
+    2.  **Produkcja Wideo:** Nagranie i montaż (masz na to czas).
+*   **Decyzja Strategiczna (na koniec dnia):**
+    *   Jeśli Outreach działa -> Super, wideo idzie na support (social proof).
+    *   Jeśli Outreach leży -> Wideo staje się podstawą reklamy (uruchamiamy w weekend lub poniedziałek).
+
+---
 ## 2026-01-14 - Sesja #35 (Outreach Delta & Instagram Offensive)
 
 **Co robiliśmy:**
@@ -16,18 +36,17 @@ Najnowsze wpisy na górze ↓
     - Opublikowano post (Karuzela "3 typy wiadomości").
     - **Rebranding:** Zmieniono nick na `michal.potoczny.pro` i Bio na wersję "Freedom Fighter" (Inżynier Procesów).
 - **System:**
+    - Stworzono `4_Target_List_REMAINING_ONLY.csv` (Delta do importu).
     - Stworzono `6_Scripts_and_Templates.md` (Centrum Szablonów A/B/C).
     - Przeniesiono profil LI do `8_LinkedIn_Profile_Optimization.md`.
-    - Zarchiwizowano Bio Insta w `7_Instagram_Bio.md`.
 
 **Ustalenia:**
-- Czekamy na wyniki testu A/B/C do Piątku (17.01).
+- Czekamy na wyniki testu A/B/C do Piątku (16.01).
 - **Wariant C (Ask First)** jest preferowaną metodą kontaktu.
 - Instagram służy jako "dowód społeczny" i kanał wsparcia.
 
-**Następny krok (Piątek 09:00):**
-- Checkpoint wyników (Czy ktoś odpisał?).
-- Decyzja o piwocie (Jeśli 0 odp -> Wideo Demo).
+**Następny krok (Czwartek):**
+- Realizacja PLANU OPERACYJNEGO (powyżej).
 
 ---
 ## 2026-01-13 - Sesja #34 (Popołudniowa: Outreach & Assety)
