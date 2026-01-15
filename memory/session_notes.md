@@ -3,6 +3,28 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-15 - Sesja #36 (Awans Wąskiego & Nowa Strategia)
+
+**Decyzje Strategiczne:**
+- **Nowy Podział Ról:**
+    - **#SIARA (CEO):** Operacje, technologia, sprzedaż, budżet.
+    - **#WASKI (CMO):** Strategia marki, narracja ("Inżynier Procesów"), dobór narzędzi ("Tool-Agnostic").
+- **Strategia "Laboratorium":** Odchodzimy od bycia "Gościem od n8n". Stajemy się "Architektem, który dobiera narzędzie do problemu".
+- **Architektura Danych:** Potwierdzono, że `BUSINESS_ASSETS` to "Magazyn IP" (gotowe produkty), a foldery agentów to "Warsztat".
+
+**Wykonane Prace:**
+- Stworzono **`agents/waski/CMO_STRATEGY.md`** (Wersja 2.1 - Dynamicznie linkowana do Persony).
+- Zaktualizowano **`GEMINI.md`** i **`waski.md`** (zniesiono blokadę na myślenie techniczne u Wąskiego).
+
+**Status Operacyjny:**
+- Użytkownik kończy manualny outreach (Lista 20-25 CEO).
+- Wąski przygotowany do planowania contentu na przyszły tydzień.
+
+**Plan na JUTRO (Piątek 16.01):**
+1.  **Produkcja:** Montaż wideo 60s (B-rolle: Screeny n8n/Gmail).
+2.  **Decyzja:** Jeśli outreach organiczny będzie słaby -> uruchamiamy Meta Ads z wideo.
+
+---
 ## 2026-01-14 - PLAN OPERACYJNY (Aktualizacja: Wideo w Piątek)
 
 **CZWARTEK (15.01) - TOTAL OUTREACH:**
