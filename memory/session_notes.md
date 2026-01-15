@@ -3,6 +3,77 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-15 - Sesja #39 (Korekta Statusu Outreach & Plan na Piątek)
+
+**Korekta Danych (Fakty vs System):**
+- **Status Zaproszeń:** Wysłano do **50 osób** (Cała lista), a nie tylko do Top 15.
+- **Problem:** System wiedział tylko o 15 + Delta.
+- **Decyzja:** Zaktualizowano stan wiedzy. Mamy 50 wędek w wodzie. Log `5_Outreach_Log.md` odzwierciedla tylko *wysłane wiadomości* (DM), a nie liczbę zaproszeń.
+
+**STATUS LEJKA (Stan na 15.01 wieczór):**
+- **Zaproszeni:** 50
+- **Wysłane DM:** 6 (Drzazga, Makówka-Nowak, Kliszczak, Rabsztyn, Jarota, Gracz)
+- **Odpowiedzi (Rozmowy):** 0 (Czekamy)
+- **Wiszący (Brak akceptacji):** 44
+
+**Plan na JUTRO (Piątek 16.01):**
+
+1.  **Analiza Skrzynki (09:00):**
+    - Sprawdzamy, kto z 50 zaproszonych przyjął zaproszenie przez noc.
+    - Jeśli ktoś przyjął -> Wysyłamy DM (Wariant C).
+    - Sprawdzamy, czy "Soft Touch" na Instagramie (Marta Ślendak) przyniósł efekt (akceptacja na LI).
+
+2.  **Produkcja Wideo (PRIORYTET):**
+    - Skoro outreach "się mieli" i nikt jeszcze nie odpisał, musimy mieć gotowy **Asset Wideo (60s)**.
+    - Cel: Jeśli do poniedziałku cisza, odpalamy to wideo jako reklamę/post sponsorowany lub wrzucamy do DM jako "Loom".
+    - **Bez tego assetu jesteśmy ślepi.**
+
+3.  **Kill Switch (16:00):**
+    - Wycofujemy stare, nieprzyjęte zaproszenia (powyżej 3-4 dni), żeby nie wisieć w "pending" i odzyskać sloty.
+
+**Zadanie Domowe (Dziś wieczór):**
+- Wykonano "Soft Touch" na Instagramie dla Marty Ślendak (DDOB) i ewentualnie kilku kluczowych celów z Top 15 (tam gdzie profil otwarty/ekspercki).
+
+---
+## 2026-01-15 - Sesja #38 (Instagram i LinkedIn - Taktyka Zaangażowania)
+
+**Decyzja Strategiczna (Insta - czy warto?):**
+- **#Siara:** Warto TYLKO jako "Soft Touch" (max 60 sek). Jeśli to ma zająć 10 minut researchu – strata czasu. To kanał wspierający, nie główny.
+- **#Waski:** W branżach kreatywnych (jak DDOB) Instagram to "drugi dom". Warto tam mignąć, ale nie mieszkać.
+
+**Taktyka Zaangażowania (LinkedIn vs Instagram):**
+- **Strony Firmowe (Company Page):**
+    - ⛔ **Nie obserwować.** (Powiadomienie widzi admin, nie CEO. Zasyfia feed).
+    - Używać tylko do researchu (czy rekrutują?).
+- **Lajkowanie Postów CEO (LinkedIn):**
+    - ✅ **Tak, ale taktycznie.** Jeden lajk pod **ostatnim** postem (max 2 tyg wstecz).
+    - **Cel:** Przypomnienie ("Puk puk, czekam na akceptację zaproszenia"), a nie bycie fanem.
+    - **Zasada:** Nie wykopuj trupów (posty sprzed roku = stalker).
+
+**Status Marty (DDOB):**
+- Wdrażamy "Soft Touch" (o ile profil otwarty).
+- Czekamy na wynik do jutra.
+
+**Zaktualizowano SOP:** `knowledge/SOP_Outreach_Process.md` (o protokoły Instagrama).
+
+---
+## 2026-01-15 - Sesja #37 (Taktyka: "Soft Touch" na Instagramie)
+
+**Case Study:** Marta Ślendak (DDOB).
+- **Sytuacja:** Wysłano zaproszenie z notatką (LI). Cisza.
+- **Decyzja:** Atak na drugim kanale (Instagram), ale "na miękko".
+
+**Taktyka (#Waski - Omni-channel Pattern Interrupt):**
+- **Akcja:** Follow na Instagramie + Like pod dwoma postami (najnowszy + starszy).
+- **Zakaz:** Żadnych wiadomości (DM) i komentarzy na Instagramie.
+- **Cel:** Wyświetlić się w powiadomieniach jako "ten gość z LinkedIna" i sprowokować akceptację zaproszenia biznesowego.
+
+**Zasady Operacyjne (#Siara - Sales Hygiene):**
+- **Timebox:** Cała akcja ma trwać max 60 sekund.
+- **Kill Switch:** Jeśli do **Piątku (17.01) godz. 16:00** zaproszenie na LinkedIn nie zostanie przyjęte -> **WYCOFUJEMY JE**.
+- **Powód:** Szanujemy pozycjonowanie. Nie wisimy w poczekalni.
+
+---
 ## 2026-01-15 - Sesja #36 (Awans Wąskiego & Nowa Strategia)
 
 **Decyzje Strategiczne:**
