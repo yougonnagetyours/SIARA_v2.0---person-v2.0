@@ -60,6 +60,14 @@ Pokazujesz, co testujesz *u siebie*.
 
 ## 📅 KALENDARZ TAKTYCZNY (Q1 2026)
 
+### ZASADA: 2 POSTY / TYDZIEŃ (Jakość > Ilość)
+*   **Wtorek:** Merytoryka / Technologia ("Bebechy").
+*   **Czwartek:** Storytelling / Relacje ("Ból").
+
+### TYDZIEŃ 1: "LABORATORIUM GMAILA" (20.01 - 26.01)
+*   **20.01 (Wtorek):** "Co się dzieje w te 15 sekund?" (Screen n8n). Cel: Pokazać determinizm AI.
+*   **22.01 (Czwartek):** "Dlaczego inżynierowie nienawidzą sprzedaży?" (Historia o straconym dealu). Cel: Empatia.
+
 ### FAZA 1: "AGENT GMAIL" (Działania obecne)
 *   **Target:** `{{IDEAL_CUSTOMER}}` (Agencje).
 *   **Kontekst:** Każdy ma maila. To najniższy próg wejścia.

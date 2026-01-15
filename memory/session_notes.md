@@ -9,20 +9,26 @@ Najnowsze wpisy na górze ↓
 - **Nowy Podział Ról:**
     - **#SIARA (CEO):** Operacje, technologia, sprzedaż, budżet.
     - **#WASKI (CMO):** Strategia marki, narracja ("Inżynier Procesów"), dobór narzędzi ("Tool-Agnostic").
-- **Strategia "Laboratorium":** Odchodzimy od bycia "Gościem od n8n". Stajemy się "Architektem, który dobiera narzędzie do problemu".
-- **Architektura Danych:** Potwierdzono, że `BUSINESS_ASSETS` to "Magazyn IP" (gotowe produkty), a foldery agentów to "Warsztat".
+- Strategia "Laboratorium": Odchodzimy od bycia "Gościem od n8n". Stajemy się "Architektem, który dobiera narzędzie do problemu".
+- **Cykl Wydawniczy (Zasada D-1):**
+    - **Poniedziałek:** Przygotowanie posta na Wtorek.
+    - **Środa:** Przygotowanie posta na Czwartek.
+    - **Cel:** Zero stresu w dniu publikacji. Treść musi "odstać".
+- Architektura Danych: Potwierdzono, że `BUSINESS_ASSETS` to "Magazyn IP" (gotowe produkty), a foldery agentów to "Warsztat".
 
 **Wykonane Prace:**
 - Stworzono **`agents/waski/CMO_STRATEGY.md`** (Wersja 2.1 - Dynamicznie linkowana do Persony).
 - Zaktualizowano **`GEMINI.md`** i **`waski.md`** (zniesiono blokadę na myślenie techniczne u Wąskiego).
+- **Outreach (Total):** Lista z pliku `REMAINING_ONLY.csv` została przerobiona. Wysłano wiadomości (Wariant C). Czekamy na reakcję.
 
 **Status Operacyjny:**
-- Użytkownik kończy manualny outreach (Lista 20-25 CEO).
-- Wąski przygotowany do planowania contentu na przyszły tydzień.
+- Pierwsze DM-y wysłane: 2026-01-13 (2 dni temu).
+- Dzisiejsze DM-y: 2026-01-15.
+- Brak natychmiastowego odzewu jest normą w B2B.
 
 **Plan na JUTRO (Piątek 16.01):**
-1.  **Produkcja:** Montaż wideo 60s (B-rolle: Screeny n8n/Gmail).
-2.  **Decyzja:** Jeśli outreach organiczny będzie słaby -> uruchamiamy Meta Ads z wideo.
+1.  **Analiza:** Sprawdzamy skrzynkę odbiorczą (Deadline dla grupy wtorkowej).
+2.  **Produkcja:** Montaż wideo 60s (niezależnie od wyników outreachu - potrzebujemy tego do Adsów).
 
 ---
 ## 2026-01-14 - PLAN OPERACYJNY (Aktualizacja: Wideo w Piątek)

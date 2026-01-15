@@ -34,8 +34,7 @@
 
 > Cześć [Imię], dzięki za przyjęcie zaproszenia.
 >
-> Pytanie z inżynierskiej ciekawości:
-> **Czy u Was w agencji temat "darmowych poprawek" (scope creep) też zjada najwięcej marży, czy macie na to jakiś sprawdzony patent?**
+> Pytanie z inżynierskiej ciekawości, czy u Was w agencji temat "darmowych poprawek" (i inne scope creep) też zjada najwięcej marży, czy macie na to jakiś sprawdzony patent?**
 >
 > Pytam, bo właśnie zautomatyzowałem u siebie proces "asertywnej odmowy" (Agent AI pisze drafty). Jeśli to u Was problem, chętnie podeślę schemat jak to działa.
 >
