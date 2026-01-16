@@ -43,11 +43,12 @@
 | Umówione Spotkania | 3 | 0 |
 | Sprzedaż | 1 | 0 |
 
-## 🚨 Next Checkpoint: Piątek 17.01 (09:00)
+## 🚨 Next Checkpoint: Piątek 16.01 (17:00)
 **Warunek Pivotu:** Jeśli do piątku liczba odpowiedzi na DM wyniesie **0** (dla grupy 7 osób), uznajemy, że "PDF w ciemno" nie działa.
 **Plan B:** Zmiana Lead Magnetu na **Wideo Demo** (Loom) w DM.
 
 ## 🧠 Wnioski i Decyzje (Log)
+- **2026-01-16:** **PIVOT NARRACYJNY.** Wariant "Psychoterapeuty" (pytanie o problemy) nie działa (cisza). Zmieniamy na "Inżyniera-Pasjonata" (pokazanie rozwiązania).
 - **2026-01-11:** Decyzja o przeniesieniu kampanii do katalogu `BUSINESS_ASSETS`. Wybór Top 15 firm z bólami operacyjnymi. Token n8n odświeżony.
 - **2026-01-09:** Zmiana formatu z Wideo na Statyczny Post + PDF. Uznano, że prostota wygra z "hollywoodzką produkcją".
 - **2025-12-11:** Pivot strategii: Nie sprzedajemy "Agencji", tylko "System Inżyniera".

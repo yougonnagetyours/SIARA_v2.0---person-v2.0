@@ -13,11 +13,5 @@
 | 2026-01-13 | ~09:30 | Kamila Makówka-Nowak | XO Media | 📨 Wysłano DM | "Czysty Proces" (Wariant Chaos) | Cel: XO ma "mydło i powidło". Zmieniono "scope creep" na "chaos komunikacyjny". |
 | 2026-01-14 | ~11:00 | Michał Kliszczak | (Grupa Delta) | 📨 Wysłano DM | "Wariant C (Konsultant)" | Wersja User Choice (Ask First). Najpierw pytanie o ból. |
 | 2026-01-14 | ~11:00 | Andrzej Rabsztyn | (Grupa Delta) | 📨 Wysłano DM | "Wariant C (Konsultant)" | Wersja User Choice (Ask First). |
-| 2026-01-15 | 10:00 | Łukasz Jarota | Agencja Grow | 📨 Wysłano DM | "Wariant C (Konsultant)" | Target: "Survival Mode". Pytanie o scope creep pasuje idealnie. |
-| 2026-01-15 | 10:15 | Greg Gracz | click community | 📨 Wysłano DM | "Wariant C (Mod: Focus)" | Target: Seryjny Przedsiębiorca. Pytanie o "Autopilot vs Ventures". |
-
----
-
-## Wnioski z kampanii (Analiza Siary)
-*Miejsce na podsumowanie po każdych 10 wysłanych wiadomościach.*
-1. ...
+| 2026-01-16 | ~10:00 | Łukasz Jarota | - | 📨 Wysłano DM | "Wariant C (Konsultant)" | Brak odpowiedzi. |
+| 2026-01-16 | ~10:00 | Greg Gracz | - | 📨 Wysłano DM | "Wariant C (Konsultant)" | Brak odpowiedzi. |
