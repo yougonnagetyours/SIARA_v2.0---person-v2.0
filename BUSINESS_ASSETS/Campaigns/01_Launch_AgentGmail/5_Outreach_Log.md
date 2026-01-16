@@ -15,3 +15,11 @@
 | 2026-01-14 | ~11:00 | Andrzej Rabsztyn | (Grupa Delta) | 📨 Wysłano DM | "Wariant C (Konsultant)" | Wersja User Choice (Ask First). |
 | 2026-01-16 | ~10:00 | Łukasz Jarota | - | 📨 Wysłano DM | "Wariant C (Konsultant)" | Brak odpowiedzi. |
 | 2026-01-16 | ~10:00 | Greg Gracz | - | 📨 Wysłano DM | "Wariant C (Konsultant)" | Brak odpowiedzi. |
+| 2026-01-16 | ~12:00 | Ela | - | 📨 Wysłano DM | "Wariant E (Etyczny)" | Nawiązanie do posta o Black Mirror. Nacisk na Human-in-the-loop. |
+
+---
+
+## Wnioski z kampanii (Analiza Siary)
+*Miejsce na podsumowanie po każdych 10 wysłanych wiadomościach.*
+1. **Zimny prysznic (16.01):** Wariant C ("Czy masz problem X?") generuje ciszę. Ludzie nie chcą przyznawać się do problemów obcemu człowiekowi.
+2. **Korekta kursu:** Zmieniamy narrację z "Psychoterapeuty" (masz problem?) na "Inżyniera-Pasjonata" (zobacz co zbudowałem). Wdrożono Wariant D i E.

@@ -4,7 +4,7 @@
 **Etap:** Walidacja Rynkowa (Smoke Test)
 **Cel:** 5 wersji Demo / 1 Klient płacący
 **Deadline:** 21 Stycznia 2026 (Koniec testu)
-**Status:** 🚀 **READY TO LAUNCH**
+**Status:** 🚧 **IN PROGRESS (Outreach & Production)**
 
 ## 🗓️ Oś Czasu
 
@@ -21,17 +21,17 @@
     - [x] Pivot na post statyczny (Decyzja).
     - [x] Remont profilu LinkedIn.
 - [ ] **Tydzień 3 (12.01 - 19.01):** **LAUNCH WEEK.**
-    - [ ] Publikacja Posta Launchowego (Poniedziałek).
-    - [ ] Outreach do Top 15 CEO.
-    - [ ] Obsługa leadów (Wysyłka PDF).
+    - [x] Publikacja Posta Launchowego (Poniedziałek).
+    - [x] Outreach do Top 15 CEO (Rozszerzono do 50).
+    - [ ] Obsługa leadów (Wysyłka PDF/Wideo).
 
 ## 📋 Backlog Zadań (Najbliższe)
 
 | Zadanie | Priorytet | Status | Przypisany |
 |---|---|---|---|
 | **START KAMPANII (13.01)** | 🟢 Done | **PUBLISHED** | #Waski |
-| **Outreach (15 zaproszeń)** | 🟢 Done | **ZROBIONE** | User |
-| [x] Odświeżenie Tokenu Google (n8n) | 🟢 Done | **ZROBIONE** | User |
+| **Outreach (15 -> 50 zaproszeń)** | 🟢 Done | **ZROBIONE** | User |
+| **Montaż Wideo Demo (Reel)** | 🔴 Critical | **W TOKU** | User |
 | Obsługa komentarzy "AGENT" | 🟡 High | Czeka | #Waski |
 
 ## 📉 Wyniki (KPI)
@@ -39,16 +39,17 @@
 | Metryka | Cel | Aktualnie |
 |---|---|---|
 | Liczba Leadów (Komentarz/DM) | 20 | 0 |
-| Wysłane Demo (PDF) | 10 | 4 (DM) |
+| Wysłane Demo (PDF) | 10 | 6 (DM) |
 | Umówione Spotkania | 3 | 0 |
 | Sprzedaż | 1 | 0 |
 
-## 🚨 Next Checkpoint: Piątek 16.01 (17:00)
-**Warunek Pivotu:** Jeśli do piątku liczba odpowiedzi na DM wyniesie **0** (dla grupy 7 osób), uznajemy, że "PDF w ciemno" nie działa.
-**Plan B:** Zmiana Lead Magnetu na **Wideo Demo** (Loom) w DM.
+## 🚨 Next Checkpoint: Poniedziałek 19.01 (09:00)
+**Decyzja:** Czy puszczamy Wideo jako Post Publiczny (jeśli cisza w DM), czy wysyłamy jako "Bump" w wiadomościach prywatnych.
+**Warunek:** Wideo musi być gotowe w piątek/weekend.
 
 ## 🧠 Wnioski i Decyzje (Log)
-- **2026-01-16:** **PIVOT NARRACYJNY.** Wariant "Psychoterapeuty" (pytanie o problemy) nie działa (cisza). Zmieniamy na "Inżyniera-Pasjonata" (pokazanie rozwiązania).
+- **2026-01-16:** **PIVOT NARRACYJNY.** Wariant "Psychoterapeuty" (pytanie o problemy) nie działa (cisza). Zmieniamy na "Inżyniera-Pasjonata" (pokazanie rozwiązania). Wprowadzono Wariant D (Tech Flex) i E (Etyczny).
+- **2026-01-16:** Powrót do Wideo. Tekst w DM nie konwertuje wystarczająco dobrze. Potrzebny jest dowód wizualny ("Money Shot").
 - **2026-01-11:** Decyzja o przeniesieniu kampanii do katalogu `BUSINESS_ASSETS`. Wybór Top 15 firm z bólami operacyjnymi. Token n8n odświeżony.
 - **2026-01-09:** Zmiana formatu z Wideo na Statyczny Post + PDF. Uznano, że prostota wygra z "hollywoodzką produkcją".
 - **2025-12-11:** Pivot strategii: Nie sprzedajemy "Agencji", tylko "System Inżyniera".

@@ -3,6 +3,32 @@
 Najnowsze wpisy na górze ↓
 
 ---
+## 2026-01-16 - Sesja #40 (Etyczna Ofensywa & Deep Work)
+
+**Co robiliśmy:**
+- **Analiza Outreach (Korekta Danych):**
+    - Potwierdzono, że zaproszenia poszły do **50 osób**, a nie tylko do Top 15.
+    - Zaktualizowano log `5_Outreach_Log.md`, aby odzwierciedlał rzeczywisty stan (Łukasz i Greg dostali wariant C rano, a nie D).
+- **Strategia Komunikacji (Pivot):**
+    - Wariant C ("Psychoterapeuta") okazał się nieskuteczny ("śmierć w ciszy").
+    - Opracowano **Wariant D ("Tech Flex")**: "Inżynier chwali się zabawką".
+    - Opracowano **Wariant E ("Transparentny/Etyczny")**: Specjalnie dla Eli (Judo na jej obiekcje o AI).
+- **Egzekucja (12:00):**
+    - Wysłano spersonalizowaną wiadomość do Eli (Wariant E) nawiązującą do jej posta o Black Mirror.
+- **Produkcja:**
+    - Potwierdzono gotowość "surówki" wideo wg skryptu `Insta_reel_magic_mine.md`.
+    - Użytkownik wszedł w tryb Deep Work, aby zmontować B-rolle (Slack/Gmail).
+
+**Ustalenia:**
+- **Wideo jest kluczem.** Bez niego outreach to tylko obietnice bez pokrycia.
+- Jeśli Ela odpisze -> Wysyłamy PDF + Link do Wideo.
+- Jeśli cisza trwa -> Wideo ląduje jako Post Publiczny w poniedziałek.
+
+**Następny krok (Po montażu):**
+- Meldunek "Wideo Gotowe".
+- Decyzja o dystrybucji (DM vs Public).
+
+---
 ## 2026-01-15 - Sesja #39 (Korekta Statusu Outreach & Plan na Piątek)
 
 **Korekta Danych (Fakty vs System):**

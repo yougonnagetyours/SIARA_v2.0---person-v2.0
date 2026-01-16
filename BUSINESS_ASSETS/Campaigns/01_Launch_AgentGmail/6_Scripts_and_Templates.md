@@ -58,17 +58,17 @@
 **Strategia:** Judo. Wykorzystanie obaw rozmówcy (AI = fake) do pokazania wartości (AI = produktywność). Nacisk na Human-in-the-loop.
 **Status:** ⚠️ UNIKAT (Tylko dla Eli - nawiązuje do jej konkretnego posta o Black Mirror!)
 
-> Cześć [Imię], dzięki za przyjęcie zaproszenia.
+> Cześć Elu, dzięki za przyjęcie zaproszenia.
 >
-> Właśnie przeczytałem Twój post o "Black Mirror" i braku zaufania. W punkt. Też uważam, że AI powinno zdejmować z nas robotę, a nie udawać, że nią nie jest.
+> Właśnie przeczytałem Twój post o zagrożeniach związanych z AI wymienionych w raporcie. W punkt. Też uważam, że AI powinno zdejmować z nas robotę, a nie służyć do manipulacji czy tworzenia fikcji.
 >
-> A propos "turbo produktywności", o której wspomniałaś – testuję właśnie u siebie takiego "dobrego agenta" do Gmaila (na n8n).
+> A propo "turbo produktywności", o której wspomniałaś – testuję właśnie u siebie agenta do Gmaila (na n8n).
 >
-> Gdy wpada mi trudny mail (np. próba wymuszenia darmowej pracy), wrzucam na Slacka hasło "draftuj". AI przygotowuje mi "na brudno" asertywną odpowiedź, żebym ja nie musiał tracić nerwów, ale to **ja zawsze klikam "Wyślij"**.
+> Gdy wpada mi trudny mail (np. kolejna 'drobna prośba' poza zakresem), wrzucam na Slacka hasło "draftuj", a model AI przygotowuje mi "na brudno" asertywną i spersonalizowaną odpowiedź jako draft w tym samym wątku, żebym ja nie musiał tracić nerwów. Ja potem tylko sprawdzam, akceptuję i klikam "Wyślij", co daje mi to ogromny spokój ducha.
 >
-> Daje mi to ogromny spokój ducha.
+> Chcesz zobaczyć schemat, jak działa w praktyce? Może Cię zainspiruje.
 >
-> Chcesz zobaczyć schemat, jak to sobie poukładałem? Może Cię zainspiruje.
+> Pozdrawiam
 
 ---
 
